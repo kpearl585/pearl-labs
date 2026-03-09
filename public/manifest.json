@@ -1,0 +1,12 @@
+{
+  "name": "Pearl Labs",
+  "short_name": "PearlLabs",
+  "description": "Custom Web Development & Digital Products",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030507",
+  "theme_color": "#4A9EFF",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
