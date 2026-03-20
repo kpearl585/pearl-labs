@@ -1,66 +1,70 @@
 'use client'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Zap } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   const reduce = useReducedMotion()
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-6">
-      {/* Deep space background */}
+      {/* Pulsing grid background */}
+      <div className="absolute inset-0 grid-bg opacity-[0.04]" />
       <div className="absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 100% 70% at 50% -5%, rgba(0,212,255,0.15) 0%, #0A0A0F 60%)' }} />
-      <div className="absolute inset-0 grid-bg opacity-[0.03]" />
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 60%)' }} />
 
-      {/* Floating orbs */}
-      <motion.div className="absolute w-[900px] h-[900px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%)', top: '-20%', left: '-20%' }}
-        animate={reduce ? {} : { x: [0, 40, 0], y: [0, -30, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%)', bottom: '-10%', right: '-10%' }}
-        animate={reduce ? {} : { x: [0, -30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 4 }} />
+      {/* Subtle top glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,212,255,0.07) 0%, transparent 70%)' }} />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Eyebrow */}
         <motion.div
-          initial={{ opacity: 1, y: reduce ? 0 : 24 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 mb-10 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.2em]"
-          style={{ background: 'rgba(0,212,255,0.08)', border: '1px solid rgba(0,212,255,0.2)', color: '#00D4FF' }}
+          initial={{ opacity: 1, y: reduce ? 0 : 20 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex items-center gap-3 mb-12 px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.25em]"
+          style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)' }}
         >
-          <Zap className="w-3 h-3" />
-          Elite Technology Studio — Veteran Owned
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF] animate-pulse" />
+          Veteran-Owned Technology Studio
         </motion.div>
 
-        {/* Main headline */}
+        {/* Main headline — editorial scale */}
         <motion.h1
           initial={{ opacity: 1, y: reduce ? 0 : 40 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-bold tracking-tight leading-[1.0] mb-8"
-          style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}
+          className="font-display font-bold leading-[0.92] mb-8"
+          style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)', letterSpacing: '-0.04em' }}
         >
-          <span className="text-white block">Elite Websites &amp;</span>
-          <span className="text-white block">AI Systems Built for</span>
-          <span className="block gradient-text">Businesses That Win.</span>
+          <span className="text-white block">We build systems</span>
+          <span className="block gradient-text">that win.</span>
         </motion.h1>
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 1, y: reduce ? 0 : 30 }} animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1, y: reduce ? 0 : 24 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
-          style={{ color: 'rgba(255,255,255,0.5)' }}
+          className="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed"
+          style={{ color: 'rgba(255,255,255,0.4)' }}
         >
-          We don&apos;t build websites. We build systems that generate revenue.
-          Next.js, AI, and infrastructure engineered to convert.
+          Elite websites, AI platforms, and SaaS products — engineered for
+          revenue, not vanity metrics.
+        </motion.p>
+
+        {/* Credibility line */}
+        <motion.p
+          initial={{ opacity: 1, y: reduce ? 0 : 20 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="text-sm mb-14 max-w-xl mx-auto font-medium"
+          style={{ color: 'rgba(255,255,255,0.25)' }}
+        >
+          Built ARGUS — geospatial intelligence for NATO.
+          FenceEstimatePro — $1.2K MRR in 30 days.
         </motion.p>
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 1, y: reduce ? 0 : 20 }} animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1, y: reduce ? 0 : 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
@@ -71,22 +75,9 @@ export default function Hero() {
           </a>
           <a href="#work"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium transition-all duration-300 hover:bg-white/5"
-            style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}>
+            style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.5)' }}>
             See Our Work
           </a>
-        </motion.div>
-
-        {/* Social proof strip */}
-        <motion.div
-          initial={{ opacity: 1, y: reduce ? 0 : 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="mt-16 flex items-center justify-center gap-8 flex-wrap"
-        >
-          {['Next.js', 'Supabase', 'Vercel', 'Claude AI', 'Stripe'].map(tech => (
-            <span key={tech} className="text-xs font-medium uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.2)' }}>
-              {tech}
-            </span>
-          ))}
         </motion.div>
       </div>
 
@@ -95,10 +86,9 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={reduce ? {} : { y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ color: 'rgba(255,255,255,0.2)' }}
         aria-hidden="true"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-white/20 mx-auto" />
+        <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/10 to-white/20 mx-auto" />
       </motion.div>
     </section>
   )

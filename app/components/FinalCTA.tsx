@@ -4,28 +4,30 @@ import { ArrowRight } from 'lucide-react'
 
 export default function FinalCTA() {
   const reduce = useReducedMotion()
+
   return (
     <section className="py-40 px-6 relative overflow-hidden">
-      {/* Background pulse */}
       <div className="absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,212,255,0.08) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,212,255,0.06) 0%, transparent 70%)' }} />
       <div className="absolute inset-0 grid-bg opacity-[0.025]" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 1, y: reduce ? 0 : 48 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
-          <p className="text-xs font-bold uppercase tracking-[0.25em] mb-8" style={{ color: 'rgba(255,255,255,0.25)' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] mb-8"
+            style={{ color: 'rgba(255,255,255,0.25)' }}>
             Ready to build?
           </p>
           <h2 className="font-display font-bold text-white tracking-tight leading-[1.0] mb-8"
-            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)' }}>
+            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', letterSpacing: '-0.03em' }}>
             Ready to build<br />
             <span className="gradient-text">something elite?</span>
           </h2>
           <p className="text-xl mb-14 max-w-lg mx-auto leading-relaxed"
-            style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Most projects kick off within 48 hours.<br />No retainers. No fluff. Just execution.
+            style={{ color: 'rgba(255,255,255,0.35)' }}>
+            Slots are limited. We take on projects we can win — not everything.
+            If you&apos;re serious, book a call.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://calendly.com/pearllabs" target="_blank" rel="noopener noreferrer"

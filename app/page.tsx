@@ -2,8 +2,9 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
 import Services from './components/Services'
-import Process from './components/Process'
 import Work from './components/Work'
+import Founder from './components/Founder'
+import Process from './components/Process'
 import Testimonials from './components/Testimonials'
 import Pricing from './components/Pricing'
 import FinalCTA from './components/FinalCTA'
@@ -16,8 +17,9 @@ export default function Home() {
       <Hero />
       <Stats />
       <Services />
-      <Process />
       <Work />
+      <Founder />
+      <Process />
       <Testimonials />
       <Pricing />
       <FinalCTA />
