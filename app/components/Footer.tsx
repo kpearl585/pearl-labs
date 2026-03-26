@@ -18,7 +18,7 @@ const links = {
 export default function Footer() {
   return (
     <footer style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-      <div className="max-w-[1200px] mx-auto px-6 py-14 lg:py-16 grid grid-cols-2 md:grid-cols-12 gap-8">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-16 py-14 lg:py-16 grid grid-cols-2 md:grid-cols-12 gap-8">
 
         <div className="col-span-2 md:col-span-5">
           <div className="font-display font-semibold text-white/80 text-[14px] mb-3 tracking-tight">
@@ -65,7 +65,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between gap-4 flex-wrap"
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-16 py-4 flex items-center justify-between gap-4 flex-wrap"
         style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
         <span className="text-[11px] text-white/14">&copy; {new Date().getFullYear()} Pearl Labs LLC</span>
         <span className="text-[11px] text-white/10">Veteran Owned &middot; Ocala, FL</span>

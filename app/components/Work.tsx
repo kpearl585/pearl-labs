@@ -6,34 +6,28 @@ import Image from 'next/image'
 
 const projects = [
   {
-    category: 'SaaS Platform',
     name: 'FenceEstimatePro',
-    desc: 'Full contractor management platform with estimate building, job tracking, customer portals, digital signatures, and PDF contract generation.',
-    status: 'Live',
-    url: 'fenceestimatepro.com',
-    tags: ['Next.js', 'Supabase', 'Stripe', 'Vercel'],
+    desc: 'Full contractor management platform — estimates, job tracking, customer portals, digital signatures.',
+    tags: ['Next.js', 'Supabase', 'Stripe'],
     href: '/work/fenceestimatepro',
     icon: '/fenceos-icon.svg',
+    status: 'Live',
   },
   {
-    category: 'Geospatial Intelligence',
     name: 'ARGUS AI Platform',
-    desc: '4D geospatial intelligence platform with live ADS-B and AIS data feeds, Dupuy combat modeling engine, and AI copilot for analysis.',
-    status: 'Live',
-    url: 'argusplatform.ai',
-    tags: ['CesiumJS', 'PostGIS', 'Claude AI', 'Next.js'],
+    desc: '4D geospatial intelligence with live data feeds, combat modeling, and AI copilot.',
+    tags: ['CesiumJS', 'PostGIS', 'Claude AI'],
     href: 'https://argusplatform.ai',
     icon: null,
+    status: 'Live',
   },
   {
-    category: 'Digital Product',
     name: 'ContractorDocuments.com',
-    desc: 'Document delivery platform for contractors — Stripe checkout, instant PDF access, and automated fulfillment for legal template packages.',
-    status: 'Live',
-    url: 'contractordocuments.com',
+    desc: 'Document delivery platform — Stripe checkout, instant PDF access, automated fulfillment.',
     tags: ['Next.js', 'Stripe', 'Vercel'],
     href: 'https://contractordocuments.com',
     icon: null,
+    status: 'Live',
   },
 ]
 
@@ -42,79 +36,61 @@ export default function Work() {
   const ease = [0.22, 1, 0.36, 1] as const
 
   return (
-    <section className="py-28 lg:py-36 px-6" id="work">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="py-32 lg:py-44 px-8 lg:px-16" id="work">
+      <div className="max-w-[1440px] mx-auto">
 
-        <motion.div className="mb-14 lg:mb-16"
+        <motion.div className="mb-16 lg:mb-20 max-w-2xl"
           initial={{ opacity: 0, y: reduce ? 0 : 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6, ease }}>
-          <div className="flex items-center gap-3 mb-5">
-            <span className="w-6 h-px bg-white/20" />
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">Selected Work</span>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-8 h-px bg-white/20" />
+            <span className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/35">Selected Work</span>
           </div>
-          <h2 className="font-display font-semibold text-white tracking-[-0.03em] leading-[1.1]"
-            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}>
-            Real products.<br className="hidden sm:block" />
-            <span className="text-white/35">Live in production.</span>
+          <h2 className="font-display font-semibold text-white tracking-[-0.035em] leading-[1.0]"
+            style={{ fontSize: 'clamp(2.25rem, 4vw, 3.75rem)' }}>
+            Real products. Live in production.
           </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((p, i) => {
             const isInternal = p.href.startsWith('/')
             const Tag = isInternal ? Link : 'a'
-            const linkProps = isInternal
-              ? { href: p.href }
-              : { href: p.href, target: '_blank' as const, rel: 'noopener noreferrer' }
+            const linkProps = isInternal ? { href: p.href } : { href: p.href, target: '_blank' as const, rel: 'noopener noreferrer' }
 
             return (
               <motion.div key={p.name}
-                initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+                initial={{ opacity: 0, y: reduce ? 0 : 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.06, ease }}
-              >
+                transition={{ duration: 0.5, delay: i * 0.08, ease }}>
                 <Tag {...linkProps}
-                  className="group relative rounded-xl overflow-hidden block card-hover"
-                  style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.05)' }}
-                >
-                  <div className="relative z-10 p-8 lg:p-10">
-                    {/* Top row */}
-                    <div className="flex items-start justify-between mb-5 gap-4">
-                      <div className="flex items-center gap-3">
-                        {p.icon && (
-                          <Image src={p.icon} alt="" width={20} height={20} className="rounded opacity-60" />
-                        )}
-                        <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/25">{p.category}</span>
-                      </div>
-                      <div className="text-right shrink-0">
-                        <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60" />
-                          <span className="text-[12px] font-mono font-medium text-white/40">{p.status}</span>
-                        </div>
-                        <div className="text-[11px] mt-1 text-white/18 font-mono">{p.url}</div>
-                      </div>
-                    </div>
+                  className="group block rounded-2xl p-10 lg:p-12 h-full card-hover"
+                  style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.05)' }}>
 
-                    {/* Title + description */}
-                    <h3 className="font-display font-semibold text-white/90 text-xl lg:text-2xl tracking-tight mb-3">{p.name}</h3>
-                    <p className="text-[14px] leading-[1.7] text-white/32 max-w-[560px] mb-5">{p.desc}</p>
+                  {/* Status */}
+                  <div className="flex items-center gap-2 mb-10">
+                    {p.icon && <Image src={p.icon} alt="" width={18} height={18} className="rounded opacity-50" />}
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/50" />
+                    <span className="text-[11px] font-mono text-white/30">{p.status}</span>
+                  </div>
 
-                    {/* Tags + arrow */}
-                    <div className="flex items-end justify-between gap-4">
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.tags.map(t => (
-                          <span key={t} className="text-[11px] font-mono px-2 py-0.5 rounded text-white/20"
-                            style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.04)' }}>
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-white/[0.04]"
-                        style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                      </div>
+                  {/* Title */}
+                  <h3 className="font-display font-semibold text-white/90 text-xl lg:text-2xl tracking-tight mb-4 group-hover:text-white transition-colors duration-300">
+                    {p.name}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-[15px] leading-[1.65] text-white/30 mb-8">{p.desc}</p>
+
+                  {/* Footer */}
+                  <div className="flex items-end justify-between mt-auto">
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.tags.map(t => (
+                        <span key={t} className="text-[11px] font-mono text-white/16">{t}</span>
+                      ))}
                     </div>
+                    <ArrowUpRight className="w-4 h-4 text-white/16 group-hover:text-white/40 transition-colors duration-300" />
                   </div>
                 </Tag>
               </motion.div>

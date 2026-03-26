@@ -43,7 +43,7 @@ export default function Navbar() {
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
         }}
       >
-        <nav className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
+        <nav className="max-w-[1440px] mx-auto px-8 lg:px-16 h-full flex items-center justify-between">
           <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-90">
               <rect width="20" height="20" rx="5" fill="url(#logo-grad)" />
