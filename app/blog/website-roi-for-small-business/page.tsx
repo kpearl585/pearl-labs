@@ -126,7 +126,7 @@ export default function ArticlePage() {
             Pearl Labs builds custom Next.js websites engineered for speed, SEO, and conversion. No templates. No WordPress. Just fast, professional sites that work.
           </p>
           <Link
-            href="/#contact"
+            href="/estimate"
             className="inline-block bg-[#00D4FF] text-[#050508] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#00D4FF]/90 transition-colors"
           >
             Start the Conversation &rarr;

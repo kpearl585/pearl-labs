@@ -11,7 +11,7 @@ const links = {
     { label: 'Work', href: '#work' },
     { label: 'Process', href: '#process' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '/estimate' },
   ],
 }
 

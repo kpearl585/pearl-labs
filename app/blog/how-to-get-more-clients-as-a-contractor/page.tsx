@@ -105,7 +105,7 @@ export default function ArticlePage() {
             Pearl Labs builds fast, professional websites for Florida contractors. We handle everything — design, development, SEO setup, and Google Business optimization. No templates. No WordPress.
           </p>
           <Link
-            href="/#contact"
+            href="/estimate"
             className="inline-block bg-[#00D4FF] text-[#050508] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#00D4FF]/90 transition-colors"
           >
             Get a Free Consultation &rarr;

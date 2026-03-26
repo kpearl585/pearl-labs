@@ -7,7 +7,7 @@ const links = [
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
   { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/estimate' },
 ]
 
 export default function Navbar() {
@@ -62,7 +62,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          <a href="#contact" className="hidden md:inline-flex items-center text-[13px] font-medium text-white/90 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.15] hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
+          <a href="/estimate" className="hidden md:inline-flex items-center text-[13px] font-medium text-white/90 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.15] hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
             style={{ border: '1px solid rgba(255,255,255,0.10)' }}>
             Get an Estimate
           </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
                 {l.label}
               </motion.a>
             ))}
-            <motion.a href="#contact" onClick={() => setOpen(false)}
+            <motion.a href="/estimate" onClick={() => setOpen(false)}
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: links.length * 0.04, duration: 0.25 }}
               className="mt-4 text-[15px] font-medium px-6 py-3 rounded-lg text-white/90"
