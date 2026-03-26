@@ -1,75 +1,78 @@
-'use client'
 import Link from 'next/link'
-
 
 const posts = [
   {
     slug: 'why-not-wordpress',
-    title: 'Why We Don\'t Do WordPress (And Why That\'s a Feature, Not a Bug)',
-    desc: 'WordPress powers 43% of the web. We don\'t touch it. Here\'s exactly why, and what you get instead.',
-    date: 'February 2026',
-    readTime: '7 min read',
+    title: "Why We Don't Do WordPress",
+    desc: "WordPress powers 43% of the web. We don't touch it. Here's exactly why, and what you get instead.",
+    date: 'Feb 2026',
+    readTime: '7 min',
     tag: 'Web Development',
+  },
+  {
+    slug: 'website-roi-for-small-business',
+    title: 'Website ROI for Small Business',
+    desc: 'How a professional website pays for itself through credibility, conversion, and competitive advantage.',
+    date: 'Feb 2026',
+    readTime: '5 min',
+    tag: 'Business',
+  },
+  {
+    slug: 'how-to-get-more-clients-as-a-contractor',
+    title: 'How to Get More Clients as a Contractor',
+    desc: 'Practical strategies for contractors who want to stop relying on word-of-mouth alone.',
+    date: 'Feb 2026',
+    readTime: '6 min',
+    tag: 'Marketing',
   },
 ]
 
-const BLUE  = '#4A9EFF'
-const BLACK = '#030507'
-
 export default function BlogIndex() {
   return (
-    <main style={{ background: BLACK, minHeight: '100vh', fontFamily: 'var(--font-inter), sans-serif' }}>
-      {/* Nav */}
-      <div style={{ borderBottom: '1px solid rgba(74,158,255,0.12)', padding: '0 2rem' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ textDecoration: 'none', fontFamily: 'var(--font-grotesk), sans-serif', fontWeight: 700, fontSize: '1.1rem', color: '#fff' }}>
-            Pearl<span style={{ color: BLUE }}>Labs</span>
-          </Link>
-          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-            <Link href="/#work" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.875rem' }}>Work</Link>
-            <Link href="/#contact" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.875rem' }}>Contact</Link>
-            <Link href="/blog" style={{ color: BLUE, textDecoration: 'none', fontSize: '0.875rem' }}>Blog</Link>
+    <main className="pt-28 lg:pt-32 pb-28 lg:pb-36 px-6">
+      <div className="max-w-[1200px] mx-auto">
+
+        {/* Header */}
+        <div className="mb-14 lg:mb-16">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="w-6 h-px bg-white/20" />
+            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">Blog</span>
           </div>
+          <h1 className="font-display font-semibold text-white tracking-[-0.03em] leading-[1.1] mb-4"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}>
+            Insights &amp; perspective
+          </h1>
+          <p className="text-[15px] leading-[1.7] text-white/34 max-w-[480px]">
+            Real talk on web development, performance, and building technology that businesses actually own.
+          </p>
         </div>
-      </div>
 
-      {/* Header */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '5rem 2rem 3rem' }}>
-        <p style={{ color: BLUE, fontFamily: 'var(--font-grotesk), sans-serif', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Pearl Labs Blog</p>
-        <h1 style={{ fontFamily: 'var(--font-grotesk), sans-serif', fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#fff', lineHeight: 1.1, margin: '0 0 1rem' }}>
-          Insights & Perspective
-        </h1>
-        <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '1.1rem', maxWidth: '600px', lineHeight: 1.7 }}>
-          Real talk on web development, performance, and building technology that businesses actually own.
-        </p>
-      </div>
-
-      {/* Posts */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem 6rem' }}>
-        <div style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))' }}>
+        {/* Posts grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {posts.map(post => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
-              <article style={{
-                background: '#0c1220',
-                border: '1px solid rgba(74,158,255,0.12)',
-                borderRadius: '12px',
-                padding: '2rem',
-                transition: 'border-color 0.2s, transform 0.2s',
-                cursor: 'pointer',
-              }}
-  
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                  <span style={{ background: 'rgba(74,158,255,0.1)', color: BLUE, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.3rem 0.75rem', borderRadius: '4px' }}>{post.tag}</span>
-                  <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.8rem' }}>{post.readTime}</span>
-                </div>
-                <h2 style={{ fontFamily: 'var(--font-grotesk), sans-serif', fontWeight: 700, fontSize: '1.15rem', color: '#fff', lineHeight: 1.3, marginBottom: '0.75rem' }}>{post.title}</h2>
-                <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>{post.desc}</p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.8rem' }}>{post.date}</span>
-                  <span style={{ color: BLUE, fontSize: '0.875rem', fontWeight: 600 }}>Read →</span>
-                </div>
-              </article>
+            <Link key={post.slug} href={`/blog/${post.slug}`}
+              className="group rounded-xl p-7 lg:p-8 transition-all duration-500 block"
+              style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.05)' }}>
+
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#00D4FF]/50"
+                  style={{ background: 'rgba(0,212,255,0.06)' }}>
+                  {post.tag}
+                </span>
+                <span className="text-[11px] text-white/18 font-mono">{post.readTime}</span>
+              </div>
+
+              <h2 className="font-display font-semibold text-white/80 text-[16px] tracking-tight mb-2 group-hover:text-white/95 transition-colors duration-300">
+                {post.title}
+              </h2>
+              <p className="text-[13px] leading-[1.65] text-white/28 mb-5">{post.desc}</p>
+
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] text-white/16 font-mono">{post.date}</span>
+                <span className="text-[12px] font-medium text-white/25 group-hover:text-white/45 transition-colors duration-300">
+                  Read &rarr;
+                </span>
+              </div>
             </Link>
           ))}
         </div>

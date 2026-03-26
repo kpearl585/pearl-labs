@@ -1,151 +1,101 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
-const navLinks = [
+const links = [
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
   { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const prefersReduced = useReducedMotion()
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const fn = () => setScrolled(window.scrollY > 32)
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  // Close mobile menu on escape
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    const fn = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', fn)
+    return () => window.removeEventListener('keydown', fn)
   }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300 ${
-          scrolled ? 'border-b border-white/[0.06]' : 'border-b border-transparent'
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+          scrolled ? 'h-14' : 'h-16'
         }`}
-        style={
-          scrolled
-            ? { background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(20px)' }
-            : { background: 'transparent' }
-        }
+        style={{
+          background: scrolled ? 'rgba(5,5,8,0.85)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(1.4)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
+        }}
       >
-        <nav className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between" aria-label="Main navigation">
-          <a
-            href="#"
-            className="font-display font-bold text-white text-lg tracking-tight hover:opacity-80 transition-opacity"
-          >
+        <nav className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
+          <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-90">
+              <rect width="20" height="20" rx="5" fill="url(#logo-grad)" />
+              <text x="5.5" y="14.5" fill="#fff" fontSize="11" fontWeight="700" fontFamily="system-ui">P</text>
+              <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="20" y2="20"><stop stopColor="#00D4FF"/><stop offset="1" stopColor="#0090B0"/></linearGradient></defs>
+            </svg>
             Pearl Labs
           </a>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8" role="list">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm text-white/50 hover:text-white transition-colors duration-200"
-                role="listitem"
-              >
-                {link.label}
+          <div className="hidden md:flex items-center gap-7">
+            {links.map(l => (
+              <a key={l.label} href={l.href}
+                className="text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors duration-200">
+                {l.label}
               </a>
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <a
-              href="https://calendly.com/pearllabs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-black font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-white/90 hover:scale-[1.03] transition-all duration-200"
-            >
-              Start a Project →
-            </a>
-          </div>
+          <a href="#contact" className="hidden md:inline-flex items-center text-[13px] font-medium text-white/90 px-4 py-2 rounded-lg transition-all duration-200 hover:bg-white/[0.06]"
+            style={{ border: '1px solid rgba(255,255,255,0.10)' }}>
+            Start a Project
+          </a>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-[5px] p-2 min-w-[44px] min-h-[44px] items-center justify-center"
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-          >
-            <span
-              className={`block w-5 h-[1.5px] bg-white transition-transform duration-300 origin-center ${
-                mobileOpen ? 'rotate-45 translate-y-[3.25px]' : ''
-              }`}
-            />
-            <span
-              className={`block w-5 h-[1.5px] bg-white transition-opacity duration-300 ${
-                mobileOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-5 h-[1.5px] bg-white transition-transform duration-300 origin-center ${
-                mobileOpen ? '-rotate-45 -translate-y-[3.25px]' : ''
-              }`}
-            />
+          <button onClick={() => setOpen(!open)} className="md:hidden p-2 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center gap-[5px]"
+            aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>
+            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? 'rotate-45 translate-y-[3.25px]' : ''}`} />
+            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-opacity duration-200 ${open ? 'opacity-0' : ''}`} />
+            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? '-rotate-45 -translate-y-[3.25px]' : ''}`} />
           </button>
         </nav>
       </header>
 
-      {/* Mobile overlay */}
       <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 1, y: prefersReduced ? 0 : -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: prefersReduced ? 0 : -10 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-0 z-40 bg-[#0A0A0F] flex flex-col items-center justify-center gap-6 md:hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation"
-          >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 1, y: prefersReduced ? 0 : 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: prefersReduced ? 0 : 0.3,
-                  delay: prefersReduced ? 0 : i * 0.06,
-                  ease: 'easeOut',
-                }}
-                className="text-2xl font-display font-semibold text-white hover:text-accent-light transition-colors"
-              >
-                {link.label}
+        {open && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+            style={{ background: 'rgba(5,5,8,0.98)' }}>
+            {links.map((l, i) => (
+              <motion.a key={l.label} href={l.href} onClick={() => setOpen(false)}
+                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.04, duration: 0.25 }}
+                className="text-xl font-display font-medium text-white/90 hover:text-white transition-colors">
+                {l.label}
               </motion.a>
             ))}
-            <motion.a
-              href="https://calendly.com/pearllabs"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 1, y: prefersReduced ? 0 : 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: prefersReduced ? 0 : 0.3,
-                delay: prefersReduced ? 0 : navLinks.length * 0.06,
-                ease: 'easeOut',
-              }}
-              className="mt-4 bg-white text-black font-semibold text-lg px-8 py-3.5 rounded-full hover:bg-white/90 transition-colors"
-            >
-              Start a Project →
+            <motion.a href="#contact" onClick={() => setOpen(false)}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: links.length * 0.04, duration: 0.25 }}
+              className="mt-4 text-[15px] font-medium px-6 py-3 rounded-lg text-white/90"
+              style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
+              Start a Project
             </motion.a>
           </motion.div>
         )}

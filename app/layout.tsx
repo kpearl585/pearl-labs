@@ -8,15 +8,14 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mon
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pearllab.io'),
-  title: 'Pearl Labs — Web Development Studio | Custom Websites & Apps',
+  title: 'Pearl Labs — Custom Development Studio',
   description:
-    'Pearl Labs builds high-performance websites and web applications using Next.js, Tailwind CSS, and modern tooling. Fast, beautiful, and built to convert. Veteran owned.',
+    'Pearl Labs is a custom development studio that builds websites, SaaS platforms, and business systems from scratch. Veteran owned.',
   keywords:
-    'web development, custom websites, Next.js developer, SaaS development, landing pages, Florida web developer, custom software, veteran owned',
+    'custom development studio, software engineering, SaaS development, AI systems, Next.js, custom software, veteran owned',
   openGraph: {
-    title: 'Pearl Labs — Web Development Studio',
-    description:
-      'We build websites that make your competitors nervous. High-performance Next.js sites built to convert.',
+    title: 'Pearl Labs — Custom Development Studio',
+    description: 'High-performance websites, SaaS platforms, and intelligent systems. Engineered to perform.',
     url: 'https://pearllab.io',
     siteName: 'Pearl Labs',
     type: 'website',
@@ -24,21 +23,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pearl Labs — Web Development Studio',
-    description: 'We build websites that make your competitors nervous.',
+    title: 'Pearl Labs — Custom Development Studio',
+    description: 'High-performance websites, SaaS platforms, and intelligent systems. Engineered to perform.',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
-  },
-  alternates: {
-    canonical: 'https://pearllab.io',
-  },
-  icons: {
-    icon: '/icon.svg',
-    apple: '/icon.svg',
-  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  alternates: { canonical: 'https://pearllab.io' },
+  icons: { icon: '/icon.svg', apple: '/icon.svg' },
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
@@ -48,19 +38,13 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   name: 'Pearl Labs',
   url: 'https://pearllab.io',
-  email: 'Pearllabs@icloud.com',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Ocala',
-    addressRegion: 'FL',
-    addressCountry: 'US',
-  },
+  email: 'hello@pearllab.io',
+  address: { '@type': 'PostalAddress', addressLocality: 'Ocala', addressRegion: 'FL', addressCountry: 'US' },
   serviceType: 'Custom Software Development',
-  description:
-    'Pearl Labs builds high-performance websites and web applications. Veteran owned. Florida based.',
+  description: 'Custom development studio building high-performance websites, SaaS platforms, and AI systems. Veteran owned.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -68,17 +52,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
-        {/* Skip navigation for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
-        >
+        <a href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold">
           Skip to main content
         </a>
         <main id="main-content">{children}</main>
