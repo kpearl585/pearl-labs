@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "img:hero": "node scripts/image-gen.mjs --preset hero --variants 3",
+    "img:section": "node scripts/image-gen.mjs --preset section --variants 2",
+    "img:texture": "node scripts/image-gen.mjs --preset texture --variants 2",
+    "img:custom": "node scripts/image-gen.mjs"
   },
   "dependencies": {
     "@fontsource-variable/playfair-display": "^5.2.8",

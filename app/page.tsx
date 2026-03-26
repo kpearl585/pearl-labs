@@ -2,7 +2,6 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import LogoBar from './components/LogoBar'
 import Services from './components/Services'
-import Capabilities from './components/Capabilities'
 import Work from './components/Work'
 import Process from './components/Process'
 import Testimonials from './components/Testimonials'
@@ -17,8 +16,6 @@ export default function Home() {
       <LogoBar />
       <div className="divider" />
       <Services />
-      <div className="divider" />
-      <Capabilities />
       <div className="divider" />
       <Work />
       <div className="divider" />

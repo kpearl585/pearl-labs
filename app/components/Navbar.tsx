@@ -62,9 +62,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          <a href="#contact" className="hidden md:inline-flex items-center text-[13px] font-medium text-white/90 px-4 py-2 rounded-lg transition-all duration-200 hover:bg-white/[0.06]"
+          <a href="#contact" className="hidden md:inline-flex items-center text-[13px] font-medium text-white/90 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.15] hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
             style={{ border: '1px solid rgba(255,255,255,0.10)' }}>
-            Start a Project
+            Get an Estimate
           </a>
 
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center gap-[5px]"
@@ -95,7 +95,7 @@ export default function Navbar() {
               transition={{ delay: links.length * 0.04, duration: 0.25 }}
               className="mt-4 text-[15px] font-medium px-6 py-3 rounded-lg text-white/90"
               style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
-              Start a Project
+              Get an Estimate
             </motion.a>
           </motion.div>
         )}

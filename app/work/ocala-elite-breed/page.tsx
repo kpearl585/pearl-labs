@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import { ArrowRight } from 'lucide-react'
@@ -59,6 +60,19 @@ export default function OcalaEliteBreed() {
             <Link href="/#work" className="text-[14px] font-medium text-white/30 hover:text-white/55 transition-colors duration-200">
               Back to Work
             </Link>
+          </div>
+
+          {/* Real product screenshot */}
+          <div className="mt-12 rounded-xl overflow-hidden"
+            style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
+            <Image
+              src="/oeb-hero.png"
+              alt="Ocala Elite Breed website — live product screenshot"
+              width={1200}
+              height={800}
+              className="w-full h-auto"
+              priority
+            />
           </div>
         </div>
       </section>
