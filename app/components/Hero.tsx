@@ -1,81 +1,117 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   const reduce = useReducedMotion()
   const ease = [0.22, 1, 0.36, 1] as const
+  const { scrollY } = useScroll()
+  const glowY = useTransform(scrollY, [0, 600], [0, 120])
+  const glowOpacity = useTransform(scrollY, [0, 500], [1, 0])
+
+  const blur = reduce ? 'blur(0px)' : 'blur(12px)'
 
   return (
-    <section className="w-full pt-32 lg:pt-40 pb-20 lg:pb-28">
-      <div className="w-full max-w-[1400px] mx-auto px-8 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="w-full pt-36 lg:pt-52 pb-28 lg:pb-44 relative overflow-hidden">
+      {/* Grid line background with radial mask */}
+      <div
+        className="absolute inset-0 bg-grid-lines"
+        aria-hidden="true"
+      />
 
-          {/* Left column */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, ease }}
-              className="text-[13px] font-mono uppercase tracking-[0.15em] text-white/30 mb-5">
-              Custom Development Studio
-            </motion.p>
+      {/* Primary glow orb -- cyan, top center */}
+      <motion.div
+        className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(0,212,255,0.12), rgba(0,212,255,0.04) 40%, transparent 70%)',
+          y: reduce ? 0 : glowY,
+          opacity: reduce ? 0.6 : glowOpacity,
+          filter: 'blur(80px)',
+        }}
+        aria-hidden="true"
+      />
 
-            <motion.h1
-              initial={{ opacity: 0, y: reduce ? 0 : 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.04, ease }}
-              className="font-display font-bold tracking-[-0.035em] leading-[1.05] text-white mb-6"
-              style={{ fontSize: 'clamp(2.75rem, 4.5vw, 4.25rem)' }}>
-              We build the software that runs your business.
-            </motion.h1>
+      {/* Secondary glow orb -- violet, offset right */}
+      <motion.div
+        className="absolute top-[5%] left-[60%] w-[600px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(139,92,246,0.10), transparent 65%)',
+          y: reduce ? 0 : glowY,
+          opacity: reduce ? 0.4 : glowOpacity,
+          filter: 'blur(100px)',
+        }}
+        aria-hidden="true"
+      />
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.08, ease }}
-              className="text-lg text-white/40 leading-relaxed mb-10 max-w-lg">
-              Websites, SaaS platforms, and custom tools — engineered from scratch for founders who need real products.
-            </motion.p>
+      {/* Tertiary glow -- warm accent, offset left */}
+      <motion.div
+        className="absolute top-[10%] left-[20%] w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(0,212,255,0.06), transparent 60%)',
+          y: reduce ? 0 : glowY,
+          opacity: reduce ? 0.3 : glowOpacity,
+          filter: 'blur(120px)',
+        }}
+        aria-hidden="true"
+      />
 
-            <motion.div
-              initial={{ opacity: 0, y: reduce ? 0 : 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.12, ease }}
-              className="flex items-center gap-6">
-              <a href="/estimate"
-                className="group inline-flex items-center gap-2.5 bg-white text-[#050508] font-semibold px-7 py-3.5 rounded-lg text-[15px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]">
-                Get an Estimate
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
-              </a>
-              <a href="#products" className="text-[15px] font-medium text-white/30 hover:text-white/60 transition-colors duration-300">
-                See our work
-              </a>
-            </motion.div>
-          </div>
+      {/* Bottom radiant dome */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1400px] h-[300px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 100%, rgba(0,212,255,0.05), rgba(139,92,246,0.03) 40%, transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+        aria-hidden="true"
+      />
 
-          {/* Right column — visual panel */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.1, ease }}
-            className="hidden lg:block">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(139,92,246,0.06) 50%, rgba(52,211,153,0.04) 100%)',
-                border: '1px solid rgba(255,255,255,0.06)',
-              }}>
-              <div className="w-full h-full flex flex-col justify-end p-10">
-                <div className="space-y-3">
-                  <div className="h-2.5 w-3/4 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }} />
-                  <div className="h-2.5 w-1/2 rounded-full" style={{ background: 'rgba(255,255,255,0.04)' }} />
-                  <div className="h-2.5 w-2/3 rounded-full" style={{ background: 'rgba(255,255,255,0.03)' }} />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+      <div className="relative z-10 w-full max-w-[1080px] mx-auto px-8 lg:px-16 text-center">
+        {/* Badge / eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, filter: blur }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.5, ease }}
+          className="inline-flex items-center gap-2 mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.02] text-xs font-mono uppercase tracking-[0.2em] text-accent/50">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 animate-pulse" />
+            One engineer. Full stack. Full ownership.
+          </span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: reduce ? 0 : 24, filter: blur }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.8, delay: 0.05, ease }}
+          className="font-display font-bold tracking-[-0.04em] leading-[1.02] text-white mb-7"
+          style={{ fontSize: 'clamp(2.75rem, 6vw, 5.25rem)' }}>
+          Your entire product.{' '}
+          <br className="hidden lg:block" />
+          <span className="gradient-text">One engineer.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, filter: blur }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.6, delay: 0.12, ease }}
+          className="text-lg lg:text-xl text-white/50 leading-relaxed mb-14 max-w-2xl mx-auto">
+          Pearl Labs is a solo engineering studio. Every project is personally architected,
+          built, and shipped by one senior engineer. No teams. No handoffs.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: reduce ? 0 : 12, filter: blur }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.5, delay: 0.18, ease }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/estimate" className="btn-primary group">
+            Get an Estimate
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+          </a>
+          <a href="#products" className="btn-secondary">
+            See our work
+          </a>
+        </motion.div>
       </div>
     </section>
   )

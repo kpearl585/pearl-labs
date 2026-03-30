@@ -28,16 +28,16 @@ export default function Navbar() {
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'h-14' : 'h-16'}`}
         style={{
-          background: scrolled ? 'rgba(5,5,8,0.88)' : 'transparent',
+          background: scrolled ? 'rgba(5,5,8,0.92)' : 'transparent',
           backdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
         }}>
-        <nav className="w-full max-w-[1400px] mx-auto px-8 lg:px-16 h-full flex items-center justify-between">
-          <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2">
+        <nav className="w-full max-w-[1080px] mx-auto px-8 lg:px-16 h-full flex items-center justify-between">
+          <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2.5">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-90">
               <rect width="20" height="20" rx="5" fill="url(#lg)" />
               <text x="5.5" y="14.5" fill="#fff" fontSize="11" fontWeight="700" fontFamily="system-ui">P</text>
-              <defs><linearGradient id="lg" x1="0" y1="0" x2="20" y2="20"><stop stopColor="#00D4FF"/><stop offset="1" stopColor="#0090B0"/></linearGradient></defs>
+              <defs><linearGradient id="lg" x1="0" y1="0" x2="20" y2="20"><stop stopColor="#00D4FF"/><stop offset="1" stopColor="#8B5CF6"/></linearGradient></defs>
             </svg>
             Pearl Labs
           </a>
@@ -45,12 +45,12 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             {links.map(l => (
               <a key={l.label} href={l.href}
-                className="text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors duration-200">
+                className="group relative text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors duration-200 py-1">
                 {l.label}
+                <span className="absolute bottom-0 left-0 h-px bg-white/30 w-0 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <a href="/estimate"
-              className="text-[13px] font-semibold text-[#050508] bg-white px-4.5 py-2 rounded-lg transition-all duration-300 hover:bg-white/90">
+            <a href="/estimate" className="btn-primary !py-2 !px-5 !text-[13px] !rounded-lg">
               Get an Estimate
             </a>
           </div>
@@ -81,7 +81,7 @@ export default function Navbar() {
             <motion.a href="/estimate" onClick={() => setOpen(false)}
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: links.length * 0.04, duration: 0.25 }}
-              className="mt-4 text-[15px] font-semibold px-6 py-3 rounded-lg bg-white text-[#050508]">
+              className="mt-4 btn-primary">
               Get an Estimate
             </motion.a>
           </motion.div>
