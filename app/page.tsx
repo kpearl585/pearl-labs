@@ -1,8 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import FeaturedProduct from './components/FeaturedProduct'
-import ProductPair from './components/ProductPair'
-import Close from './components/Close'
+import Work from './components/Work'
+import About from './components/About'
 import Footer from './components/Footer'
 
 export default function Home() {
@@ -10,9 +9,8 @@ export default function Home() {
     <div className="bg-[#050508] min-h-screen">
       <Navbar />
       <Hero />
-      <FeaturedProduct />
-      <ProductPair />
-      <Close />
+      <Work />
+      <About />
       <Footer />
     </div>
   )

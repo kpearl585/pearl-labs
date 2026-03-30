@@ -8,76 +8,64 @@ export default function Hero() {
   const ease = [0.22, 1, 0.36, 1] as const
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
-      {/* Ambient */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[10%] right-[15%] w-[800px] h-[800px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 55%)' }} />
-      </div>
-
-      {/* Content — pushed to bottom-left for asymmetry */}
-      <div className="relative z-10 w-full px-8 md:px-12 lg:px-20 xl:px-32 pb-16 lg:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          {/* Left — dominant */}
-          <div className="lg:col-span-7">
+    <section className="pt-36 lg:pt-44 pb-24 lg:pb-32">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left — headline + CTA */}
+          <div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease }}
-              className="text-[13px] font-mono uppercase tracking-[0.2em] text-white/25 mb-8">
+              transition={{ duration: 0.4, ease }}
+              className="text-[13px] font-mono uppercase tracking-[0.15em] text-white/25 mb-6">
               Custom Development Studio
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: reduce ? 0 : 40 }}
+              initial={{ opacity: 0, y: reduce ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.05, ease }}
-              className="font-display font-bold tracking-[-0.05em] leading-[0.9] mb-10"
-              style={{ fontSize: 'clamp(3.5rem, 7.5vw, 8rem)' }}>
-              We build the
+              transition={{ duration: 0.7, delay: 0.04, ease }}
+              className="font-display font-bold tracking-[-0.035em] leading-[1.0] mb-8"
+              style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)' }}>
+              We build the software
               <br />
-              software that
-              <br />
-              <span className="gradient-text">runs your business.</span>
+              that <span className="gradient-text">runs your business.</span>
             </motion.h1>
 
             <motion.div
-              initial={{ opacity: 0, y: reduce ? 0 : 12 }}
+              initial={{ opacity: 0, y: reduce ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15, ease }}
-              className="flex items-center gap-8">
+              transition={{ duration: 0.5, delay: 0.1, ease }}
+              className="flex items-center gap-6 mt-10">
               <a href="/estimate"
-                className="group inline-flex items-center gap-3 bg-white text-[#050508] font-semibold px-8 py-4 rounded-xl text-base transition-all duration-300 hover:shadow-[0_0_60px_rgba(255,255,255,0.12)] hover:scale-[1.02]">
+                className="group inline-flex items-center gap-2.5 bg-white text-[#050508] font-semibold px-7 py-3.5 rounded-lg text-[15px] transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
                 Get an Estimate
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
               </a>
-              <a href="#featured" className="text-sm font-medium text-white/20 hover:text-white/45 transition-colors duration-300">
+              <a href="#work" className="text-sm font-medium text-white/25 hover:text-white/50 transition-colors duration-300">
                 See our work
               </a>
             </motion.div>
           </div>
 
-          {/* Right — supporting info, bottom-aligned */}
+          {/* Right — description + credentials */}
           <motion.div
-            className="lg:col-span-4 lg:col-start-9"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3, ease }}>
-            <p className="text-base lg:text-lg text-white/25 leading-relaxed mb-8">
-              SaaS platforms, contractor tools, AI systems, and business software — engineered from scratch.
+            transition={{ duration: 0.6, delay: 0.15, ease }}>
+            <p className="text-lg text-white/35 leading-relaxed mb-8">
+              Websites, SaaS platforms, AI systems, and custom business tools — engineered from scratch for founders who need real products, not templates.
             </p>
-            <div className="flex items-center gap-5 text-[12px] font-mono text-white/16">
+            <div className="flex items-center gap-5 text-[12px] font-mono text-white/18">
               <span>Veteran Owned</span>
               <span className="w-1 h-1 rounded-full bg-white/10" />
               <span>Ocala, FL</span>
+              <span className="w-1 h-1 rounded-full bg-white/10" />
+              <span>Est. 2024</span>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom edge line */}
-      <div className="absolute bottom-0 inset-x-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent)' }} />
     </section>
   )
 }
