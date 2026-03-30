@@ -2,8 +2,8 @@ import { Github, Linkedin, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="py-8">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <footer className="w-full py-8">
+      <div className="w-full max-w-[1400px] mx-auto px-8 lg:px-16">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-6"
           style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <div className="flex items-center gap-5">

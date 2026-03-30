@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const links = [
-  { label: 'Work', href: '#work' },
+  { label: 'Products', href: '#products' },
   { label: 'About', href: '#about' },
 ]
 
@@ -32,7 +32,7 @@ export default function Navbar() {
           backdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
         }}>
-        <nav className="max-w-[1280px] mx-auto px-6 lg:px-8 h-full flex items-center justify-between">
+        <nav className="w-full max-w-[1400px] mx-auto px-8 lg:px-16 h-full flex items-center justify-between">
           <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-90">
               <rect width="20" height="20" rx="5" fill="url(#lg)" />
