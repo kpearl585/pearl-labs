@@ -4,10 +4,9 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const links = [
-  { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
-  { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '/estimate' },
+  { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
 ]
 
 export default function Navbar() {
@@ -21,12 +20,6 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const fn = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
-    window.addEventListener('keydown', fn)
-    return () => window.removeEventListener('keydown', fn)
-  }, [])
-
-  useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
@@ -34,44 +27,41 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-          scrolled ? 'h-14' : 'h-16'
-        }`}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'h-16' : 'h-20'}`}
         style={{
-          background: scrolled ? 'rgba(5,5,8,0.85)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(1.4)' : 'none',
+          background: scrolled ? 'rgba(5,5,8,0.88)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
         }}
       >
-        <nav className="max-w-[1440px] mx-auto px-8 lg:px-16 h-full flex items-center justify-between">
-          <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-90">
-              <rect width="20" height="20" rx="5" fill="url(#logo-grad)" />
+        <nav className="w-full px-8 md:px-12 lg:px-20 xl:px-32 h-full flex items-center justify-between">
+          <a href="#" className="font-display font-semibold text-white text-base tracking-tight flex items-center gap-2.5">
+            <svg width="22" height="22" viewBox="0 0 20 20" fill="none" className="opacity-90">
+              <rect width="20" height="20" rx="5" fill="url(#lg)" />
               <text x="5.5" y="14.5" fill="#fff" fontSize="11" fontWeight="700" fontFamily="system-ui">P</text>
-              <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="20" y2="20"><stop stopColor="#00D4FF"/><stop offset="1" stopColor="#0090B0"/></linearGradient></defs>
+              <defs><linearGradient id="lg" x1="0" y1="0" x2="20" y2="20"><stop stopColor="#00D4FF"/><stop offset="1" stopColor="#0090B0"/></linearGradient></defs>
             </svg>
             Pearl Labs
           </a>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-10">
             {links.map(l => (
               <a key={l.label} href={l.href}
-                className="text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors duration-200">
+                className="text-sm font-medium text-white/40 hover:text-white/80 transition-colors duration-200">
                 {l.label}
               </a>
             ))}
+            <a href="/estimate"
+              className="text-sm font-semibold text-[#050508] bg-white px-5 py-2.5 rounded-lg transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+              Get an Estimate
+            </a>
           </div>
-
-          <a href="/estimate" className="hidden md:inline-flex items-center text-[13px] font-medium text-white/90 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.15] hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
-            style={{ border: '1px solid rgba(255,255,255,0.10)' }}>
-            Get an Estimate
-          </a>
 
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center gap-[5px]"
             aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>
-            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? 'rotate-45 translate-y-[3.25px]' : ''}`} />
-            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-opacity duration-200 ${open ? 'opacity-0' : ''}`} />
-            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? '-rotate-45 -translate-y-[3.25px]' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? 'rotate-45 translate-y-[3.25px]' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-white/80 transition-opacity duration-200 ${open ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? '-rotate-45 -translate-y-[3.25px]' : ''}`} />
           </button>
         </nav>
       </header>
@@ -86,15 +76,14 @@ export default function Navbar() {
               <motion.a key={l.label} href={l.href} onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04, duration: 0.25 }}
-                className="text-xl font-display font-medium text-white/90 hover:text-white transition-colors">
+                className="text-2xl font-display font-medium text-white/90 hover:text-white transition-colors">
                 {l.label}
               </motion.a>
             ))}
             <motion.a href="/estimate" onClick={() => setOpen(false)}
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: links.length * 0.04, duration: 0.25 }}
-              className="mt-4 text-[15px] font-medium px-6 py-3 rounded-lg text-white/90"
-              style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
+              className="mt-4 text-base font-semibold px-6 py-3 rounded-lg bg-white text-[#050508]">
               Get an Estimate
             </motion.a>
           </motion.div>

@@ -1,30 +1,21 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import LogoBar from './components/LogoBar'
-import Services from './components/Services'
 import Work from './components/Work'
-import Process from './components/Process'
-import Testimonials from './components/Testimonials'
-import FinalCTA from './components/FinalCTA'
+import Services from './components/Services'
+import About from './components/About'
+import CTA from './components/CTA'
 import Footer from './components/Footer'
 
 export default function Home() {
   return (
-    <main className="bg-[#050508] min-h-screen overflow-x-hidden">
+    <div className="bg-[#050508] min-h-screen">
       <Navbar />
       <Hero />
-      <LogoBar />
-      <div className="divider" />
-      <Services />
-      <div className="divider" />
       <Work />
-      <div className="divider" />
-      <Process />
-      <div className="divider" />
-      <Testimonials />
-      <div className="divider" />
-      <FinalCTA />
+      <Services />
+      <About />
+      <CTA />
       <Footer />
-    </main>
+    </div>
   )
 }

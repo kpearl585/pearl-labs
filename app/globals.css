@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* ─────────────────────────────────────────────
-   DESIGN SYSTEM TOKENS
+   DESIGN TOKENS
    ───────────────────────────────────────────── */
 
 @theme {
@@ -9,25 +9,18 @@
   --color-surface-0:  #08080D;
   --color-surface-1:  #0C0C14;
   --color-surface-2:  #10101A;
-  --color-surface-3:  #14141F;
 
-  --color-border:        rgba(255,255,255,0.05);
+  --color-border:        rgba(255,255,255,0.06);
   --color-border-subtle: rgba(255,255,255,0.03);
-  --color-border-strong: rgba(255,255,255,0.10);
 
-  --color-text:       #F0F2F8;
-  --color-text-2:     rgba(255,255,255,0.72);
-  --color-text-3:     rgba(255,255,255,0.48);
-  --color-text-4:     rgba(255,255,255,0.28);
-  --color-text-5:     rgba(255,255,255,0.14);
+  --color-text:   #F0F2F8;
+  --color-text-2: rgba(255,255,255,0.60);
+  --color-text-3: rgba(255,255,255,0.38);
+  --color-text-4: rgba(255,255,255,0.20);
 
   --color-accent:       #00D4FF;
-  --color-accent-muted: rgba(0,212,255,0.60);
-  --color-accent-dim:   rgba(0,212,255,0.12);
-
-  --color-violet:  #8B5CF6;
-  --color-emerald: #34D399;
-  --color-amber:   #FBBF24;
+  --color-accent-muted: rgba(0,212,255,0.50);
+  --color-accent-dim:   rgba(0,212,255,0.10);
 
   --font-sans:    var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-display: var(--font-display-var), system-ui, sans-serif;
@@ -45,14 +38,13 @@ body {
   font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv01' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   line-height: 1.6;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 code, .font-mono { font-family: var(--font-mono); }
@@ -65,85 +57,20 @@ code, .font-mono { font-family: var(--font-mono); }
   background-clip: text;
 }
 
-/* ─── Grid pattern ─── */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* ─── Section divider — animated gradient sweep ─── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.08), rgba(255,255,255,0.06), rgba(0,212,255,0.08), transparent);
-  background-size: 200% 100%;
-  animation: divider-sweep 8s ease-in-out infinite;
-}
-@keyframes divider-sweep {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* ─── Premium button glow on hover ─── */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
-}
-.btn-glow::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-.btn-glow:hover::after { opacity: 1; }
-
-/* ─── Card hover lift ─── */
-.card-hover {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.4s ease,
-              box-shadow 0.4s ease;
-}
-.card-hover:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.08) !important;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06);
-}
-
-/* ─── Animated accent line ─── */
-@keyframes accent-flow {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-.accent-line-animated::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
-  animation: accent-flow 4s ease-in-out infinite;
-}
-
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.12); }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.14); }
 
-/* ─── Noise overlay ─── */
+/* ─── Film grain overlay ─── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.012;
+  opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
@@ -154,6 +81,12 @@ body::before {
   border-radius: 4px;
 }
 
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: #fff;
+}
+
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -161,11 +94,4 @@ body::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .divider { animation: none; background-size: 100% 100%; }
-}
-
-/* ─── Selection ─── */
-::selection {
-  background: rgba(0, 212, 255, 0.2);
-  color: #fff;
 }
