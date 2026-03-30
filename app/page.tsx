@@ -1,9 +1,8 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Work from './components/Work'
-import Services from './components/Services'
-import About from './components/About'
-import CTA from './components/CTA'
+import FeaturedProduct from './components/FeaturedProduct'
+import ProductPair from './components/ProductPair'
+import Close from './components/Close'
 import Footer from './components/Footer'
 
 export default function Home() {
@@ -11,10 +10,9 @@ export default function Home() {
     <div className="bg-[#050508] min-h-screen">
       <Navbar />
       <Hero />
-      <Work />
-      <Services />
-      <About />
-      <CTA />
+      <FeaturedProduct />
+      <ProductPair />
+      <Close />
       <Footer />
     </div>
   )
