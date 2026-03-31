@@ -1,76 +1,30 @@
-'use client'
-
-import { motion, useReducedMotion } from 'framer-motion'
-import Image from 'next/image'
-
 export default function Founder() {
-  const reduce = useReducedMotion()
-  const ease = [0.22, 1, 0.36, 1] as const
-  const blur = reduce ? 'blur(0px)' : 'blur(12px)'
-
   return (
-    <section className="w-full py-28 lg:py-36 relative" id="about">
-      {/* Subtle ambient glow */}
-      <div
-        className="absolute top-1/2 left-[30%] -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(0,212,255,0.04), transparent 70%)',
-          filter: 'blur(80px)',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 w-full max-w-[1080px] mx-auto px-8 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* Left -- photo */}
-          <motion.div
-            initial={{ opacity: 0, filter: blur }}
-            whileInView={{ opacity: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}>
-            <div className="overflow-hidden aspect-[4/3] lg:aspect-square max-w-md rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-              <Image
-                src="/founder.png"
-                alt="Keegan Pearl, Founder of Pearl Labs"
-                width={480}
-                height={480}
-                loading="eager"
-                className="w-full h-full object-cover"
-              />
+    <section className="py-24 lg:py-32 relative">
+      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)] relative z-[1]">
+        <div className="text-center mb-12">
+          <p className="text-[0.8125rem] font-semibold text-accent tracking-[0.12em] uppercase mb-3">Who Builds This</p>
+        </div>
+        <div className="flex flex-col md:flex-row items-center gap-8 max-w-[680px] mx-auto p-8 bg-surface border border-border rounded-2xl">
+          <div className="flex-shrink-0 w-[88px] h-[88px] rounded-full border-2 border-border overflow-hidden flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, var(--color-elevated), var(--color-surface))' }}
+          >
+            <div
+              className="w-full h-full flex items-center justify-center text-[28px] font-bold text-accent"
+              style={{ background: 'radial-gradient(circle at 40% 35%, rgba(46,107,255,0.15), var(--color-elevated))' }}
+            >
+              KP
             </div>
-          </motion.div>
-
-          {/* Right -- story */}
-          <motion.div
-            initial={{ opacity: 0, y: reduce ? 0 : 14, filter: blur }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.08, ease }}>
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent/40 mb-4">
-              The Engineer
-            </p>
-            <h2 className="font-display font-bold text-white tracking-[-0.03em] text-2xl lg:text-4xl mb-6">
-              The architect is the engineer.
-            </h2>
-            <p className="text-base text-white/45 leading-relaxed mb-10 max-w-lg">
-              Pearl Labs is founder-led. Every project is personally architected, built,
-              and shipped by Keegan Pearl. No agencies, no handoffs, no layers
-              between you and the person writing the code.
-            </p>
-            <div className="space-y-5">
-              {[
-                'Direct communication with the engineer building your product',
-                'Full code ownership -- you own the repo and infrastructure',
-                'Veteran-owned, based in Ocala, FL',
-              ].map(point => (
-                <div key={point} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent/40 mt-2 shrink-0" />
-                  <span className="text-sm text-white/45 leading-relaxed">{point}</span>
-                </div>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="text-[clamp(1.25rem,2vw,1.625rem)] font-semibold mb-0.5">Keegan Pearl</h3>
+            <p className="text-sm text-text-2 leading-[1.5] mb-3">Founder — Built systems across defense intelligence, SaaS platforms, and revenue infrastructure. Every Pearl Labs project is architected and shipped by one senior engineer.</p>
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              {['Veteran Owned', 'Full-Stack Systems', 'Ocala, FL'].map((badge) => (
+                <span key={badge} className="text-[0.8125rem] text-text-3 px-3 py-1 border border-border rounded-full">{badge}</span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

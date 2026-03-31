@@ -1,92 +1,78 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useState, useEffect, useCallback } from 'react'
 
-const links = [
-  { label: 'Products', href: '#products' },
-  { label: 'About', href: '#about' },
-]
+function PearlLogo({ height = 32, id = 'nPG' }: { height?: number; id?: string }) {
+  return (
+    <svg height={height} viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id={id} cx="40%" cy="35%" r="50%">
+          <stop offset="0%" stopColor="#FFF" stopOpacity="0.95" />
+          <stop offset="30%" stopColor="#E8EDF5" stopOpacity="0.6" />
+          <stop offset="60%" stopColor="#C4D4F0" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#2E6BFF" stopOpacity="0.05" />
+        </radialGradient>
+      </defs>
+      <circle cx="32" cy="32" r="18" stroke="#2E6BFF" strokeWidth="2.5" fill="none" />
+      <circle cx="32" cy="32" r="11" fill={`url(#${id})`} opacity="0.85" />
+      <text x="64" y="40" fontSize="24" fill="#F1F5F9" fontFamily="Inter,Arial,sans-serif" fontWeight="600">PEARL LABS</text>
+    </svg>
+  )
+}
+
+export { PearlLogo }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 32)
-    window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
+  const openModal = useCallback((e: React.MouseEvent) => {
+    e.preventDefault()
+    window.dispatchEvent(new CustomEvent('open-intake-modal'))
+  }, [])
 
   return (
-    <>
-      <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'h-14' : 'h-16'}`}
-        style={{
-          background: scrolled ? 'rgba(5,5,8,0.92)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
-        }}>
-        <nav className="w-full max-w-[1080px] mx-auto px-8 lg:px-16 h-full flex items-center justify-between">
-          <a href="#" className="font-display font-semibold text-white text-[15px] tracking-tight flex items-center gap-2.5">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="opacity-90">
-              <rect width="20" height="20" rx="5" fill="url(#lg)" />
-              <text x="5.5" y="14.5" fill="#fff" fontSize="11" fontWeight="700" fontFamily="system-ui">P</text>
-              <defs><linearGradient id="lg" x1="0" y1="0" x2="20" y2="20"><stop stopColor="#00D4FF"/><stop offset="1" stopColor="#8B5CF6"/></linearGradient></defs>
-            </svg>
-            Pearl Labs
-          </a>
-
-          <div className="hidden md:flex items-center gap-8">
-            {links.map(l => (
-              <a key={l.label} href={l.href}
-                className="group relative text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors duration-200 py-1">
-                {l.label}
-                <span className="absolute bottom-0 left-0 h-px bg-white/30 w-0 group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
-            <a href="/estimate" className="inline-flex items-center gap-2 rounded-full bg-white text-[#050508] font-semibold py-2 px-5 text-[13px] shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300">
-              Get an Estimate
-            </a>
-          </div>
-
-          <button onClick={() => setOpen(!open)} className="md:hidden p-2 min-w-[44px] min-h-[44px] flex flex-col items-center justify-center gap-[5px]"
-            aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>
-            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? 'rotate-45 translate-y-[3.25px]' : ''}`} />
-            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-opacity duration-200 ${open ? 'opacity-0' : ''}`} />
-            <span className={`block w-[18px] h-[1.5px] bg-white/80 transition-transform duration-300 origin-center ${open ? '-rotate-45 -translate-y-[3.25px]' : ''}`} />
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[100] border-b transition-all duration-300 ${
+        scrolled
+          ? 'bg-[rgba(10,15,30,0.95)] border-border'
+          : 'bg-[rgba(10,15,30,0.7)] border-[rgba(46,107,255,0.06)]'
+      }`}
+      style={{ backdropFilter: 'blur(24px) saturate(180%)', WebkitBackdropFilter: 'blur(24px) saturate(180%)' }}
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)] py-4 flex items-center justify-between">
+        <a href="/" aria-label="Pearl Labs home">
+          <PearlLogo />
+        </a>
+        <div className="flex items-center gap-8">
+          <a href="#services" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Services</a>
+          <a href="#advisory" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Advisory</a>
+          <a href="#proof" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Work</a>
+          <a href="#process" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Process</a>
+          <button
+            onClick={openModal}
+            className="text-[0.8125rem] font-semibold bg-accent text-white px-6 py-2.5 rounded-lg transition-all hover:bg-accent-hover hover:shadow-[0_0_24px_var(--color-accent-glow)] uppercase tracking-[0.08em] border-none cursor-pointer"
+          >
+            BOOK A SCOPE CALL
           </button>
-        </nav>
-      </header>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
-            style={{ background: 'rgba(5,5,8,0.98)' }}>
-            {links.map((l, i) => (
-              <motion.a key={l.label} href={l.href} onClick={() => setOpen(false)}
-                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.04, duration: 0.25 }}
-                className="text-xl font-display font-medium text-white/90 hover:text-white transition-colors">
-                {l.label}
-              </motion.a>
-            ))}
-            <motion.a href="/estimate" onClick={() => setOpen(false)}
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: links.length * 0.04, duration: 0.25 }}
-              className="mt-4 btn-primary">
-              Get an Estimate
-            </motion.a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </div>
+      </div>
+    </nav>
   )
 }

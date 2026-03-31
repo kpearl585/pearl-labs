@@ -1,29 +1,17 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { PearlLogo } from './Navbar'
 
 export default function Footer() {
   return (
-    <footer className="w-full py-8">
-      <div className="w-full max-w-[1400px] mx-auto px-8 lg:px-16">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-6"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-          <div className="flex items-center gap-5">
-            <span className="text-[13px] text-white/25 font-display font-medium tracking-tight">Pearl Labs</span>
-            <span className="text-[11px] text-white/12">&copy; {new Date().getFullYear()}</span>
+    <footer className="border-t border-border py-12 relative z-[1]">
+      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)]">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-center gap-8">
+            <PearlLogo height={24} id="fPG" />
+            <span className="text-[0.8125rem] text-text-3">&copy; 2026 Pearl Labs. Ocala, FL.</span>
           </div>
-          <div className="flex items-center gap-5">
-            <span className="text-[11px] text-white/12">Veteran Owned &middot; Ocala, FL</span>
-            <div className="flex gap-1.5">
-              {[
-                { icon: Github, href: 'https://github.com/kpearl585', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/company/pearllabs', label: 'LinkedIn' },
-                { icon: Mail, href: 'mailto:hello@pearllab.io', label: 'Email' },
-              ].map(({ icon: Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-7 h-7 rounded-md flex items-center justify-center text-white/16 hover:text-white/35 transition-colors duration-200">
-                  <Icon className="w-3.5 h-3.5" />
-                </a>
-              ))}
-            </div>
+          <div className="flex items-center gap-6">
+            <a href="https://www.linkedin.com/in/keegan-pearl-280492248/" className="text-sm text-text-3 hover:text-text transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:keegan@pearllab.io" className="text-sm text-text-3 hover:text-text transition-colors">Email</a>
           </div>
         </div>
       </div>

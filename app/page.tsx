@@ -1,15 +1,18 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Metrics from './components/Metrics'
-import Products from './components/Products'
+import TrustBar from './components/TrustBar'
+import Services from './components/Services'
+import Advisory from './components/Advisory'
+import Proof from './components/Proof'
+import Commitments from './components/Commitments'
 import Founder from './components/Founder'
-import Process from './components/Process'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import IntakeModal from './components/IntakeModal'
 
 function Divider() {
   return (
-    <div className="w-full max-w-[1080px] mx-auto px-8 lg:px-16">
+    <div className="w-full max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)]">
       <div className="section-divider" />
     </div>
   )
@@ -20,16 +23,21 @@ export default function Home() {
     <div className="bg-bg min-h-screen">
       <Navbar />
       <Hero />
-      <Metrics />
+      <TrustBar />
       <Divider />
-      <Products />
+      <Services />
+      <Divider />
+      <Advisory />
+      <Divider />
+      <Proof />
+      <Divider />
+      <Commitments />
       <Divider />
       <Founder />
       <Divider />
-      <Process />
-      <Divider />
       <CTA />
       <Footer />
+      <IntakeModal />
     </div>
   )
 }
