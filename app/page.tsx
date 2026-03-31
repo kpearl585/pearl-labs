@@ -11,33 +11,31 @@ import Footer from './components/Footer'
 import IntakeModal from './components/IntakeModal'
 
 function Divider() {
-  return (
-    <div className="w-full max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)]">
-      <div className="section-divider" />
-    </div>
-  )
+  return <div className="divider" />
 }
 
 export default function Home() {
   return (
-    <div className="bg-bg min-h-screen">
+    <>
       <Navbar />
-      <Hero />
-      <TrustBar />
-      <Divider />
-      <Services />
-      <Divider />
-      <Advisory />
-      <Divider />
-      <Proof />
-      <Divider />
-      <Commitments />
-      <Divider />
-      <Founder />
-      <Divider />
-      <CTA />
+      <main id="main">
+        <Hero />
+        <TrustBar />
+        <Divider />
+        <Services />
+        <Divider />
+        <Advisory />
+        <Divider />
+        <Proof />
+        <Divider />
+        <Commitments />
+        <Divider />
+        <Founder />
+        <Divider />
+        <CTA />
+      </main>
       <Footer />
       <IntakeModal />
-    </div>
+    </>
   )
 }

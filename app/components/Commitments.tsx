@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
 const commitments = [
   {
     title: '48-Hour Scoped Plan',
@@ -42,22 +46,33 @@ const commitments = [
 ]
 
 export default function Commitments() {
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' })
+    const els = ref.current?.querySelectorAll('.reveal')
+    els?.forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <section className="py-24 lg:py-32 relative" id="process">
-      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)] relative z-[1]">
-        <div className="text-center mb-16">
-          <p className="text-[0.8125rem] font-semibold text-accent tracking-[0.12em] uppercase mb-3">How We Work</p>
-          <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold tracking-[-0.025em] leading-[1.2]">Four commitments, every engagement</h2>
+    <section id="process" ref={ref}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }} className="reveal">
+          <p className="section-label">How We Work</p>
+          <h2 className="section-title">Four commitments, every engagement</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {commitments.map((c) => (
-            <div key={c.title} className="flex gap-6 p-8 bg-surface border border-border rounded-2xl transition-all duration-300 hover:border-border-hover">
-              <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-accent-dim border border-[rgba(46,107,255,0.15)] flex items-center justify-center text-accent">
+        <div className="commitments__grid">
+          {commitments.map((c, i) => (
+            <div key={c.title} className={`commit-card reveal${i === 1 ? ' reveal-d1' : i === 2 ? ' reveal-d2' : i === 3 ? ' reveal-d3' : ''}`}>
+              <div className="commit-card__icon">
                 {c.icon}
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">{c.title}</h3>
-                <p className="text-sm text-text-2 leading-[1.6]">{c.desc}</p>
+                <h3 className="commit-card__title">{c.title}</h3>
+                <p className="commit-card__desc">{c.desc}</p>
               </div>
             </div>
           ))}

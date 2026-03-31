@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
 const badges = [
   'Defense & Intelligence',
   'SaaS Platforms',
@@ -7,16 +11,24 @@ const badges = [
 ]
 
 export default function TrustBar() {
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' })
+    const els = ref.current?.querySelectorAll('.reveal')
+    els?.forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <section className="py-12">
-      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)]">
-        <div className="flex items-center justify-center gap-4 flex-wrap">
+    <section className="trust" ref={ref}>
+      <div className="container">
+        <div className="trust__inner reveal">
           {badges.map((b) => (
-            <span
-              key={b}
-              className="inline-flex items-center gap-2 px-5 py-2 border border-border rounded-full text-[0.8125rem] font-medium text-text-3 whitespace-nowrap transition-all duration-300 hover:border-border-hover hover:text-text-2"
-            >
-              <span className="w-[5px] h-[5px] rounded-full bg-accent opacity-70" />
+            <span key={b} className="trust__badge">
+              <span className="trust__badge-dot" />
               {b}
             </span>
           ))}

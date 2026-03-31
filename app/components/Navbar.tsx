@@ -46,31 +46,17 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[100] border-b transition-all duration-300 ${
-        scrolled
-          ? 'bg-[rgba(10,15,30,0.95)] border-border'
-          : 'bg-[rgba(10,15,30,0.7)] border-[rgba(46,107,255,0.06)]'
-      }`}
-      style={{ backdropFilter: 'blur(24px) saturate(180%)', WebkitBackdropFilter: 'blur(24px) saturate(180%)' }}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)] py-4 flex items-center justify-between">
+    <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
+      <div className="nav__inner">
         <a href="/" aria-label="Pearl Labs home">
           <PearlLogo />
         </a>
-        <div className="flex items-center gap-8">
-          <a href="#services" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Services</a>
-          <a href="#advisory" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Advisory</a>
-          <a href="#proof" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Work</a>
-          <a href="#process" className="hidden md:inline text-sm font-medium text-text-3 hover:text-text transition-colors">Process</a>
-          <button
-            onClick={openModal}
-            className="text-[0.8125rem] font-semibold bg-accent text-white px-6 py-2.5 rounded-lg transition-all hover:bg-accent-hover hover:shadow-[0_0_24px_var(--color-accent-glow)] uppercase tracking-[0.08em] border-none cursor-pointer"
-          >
-            BOOK A SCOPE CALL
-          </button>
+        <div className="nav__links">
+          <a href="#services" className="nav__link">Services</a>
+          <a href="#advisory" className="nav__link">Advisory</a>
+          <a href="#proof" className="nav__link">Work</a>
+          <a href="#process" className="nav__link">Process</a>
+          <button onClick={openModal} className="nav__cta">BOOK A SCOPE CALL</button>
         </div>
       </div>
     </nav>

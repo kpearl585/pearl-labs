@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 
 const stats = [
   { value: 'Real-Time', label: 'Multi-source modeling' },
@@ -13,69 +16,79 @@ const details = [
 ]
 
 const secondary = [
-  { name: 'FenceEstimatePro', type: 'Revenue System · SaaS', desc: 'Full job lifecycle management for fencing contractors — estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.' },
+  { name: 'FenceEstimatePro', type: 'Revenue System \u00b7 SaaS', desc: 'Full job lifecycle management for fencing contractors — estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.' },
   { name: 'ContractorDocuments', type: 'Document Commerce Platform', desc: 'E-commerce for contractor compliance documents. Purchase, delivery, and management of operational paperwork — digitized and instant.' },
 ]
 
 export default function Proof() {
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' })
+    const els = ref.current?.querySelectorAll('.reveal')
+    els?.forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <section className="py-24 lg:py-32 relative" id="proof">
-      <div className="max-w-[1440px] mx-auto px-[clamp(1.5rem,5vw,6rem)] relative z-[1]">
-        <div className="mb-16">
-          <p className="text-[0.8125rem] font-semibold text-accent tracking-[0.12em] uppercase mb-3">Proof</p>
-          <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold tracking-[-0.025em] leading-[1.2]">Systems in production</h2>
+    <section id="proof" ref={ref}>
+      <div className="container">
+        <div style={{ marginBottom: 'var(--space-16)' }} className="reveal">
+          <p className="section-label">Proof</p>
+          <h2 className="section-title">Systems in production</h2>
         </div>
 
-        {/* Flagship */}
-        <div className="mb-16">
-          {/* Hero image */}
-          <div className="bg-surface border border-border rounded-2xl overflow-hidden mb-8 relative group transition-colors duration-400 hover:border-border-hover">
-            <Image src="/argus-hero.png" alt="ARGUS Defense Intelligence Platform — command center interface" width={1400} height={788} className="w-full h-auto block" priority />
+        <div className="proof__flagship">
+          {/* Hero image 1 */}
+          <div className="proof__visual reveal">
+            <Image src="/argus-hero.png" alt="ARGUS Defense Intelligence Platform — command center interface" width={1400} height={788} priority />
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden mb-8">
+          {/* Stat bar */}
+          <div className="proof__stats reveal">
             {stats.map((s) => (
-              <div key={s.label} className="bg-bg px-8 py-6">
-                <p className="text-[clamp(1.25rem,2vw,1.625rem)] font-semibold tracking-[-0.01em] mb-0.5">{s.value}</p>
-                <p className="text-[0.8125rem] text-text-3 font-medium uppercase tracking-[0.06em]">{s.label}</p>
+              <div key={s.label} className="proof__stat">
+                <p className="proof__stat-value">{s.value}</p>
+                <p className="proof__stat-label">{s.label}</p>
               </div>
             ))}
           </div>
 
           {/* Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h3 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold tracking-[-0.02em] mb-2">ARGUS</h3>
-              <p className="text-[0.8125rem] font-semibold text-accent uppercase tracking-[0.08em] mb-4">Defense Intelligence Platform</p>
-              <p className="text-base text-text-2 leading-[1.7]">Full-spectrum intelligence platform fusing satellite imagery, signals intelligence, HUMINT, and open-source data into a single operational picture. Built for defense and national security operators who need real-time situational awareness.</p>
-              <p className="mt-6 pt-4 border-t border-border text-sm text-text-3 leading-[1.6]">Designed to replace fragmented intelligence workflows with a unified command interface. Currently operational with multi-layer geospatial visualization and AI-assisted analysis pipelines.</p>
+          <div className="proof__content">
+            <div className="reveal">
+              <h3 className="proof__name">ARGUS</h3>
+              <p className="proof__type">Defense Intelligence Platform</p>
+              <p className="proof__desc">Full-spectrum intelligence platform fusing satellite imagery, signals intelligence, HUMINT, and open-source data into a single operational picture. Built for defense and national security operators who need real-time situational awareness.</p>
+              <p className="proof__outcome">Designed to replace fragmented intelligence workflows with a unified command interface. Currently operational with multi-layer geospatial visualization and AI-assisted analysis pipelines.</p>
             </div>
-            <div className="flex flex-col gap-6">
-              {details.map((d) => (
-                <div key={d.label} className="border-l-2 border-border pl-6 transition-colors hover:border-l-accent">
-                  <p className="text-[0.8125rem] font-semibold text-text-3 uppercase tracking-[0.06em] mb-0.5">{d.label}</p>
-                  <p className="text-base text-text leading-[1.6]">{d.value}</p>
+            <div className="proof__details">
+              {details.map((d, i) => (
+                <div key={d.label} className={`proof__detail reveal${i === 1 ? ' reveal-d1' : i === 2 ? ' reveal-d2' : ''}`}>
+                  <p className="proof__detail-label">{d.label}</p>
+                  <p className="proof__detail-value">{d.value}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Second image */}
-          <div className="bg-surface border border-border rounded-2xl overflow-hidden mt-8 relative group transition-colors duration-400 hover:border-border-hover">
-            <Image src="/argus-hero1.png" alt="ARGUS — 3D terrain visualization and intelligence overlay" width={1400} height={788} className="w-full h-auto block" loading="lazy" />
+          {/* Hero image 2 */}
+          <div className="proof__visual reveal" style={{ marginTop: 'var(--space-8)' }}>
+            <Image src="/argus-hero1.png" alt="ARGUS — 3D terrain visualization and intelligence overlay" width={1400} height={788} loading="lazy" />
           </div>
         </div>
 
         {/* Additional Systems */}
-        <div className="mt-16">
-          <p className="text-[0.8125rem] font-semibold text-text-3 uppercase tracking-[0.1em] mb-4">Additional Systems</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="reveal" style={{ marginTop: 'var(--space-16)' }}>
+          <p className="proof__additional-label">Additional Systems</p>
+          <div className="proof__secondary">
             {secondary.map((s) => (
-              <div key={s.name} className="bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:border-border-hover">
-                <h4 className="text-xl font-semibold mb-0.5">{s.name}</h4>
-                <p className="text-[0.8125rem] text-accent font-medium uppercase tracking-[0.06em] mb-3">{s.type}</p>
-                <p className="text-sm text-text-2 leading-[1.6]">{s.desc}</p>
+              <div key={s.name} className="proof__sec-card">
+                <h4 className="proof__sec-name">{s.name}</h4>
+                <p className="proof__sec-type">{s.type}</p>
+                <p className="proof__sec-desc">{s.desc}</p>
               </div>
             ))}
           </div>
