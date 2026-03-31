@@ -50,7 +50,7 @@ export default function Navbar() {
                 <span className="absolute bottom-0 left-0 h-px bg-white/30 w-0 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <a href="/estimate" className="btn-primary !py-2 !px-5 !text-[13px] !rounded-lg">
+            <a href="/estimate" className="inline-flex items-center gap-2 rounded-full bg-white text-[#050508] font-semibold py-2 px-5 text-[13px] shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300">
               Get an Estimate
             </a>
           </div>
