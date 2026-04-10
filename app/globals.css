@@ -238,12 +238,51 @@ section { padding-block: var(--space-24); position: relative; z-index: 1; }
 .advisory__cta { margin-top: var(--space-8); }
 
 /* ─── Business Systems & Clarity Advisory ─── */
-.business-clarity { max-width: 560px; margin-inline: auto; text-align: center; }
-.business-clarity__title { font-size: var(--text-h3); font-weight: 600; letter-spacing: -0.015em; margin-bottom: var(--space-4); }
-.business-clarity__intro { font-size: var(--text-body); color: var(--text-secondary); line-height: 1.65; margin-bottom: var(--space-6); }
-.business-clarity__benefits { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-secondary); }
-.business-clarity__benefits li { position: relative; padding-left: var(--space-5); line-height: 1.6; }
-.business-clarity__benefits li::before { content: '—'; position: absolute; left: 0; color: var(--text-muted); font-weight: 500; }
+.business-systems { margin-bottom: var(--space-12); }
+.business-systems__header { text-align: center; max-width: 640px; margin-inline: auto; margin-bottom: var(--space-10); }
+.business-systems__title { font-size: var(--text-h2); font-weight: 600; letter-spacing: -0.02em; margin-top: var(--space-3); margin-bottom: var(--space-5); line-height: 1.2; }
+.business-systems__intro { font-size: var(--text-body); color: var(--text-secondary); line-height: 1.65; }
+.business-systems__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+
+.business-card {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  transition: all 400ms;
+  position: relative;
+  overflow: hidden;
+}
+.business-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 400ms;
+}
+.business-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.015);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+.business-card:hover::after { opacity: 0.6; }
+.business-card__title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.business-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
 
 /* ═══════════════════════════════════════
    PROOF (ARGUS Case Study)
@@ -353,7 +392,7 @@ section { padding-block: var(--space-24); position: relative; z-index: 1; }
   .hero__grid { grid-template-columns: 1fr; }
   .hero__visual { order: -1; }
   .sphere-wrap { max-width: 320px; }
-  .services__grid, .advisory__grid { grid-template-columns: 1fr; }
+  .services__grid, .advisory__grid, .business-systems__grid { grid-template-columns: 1fr; }
   .proof__content { grid-template-columns: 1fr; }
   .commitments__grid { grid-template-columns: 1fr; }
   .proof__stats { grid-template-columns: 1fr; }

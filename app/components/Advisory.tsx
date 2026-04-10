@@ -54,18 +54,31 @@ export default function Advisory() {
         </div>
 
         {/* Business Systems & Clarity Advisory Subsection */}
-        <div className="divider reveal" style={{ marginBlock: 'var(--space-12)' }}></div>
+        <div className="divider reveal" style={{ marginBlock: 'var(--space-16)' }}></div>
 
-        <div className="business-clarity reveal">
-          <h3 className="business-clarity__title">Business Systems & Clarity Advisory</h3>
-          <p className="business-clarity__intro">
-            For businesses running on spreadsheets, manual processes, or disconnected tools, Pearl Labs brings structure before implementation — turning operational complexity into a clear plan.
-          </p>
-          <ul className="business-clarity__benefits">
-            <li>Replace messy workflows with a clearer operating system</li>
-            <li>Turn bottlenecks into practical next steps</li>
-            <li>Build the roadmap before building software</li>
-          </ul>
+        <div className="business-systems">
+          <div className="business-systems__header reveal">
+            <p className="section-label">For Small Businesses</p>
+            <h3 className="business-systems__title">Business Systems & Clarity Advisory</h3>
+            <p className="business-systems__intro">
+              For businesses running on spreadsheets, manual processes, or disconnected tools, Pearl Labs brings structure before implementation — turning operational complexity into a clear plan.
+            </p>
+          </div>
+
+          <div className="business-systems__grid">
+            <div className="business-card reveal">
+              <h4 className="business-card__title">Clearer workflows</h4>
+              <p className="business-card__desc">Replace messy manual processes with a more structured operating system.</p>
+            </div>
+            <div className="business-card reveal reveal-d1">
+              <h4 className="business-card__title">Practical next steps</h4>
+              <p className="business-card__desc">Turn bottlenecks and confusion into actionable priorities.</p>
+            </div>
+            <div className="business-card reveal reveal-d2">
+              <h4 className="business-card__title">Roadmap before software</h4>
+              <p className="business-card__desc">Define the right system before committing to a custom build.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
