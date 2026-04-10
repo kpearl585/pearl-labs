@@ -46,9 +46,16 @@ export default function Advisory() {
           <p>Applied to real systems, not theory. Used to refine defense-grade modeling platforms and high-level technical documentation.</p>
           <p className="closing">Available selectively for projects where clarity and execution matter.</p>
           <div className="advisory__cta">
-            <button onClick={openModal} className="btn-text">
+            <button
+              onClick={openModal}
+              className="btn-text"
+              aria-label="Inquire about advisory services - Opens contact form"
+              aria-haspopup="dialog"
+            >
               INQUIRE ABOUT ADVISORY
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
             </button>
           </div>
         </div>

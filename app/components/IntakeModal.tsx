@@ -4,10 +4,14 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 
 export default function IntakeModal() {
   const [open, setOpen] = useState(false)
+  const modalRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLInputElement>(null)
+  const previousActiveElement = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const handler = () => {
+      // Store currently focused element to return focus later
+      previousActiveElement.current = document.activeElement as HTMLElement
       setOpen(true)
       document.body.style.overflow = 'hidden'
     }
@@ -15,23 +19,57 @@ export default function IntakeModal() {
     return () => window.removeEventListener('open-intake-modal', handler)
   }, [])
 
-  useEffect(() => {
-    if (open && nameRef.current) {
-      nameRef.current.focus()
-    }
-  }, [open])
-
   const close = useCallback(() => {
     setOpen(false)
     document.body.style.overflow = ''
+    // Return focus to element that opened the modal
+    if (previousActiveElement.current) {
+      previousActiveElement.current.focus()
+    }
   }, [])
 
+  // Focus trap implementation
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && open) close()
+    if (!open || !modalRef.current) return
+
+    const focusableElements = modalRef.current.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )
+    const firstElement = focusableElements[0] as HTMLElement
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement
+
+    // Focus first input on open
+    if (nameRef.current) {
+      nameRef.current.focus()
     }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Escape key closes modal
+      if (e.key === 'Escape') {
+        close()
+        return
+      }
+
+      // Tab key focus trap
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          // Shift+Tab: if on first element, go to last
+          if (document.activeElement === firstElement) {
+            e.preventDefault()
+            lastElement?.focus()
+          }
+        } else {
+          // Tab: if on last element, go to first
+          if (document.activeElement === lastElement) {
+            e.preventDefault()
+            firstElement?.focus()
+          }
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [open, close])
 
   const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
@@ -54,11 +92,28 @@ export default function IntakeModal() {
       className={`modal-overlay${open ? ' active' : ''}`}
       onClick={(e) => { if (e.target === e.currentTarget) close() }}
       style={{ display: 'flex' }}
+      role="presentation"
     >
-      <div className="modal">
-        <button onClick={close} className="modal__close" aria-label="Close">&times;</button>
-        <h2 className="modal__title">Book a scope call</h2>
-        <p className="modal__subtitle">Tell us what you&apos;re building. You&apos;ll have a plan within 48 hours.</p>
+      <div
+        ref={modalRef}
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <button
+          onClick={close}
+          className="modal__close"
+          aria-label="Close dialog"
+          type="button"
+        >
+          &times;
+        </button>
+        <h2 id="modal-title" className="modal__title">Book a scope call</h2>
+        <p id="modal-description" className="modal__subtitle">
+          Tell us what you&apos;re building. You&apos;ll have a plan within 48 hours.
+        </p>
         <form onSubmit={handleSubmit}>
           <div className="modal__field">
             <label className="modal__label" htmlFor="intake-name">Name</label>

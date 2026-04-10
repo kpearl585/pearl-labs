@@ -25,8 +25,21 @@ export default function CTA() {
         <h2 className="cta__headline">Let&apos;s scope your system.</h2>
         <p className="cta__sub">One call. A detailed architecture plan and estimate within 48 hours. No sales process. No discovery phase. Just the plan.</p>
         <div className="cta__actions">
-          <button onClick={openModal} className="btn-primary">BOOK A SCOPE CALL</button>
-          <a href="#proof" className="btn-secondary">VIEW OUR WORK</a>
+          <button
+            onClick={openModal}
+            className="btn-primary"
+            aria-label="Book a scope call - Opens contact form"
+            aria-haspopup="dialog"
+          >
+            BOOK A SCOPE CALL
+          </button>
+          <a
+            href="#proof"
+            className="btn-secondary"
+            aria-label="View our work and production systems"
+          >
+            VIEW OUR WORK
+          </a>
         </div>
       </div>
     </section>
