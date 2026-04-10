@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 const services = [
   {
@@ -77,40 +78,77 @@ const vizMap: Record<string, () => React.ReactElement> = {
   revenue: RevenueViz,
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+}
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+}
+
 export default function Services() {
   const ref = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' })
-    const els = ref.current?.querySelectorAll('.reveal')
-    els?.forEach(el => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <section id="services" ref={ref}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }} className="reveal">
+        <motion.div
+          style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }}
+          variants={headerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
           <p className="section-label">What We Build</p>
           <h2 className="section-title">Three ways we build</h2>
-        </div>
-        <div className="services__grid">
-          {services.map((s, i) => {
+        </motion.div>
+        <motion.div
+          className="services__grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          {services.map((s) => {
             const Viz = vizMap[s.viz]
             return (
-              <div key={s.title} className={`svc-card reveal${i === 1 ? ' reveal-d1' : i === 2 ? ' reveal-d2' : ''}`}>
+              <motion.div key={s.title} className="svc-card" variants={cardVariants}>
                 <div className="svc-card__visual">
                   <Viz />
                 </div>
                 <h3 className="svc-card__title">{s.title}</h3>
                 <p className="svc-card__desc">{s.desc}</p>
                 <p className="svc-card__meta">{s.meta}</p>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

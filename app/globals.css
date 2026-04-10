@@ -160,6 +160,21 @@ section { padding-block: var(--space-24); position: relative; z-index: 1; }
 @keyframes pearlShim { 0%,100%{box-shadow:0 0 40px rgba(255,255,255,0.15),0 0 80px rgba(46,107,255,0.1),inset 0 -8px 20px rgba(46,107,255,0.12),inset 0 4px 12px rgba(255,255,255,0.3)} 50%{box-shadow:0 0 50px rgba(255,255,255,0.22),0 0 100px rgba(46,107,255,0.15),inset 0 -8px 24px rgba(46,107,255,0.15),inset 0 4px 16px rgba(255,255,255,0.4)} }
 @keyframes iriRot { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
+/* 3D Sphere (Three.js) */
+.sphere-3d-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.sphere-3d-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
 /* ═══════════════════════════════════════
    BUTTONS
    ═══════════════════════════════════════ */
