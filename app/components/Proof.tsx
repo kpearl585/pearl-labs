@@ -17,8 +17,20 @@ const details = [
 ]
 
 const secondary = [
-  { name: 'FenceEstimatePro', type: 'Revenue System \u00b7 SaaS', desc: 'Full job lifecycle management for fencing contractors — estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.' },
-  { name: 'ContractorDocuments', type: 'Document Commerce Platform', desc: 'E-commerce for contractor compliance documents. Purchase, delivery, and management of operational paperwork — digitized and instant.' },
+  {
+    name: 'FenceEstimatePro',
+    type: 'Revenue System \u00b7 SaaS',
+    desc: 'Full job lifecycle management for fencing contractors — estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.',
+    url: 'https://fenceestimatepro.com',
+    label: 'View Live System →'
+  },
+  {
+    name: 'ContractorDocuments',
+    type: 'Document Commerce Platform',
+    desc: 'E-commerce for contractor compliance documents. Purchase, delivery, and management of operational paperwork — digitized and instant.',
+    url: null,
+    label: null
+  },
 ]
 
 const fadeInUp = {
@@ -138,23 +150,59 @@ export default function Proof() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            {secondary.map((s) => (
-              <motion.div
-                key={s.name}
-                className="proof__sec-card"
-                variants={fadeInUp}
-                whileHover={{
-                  y: -4,
-                  boxShadow: '0 12px 40px rgba(46, 107, 255, 0.12)',
-                  borderColor: 'rgba(46, 107, 255, 0.25)',
-                  transition: { duration: 0.3 },
-                }}
-              >
-                <h4 className="proof__sec-name">{s.name}</h4>
-                <p className="proof__sec-type">{s.type}</p>
-                <p className="proof__sec-desc">{s.desc}</p>
-              </motion.div>
-            ))}
+            {secondary.map((s) => {
+              const cardContent = (
+                <>
+                  <h4 className="proof__sec-name">{s.name}</h4>
+                  <p className="proof__sec-type">{s.type}</p>
+                  <p className="proof__sec-desc">{s.desc}</p>
+                  {s.url && s.label && (
+                    <div className="proof__sec-cta">
+                      <span className="proof__sec-link">
+                        {s.label}
+                      </span>
+                    </div>
+                  )}
+                </>
+              )
+
+              if (s.url) {
+                return (
+                  <motion.a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="proof__sec-card proof__sec-card--link"
+                    variants={fadeInUp}
+                    whileHover={{
+                      y: -6,
+                      boxShadow: '0 16px 48px rgba(46, 107, 255, 0.15)',
+                      borderColor: 'rgba(46, 107, 255, 0.3)',
+                      transition: { duration: 0.3 },
+                    }}
+                  >
+                    {cardContent}
+                  </motion.a>
+                )
+              }
+
+              return (
+                <motion.div
+                  key={s.name}
+                  className="proof__sec-card"
+                  variants={fadeInUp}
+                  whileHover={{
+                    y: -4,
+                    boxShadow: '0 12px 40px rgba(46, 107, 255, 0.12)',
+                    borderColor: 'rgba(46, 107, 255, 0.25)',
+                    transition: { duration: 0.3 },
+                  }}
+                >
+                  {cardContent}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </motion.div>
       </div>
