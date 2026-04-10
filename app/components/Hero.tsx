@@ -1,12 +1,8 @@
 'use client'
 
-import { useRef, useCallback, useEffect, Suspense } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useABTest } from '../lib/ab-testing'
-import dynamic from 'next/dynamic'
-import SphereSkeleton from './SphereSkeleton'
-
-const Sphere3D = dynamic(() => import('./Sphere3D'), { ssr: false })
 
 // Animation variants
 const containerVariants = {
@@ -30,6 +26,19 @@ const itemVariants = {
       ease: [0.25, 0.1, 0.25, 1] as const,
     },
   },
+}
+
+const sphereRingVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: i * 0.08,
+      duration: 1.2,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  }),
 }
 
 export default function Hero() {
@@ -168,9 +177,31 @@ export default function Hero() {
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
             style={{ y }}
           >
-            <Suspense fallback={<SphereSkeleton />}>
-              <Sphere3D />
-            </Suspense>
+            <div className="sphere-wrap">
+              <motion.div
+                className="sphere-glow"
+                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <div className="sphere-canvas">
+                {[...Array(7)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="sphere-ring"
+                    custom={i}
+                    variants={sphereRingVariants}
+                    initial="hidden"
+                    animate="visible"
+                  />
+                ))}
+                <motion.div
+                  className="sphere-core"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.div>
