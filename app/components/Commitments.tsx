@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 
 const commitments = [
   {
-    title: '48 Hour Scoped Plan',
+    title: '48-Hour Scoped Plan',
     desc: 'Describe what you need. Within two business days you get an architecture plan, timeline, and cost estimate. No discovery phase.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">

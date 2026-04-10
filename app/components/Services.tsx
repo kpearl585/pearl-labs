@@ -5,14 +5,14 @@ import { useRef } from 'react'
 
 const services = [
   {
-    title: 'SaaS Build',
-    desc: 'We build production SaaS systems. Auth, billing, admin dashboard, customer UI, infrastructure. You own 100% of the code.',
+    title: 'Full-Stack SaaS Build',
+    desc: 'We build production SaaS systems. Auth, billing, admin dashboard, customer-facing UI, infrastructure. You own 100% of the code.',
     meta: '8 to 16 weeks',
     viz: 'dashboard',
   },
   {
-    title: 'Operations System',
-    desc: 'Replace spreadsheets with custom internal software. Built for how your team actually works.',
+    title: 'Custom Operations System',
+    desc: 'Replace spreadsheets with purpose-built internal software. Built for how your team actually works.',
     meta: '4 to 8 weeks',
     viz: 'system',
   },

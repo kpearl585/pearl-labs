@@ -56,7 +56,7 @@ export default function Advisory() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           <p className="section-label">Strategic Advisory</p>
-          <h2 className="section-title">Strategic advisory for high stakes systems</h2>
+          <h2 className="section-title">Strategic advisory for high-stakes systems</h2>
           <p className="section-subtitle" style={{ marginInline: 'auto' }}>For defense and SaaS companies where wrong decisions cost months.</p>
         </motion.div>
 

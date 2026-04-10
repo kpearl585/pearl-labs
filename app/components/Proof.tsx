@@ -5,14 +5,14 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const stats = [
-  { value: 'Real Time', label: 'Multi source modeling' },
+  { value: 'Real-Time', label: 'Multi-source modeling' },
   { value: '4 INT Sources', label: 'Fused intelligence feeds' },
   { value: 'Operational', label: 'Simulation and planning' },
 ]
 
 const details = [
-  { label: 'Intelligence', value: 'Real time satellite, signals intelligence, HUMINT, open source. Fused into a single operational picture.' },
-  { label: 'Stack', value: 'Next.js, Supabase, Mapbox GL, AI/ML pipelines, real time data processing' },
+  { label: 'Intelligence', value: 'Real-time satellite, signals intelligence, HUMINT, open-source. Fused into a single operational picture.' },
+  { label: 'Stack', value: 'Next.js, Supabase, Mapbox GL, AI/ML pipelines, real-time data processing' },
   { label: 'Status', value: 'In production, active development' },
 ]
 

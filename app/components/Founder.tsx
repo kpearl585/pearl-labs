@@ -29,7 +29,7 @@ export default function Founder() {
             <p className="founder__role">Founder. Built systems across defense intelligence, SaaS platforms, and revenue infrastructure. Every Pearl Labs project is architected and shipped by one engineer.</p>
             <div className="founder__badges">
               <span className="founder__badge">Veteran Owned</span>
-              <span className="founder__badge">Full Stack</span>
+              <span className="founder__badge">Full-Stack</span>
               <span className="founder__badge">Ocala, FL</span>
             </div>
           </div>
