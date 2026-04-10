@@ -32,8 +32,8 @@ export default function CTA() {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        <h2 className="cta__headline">Let&apos;s scope your system.</h2>
-        <p className="cta__sub">One call. A detailed architecture plan and estimate within 48 hours. No sales process. No discovery phase. Just the plan.</p>
+        <h2 className="cta__headline">Scope your system.</h2>
+        <p className="cta__sub">One call. Architecture plan and estimate within 48 hours. No sales process, no discovery phase. Just the plan.</p>
         <div className="cta__actions">
           <motion.button
             onClick={openModal}

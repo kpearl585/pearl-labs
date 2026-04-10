@@ -4,15 +4,15 @@ import { useCallback, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const cards = [
-  { num: '01', title: 'System Design Review', desc: 'We evaluate your product, architecture, or model and identify gaps, risks, and opportunities before they become expensive.' },
-  { num: '02', title: 'Positioning & Narrative', desc: 'We refine how your system is presented so it lands with decision-makers, not just builders.' },
-  { num: '03', title: 'Execution Strategy', desc: 'We help define what to build next, what to ignore, and how to move forward with clarity.' },
+  { num: '01', title: 'System Design Review', desc: 'We evaluate your product, architecture, or model and identify gaps, risks, and opportunities before they get expensive.' },
+  { num: '02', title: 'Positioning & Narrative', desc: 'We refine how your system is presented so it lands with decision makers, not just builders.' },
+  { num: '03', title: 'Execution Strategy', desc: 'We define what to build next, what to ignore, and how to move forward.' },
 ]
 
 const smallBizCards = [
   { title: 'Clearer workflows', desc: 'Map manual processes into structured systems.' },
-  { title: 'Practical priorities', desc: 'Turn bottlenecks into actionable next steps.' },
-  { title: 'Right-sized roadmap', desc: 'Define what to build before committing capital.' },
+  { title: 'Practical priorities', desc: 'Turn bottlenecks into next steps.' },
+  { title: 'Roadmap first', desc: 'Define what to build before committing capital.' },
 ]
 
 const fadeInUp = {
@@ -56,8 +56,8 @@ export default function Advisory() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           <p className="section-label">Strategic Advisory</p>
-          <h2 className="section-title">Strategic advisory for high-stakes systems</h2>
-          <p className="section-subtitle" style={{ marginInline: 'auto' }}>Engaged by defense and SaaS companies where the cost of a wrong decision is measured in months, not hours.</p>
+          <h2 className="section-title">Strategic advisory for high stakes systems</h2>
+          <p className="section-subtitle" style={{ marginInline: 'auto' }}>For defense and SaaS companies where wrong decisions cost months.</p>
         </motion.div>
 
         <motion.div
@@ -92,8 +92,8 @@ export default function Advisory() {
           animate={isInView ? 'visible' : 'hidden'}
           transition={{ delay: 0.4 }}
         >
-          <p>Applied to real systems, not theory. Used to refine defense-grade modeling platforms and high-level technical documentation.</p>
-          <p className="closing">Available selectively for projects where clarity and execution matter.</p>
+          <p>Applied to real systems, not theory. Used to refine defense modeling platforms and technical documentation.</p>
+          <p className="closing">Available for projects where clarity and execution matter.</p>
           <div className="advisory__cta">
             <motion.button
               onClick={openModal}
@@ -131,8 +131,7 @@ export default function Advisory() {
             <p className="section-label">For Small Businesses</p>
             <h3 className="advisory__alt-title">Business Systems Advisory</h3>
             <p className="advisory__alt-desc">
-              Running on spreadsheets and manual processes? We bring structure before implementation —
-              mapping operational complexity into a clear roadmap.
+              Running on spreadsheets and manual processes? We map operational complexity into a clear roadmap.
             </p>
           </div>
 

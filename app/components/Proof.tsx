@@ -5,29 +5,29 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const stats = [
-  { value: 'Real-Time', label: 'Multi-source modeling' },
+  { value: 'Real Time', label: 'Multi source modeling' },
   { value: '4 INT Sources', label: 'Fused intelligence feeds' },
-  { value: 'Operational', label: 'Simulation & planning' },
+  { value: 'Operational', label: 'Simulation and planning' },
 ]
 
 const details = [
-  { label: 'Intelligence', value: 'Real-time satellite, signals intelligence, HUMINT, open source — fused into a single operational picture' },
-  { label: 'Stack', value: 'Next.js, Supabase, Mapbox GL, AI/ML pipelines, real-time data processing' },
-  { label: 'Status', value: 'In production — active development' },
+  { label: 'Intelligence', value: 'Real time satellite, signals intelligence, HUMINT, open source. Fused into a single operational picture.' },
+  { label: 'Stack', value: 'Next.js, Supabase, Mapbox GL, AI/ML pipelines, real time data processing' },
+  { label: 'Status', value: 'In production, active development' },
 ]
 
 const secondary = [
   {
     name: 'FenceEstimatePro',
-    type: 'Revenue System \u00b7 SaaS',
-    desc: 'Full job lifecycle management for fencing contractors — estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.',
+    type: 'Revenue System, SaaS',
+    desc: 'Job lifecycle management for fencing contractors. Estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.',
     url: 'https://fenceestimatepro.com',
     label: 'View Live System →'
   },
   {
     name: 'ContractorDocuments',
     type: 'Document Commerce Platform',
-    desc: 'E-commerce for contractor compliance documents. Purchase, delivery, and management of operational paperwork — digitized and instant.',
+    desc: 'Commerce platform for contractor compliance documents. Purchase, delivery, and management of operational paperwork.',
     url: null,
     label: null
   },
@@ -106,8 +106,8 @@ export default function Proof() {
             >
               <h3 className="proof__name">ARGUS</h3>
               <p className="proof__type">Defense Intelligence Platform</p>
-              <p className="proof__desc">Full-spectrum intelligence platform fusing satellite imagery, signals intelligence, HUMINT, and open-source data into a single operational picture. Built for defense and national security operators who need real-time situational awareness.</p>
-              <p className="proof__outcome">Designed to replace fragmented intelligence workflows with a unified command interface. Currently operational with multi-layer geospatial visualization and AI-assisted analysis pipelines.</p>
+              <p className="proof__desc">Intelligence platform fusing satellite imagery, signals intelligence, HUMINT, and open source data into a single operational picture. Built for defense and national security operators.</p>
+              <p className="proof__outcome">Replaces fragmented intelligence workflows with a unified command interface. Operational with geospatial visualization and AI analysis pipelines.</p>
             </motion.div>
             <motion.div
               className="proof__details"

@@ -5,21 +5,21 @@ import { useRef } from 'react'
 
 const services = [
   {
-    title: 'Full-Stack SaaS Build',
-    desc: 'We design, build, and deploy production SaaS systems. Auth, billing, admin dashboard, customer-facing UI, infrastructure. You own 100% of the code.',
-    meta: 'Typical engagement: 8–16 weeks',
+    title: 'SaaS Build',
+    desc: 'We build production SaaS systems. Auth, billing, admin dashboard, customer UI, infrastructure. You own 100% of the code.',
+    meta: '8 to 16 weeks',
     viz: 'dashboard',
   },
   {
-    title: 'Custom Operations System',
-    desc: 'Replace manual workflows and spreadsheets with purpose-built internal software. Designed around how your team actually works — not a template\u2019s assumptions.',
-    meta: 'Typical engagement: 4–8 weeks',
+    title: 'Operations System',
+    desc: 'Replace spreadsheets with custom internal software. Built for how your team actually works.',
+    meta: '4 to 8 weeks',
     viz: 'system',
   },
   {
     title: 'Revenue Infrastructure',
-    desc: 'Software that directly generates or accelerates revenue. Estimating engines, pricing systems, marketplace platforms, and automated sales infrastructure.',
-    meta: 'Typical engagement: 6–12 weeks',
+    desc: 'Software that generates revenue. Estimating engines, pricing systems, marketplace platforms, automated sales tools.',
+    meta: '6 to 12 weeks',
     viz: 'revenue',
   },
 ]

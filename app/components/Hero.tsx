@@ -100,7 +100,7 @@ export default function Hero() {
               )}
             </motion.h1>
             <motion.p className="hero__sub" variants={itemVariants}>
-              Ship production systems in weeks. Full code ownership. One senior engineer. No agencies, no committees, no delays.
+              Production systems in weeks. Full code ownership. One engineer. No agencies, no committees, no delays.
             </motion.p>
             <motion.div className="hero__metric" variants={itemVariants}>
               <span className="hero__metric-item">
@@ -109,7 +109,7 @@ export default function Hero() {
               </span>
               <span className="hero__metric-item">
                 <span className="hero__metric-dot" />
-                Defense &middot; SaaS &middot; Revenue
+                Defense, SaaS, Revenue
               </span>
             </motion.div>
             <motion.div className="hero__actions" variants={itemVariants}>
@@ -161,7 +161,7 @@ export default function Hero() {
               >
                 ⚡
               </motion.span>
-              <span className="urgency-text">Limited availability — 2 project slots for Q2 2026</span>
+              <span className="urgency-text">2 project slots for Q2 2026</span>
             </motion.div>
             <motion.div className="hero__trust" variants={itemVariants}>
               <p className="hero__trust-text">

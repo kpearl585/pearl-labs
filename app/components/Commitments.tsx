@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react'
 
 const commitments = [
   {
-    title: '48-Hour Scoped Plan',
-    desc: 'Describe what you need. Within two business days you\u2019ll have a detailed architecture plan, timeline, and cost estimate. No discovery phase.',
+    title: '48 Hour Scoped Plan',
+    desc: 'Describe what you need. Within two business days you get an architecture plan, timeline, and cost estimate. No discovery phase.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="10" cy="10" r="8" />
@@ -15,7 +15,7 @@ const commitments = [
   },
   {
     title: 'Weekly Production Deployments',
-    desc: 'Working code deployed to a staging environment every week. You see real progress — not slide updates, not mockups, not status meetings.',
+    desc: 'Working code deployed to staging every week. Real progress. Not slide updates, not mockups, not status meetings.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M4 16l3-3m0 0l3-3m-3 3L4 10m3 3l3 3" />
@@ -25,7 +25,7 @@ const commitments = [
   },
   {
     title: 'Direct Builder Access',
-    desc: 'You talk directly to the engineer writing the code. No project managers, no account reps, no telephone game. One point of contact from start to finish.',
+    desc: 'You talk to the engineer writing the code. No project managers, no account reps, no telephone game. One contact from start to finish.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M16 10a6 6 0 11-12 0 6 6 0 0112 0z" />
@@ -35,7 +35,7 @@ const commitments = [
   },
   {
     title: 'Full System Ownership',
-    desc: 'Every line of code, every deployment configuration, every database — transferred to you on delivery. No vendor lock-in. No proprietary frameworks. It\u2019s yours.',
+    desc: 'Every line of code, every deployment config, every database. Transferred to you on delivery. No vendor lock in. No proprietary frameworks.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M15 11l-5 5-5-5" />
