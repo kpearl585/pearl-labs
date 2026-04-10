@@ -54,78 +54,18 @@ export default function Advisory() {
         </div>
 
         {/* Business Systems & Clarity Advisory Subsection */}
-        <div className="divider reveal" style={{ marginBlock: 'var(--space-16)' }}></div>
+        <div className="divider reveal" style={{ marginBlock: 'var(--space-12)' }}></div>
 
-        <div style={{ textAlign: 'center', marginBottom: 'var(--space-12)' }} className="reveal">
-          <h3 className="section-title" style={{ fontSize: 'var(--text-h2)' }}>Business Systems & Clarity Advisory</h3>
-          <p className="section-subtitle" style={{ marginInline: 'auto', marginTop: 'var(--space-5)' }}>
-            For small business owners, not every problem is high-stakes — but many are unclear. If your business is running on spreadsheets, manual processes, disconnected tools, or ideas that feel hard to organize, Pearl Labs helps turn that complexity into a clear, structured plan.
+        <div className="business-clarity reveal">
+          <h3 className="business-clarity__title">Business Systems & Clarity Advisory</h3>
+          <p className="business-clarity__intro">
+            For businesses running on spreadsheets, manual processes, or disconnected tools, Pearl Labs brings structure before implementation — turning operational complexity into a clear plan.
           </p>
-          <p className="section-subtitle" style={{ marginInline: 'auto', marginTop: 'var(--space-4)' }}>
-            We help identify bottlenecks, simplify workflows, and map out practical systems that save time, reduce friction, and make the business easier to run. In some cases that leads to custom software. In others, it starts with clarity, structure, and a better operational model.
-          </p>
-        </div>
-
-        <div style={{ maxWidth: '720px', marginInline: 'auto', marginBottom: 'var(--space-8)' }} className="reveal">
-          <ul style={{
-            listStyle: 'none',
-            padding: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-4)'
-          }}>
-            <li style={{
-              fontSize: 'var(--text-body)',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.7,
-              paddingLeft: 'var(--space-6)',
-              position: 'relative'
-            }}>
-              <span style={{
-                position: 'absolute',
-                left: 0,
-                color: 'var(--accent)',
-                fontWeight: 600
-              }}>→</span>
-              Replace messy manual workflows with a clear system
-            </li>
-            <li style={{
-              fontSize: 'var(--text-body)',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.7,
-              paddingLeft: 'var(--space-6)',
-              position: 'relative'
-            }}>
-              <span style={{
-                position: 'absolute',
-                left: 0,
-                color: 'var(--accent)',
-                fontWeight: 600
-              }}>→</span>
-              Turn operational bottlenecks into actionable next steps
-            </li>
-            <li style={{
-              fontSize: 'var(--text-body)',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.7,
-              paddingLeft: 'var(--space-6)',
-              position: 'relative'
-            }}>
-              <span style={{
-                position: 'absolute',
-                left: 0,
-                color: 'var(--accent)',
-                fontWeight: 600
-              }}>→</span>
-              Create a practical roadmap before building software
-            </li>
+          <ul className="business-clarity__benefits">
+            <li>Replace messy workflows with a clearer operating system</li>
+            <li>Turn bottlenecks into practical next steps</li>
+            <li>Build the roadmap before building software</li>
           </ul>
-        </div>
-
-        <div className="advisory__footer reveal" style={{ marginTop: 'var(--space-6)' }}>
-          <p className="closing" style={{ fontSize: 'var(--text-sm)', marginTop: 0 }}>
-            Good fit for SCORE-referred clients and small businesses that need clarity before implementation.
-          </p>
         </div>
       </div>
     </section>
