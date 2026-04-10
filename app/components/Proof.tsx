@@ -66,6 +66,8 @@ export default function Proof() {
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.4 }}
           >
             <Image src="/argus-hero.png" alt="ARGUS Defense Intelligence Platform — command center interface" width={1400} height={788} priority />
           </motion.div>
@@ -117,6 +119,7 @@ export default function Proof() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
             transition={{ delay: 0.3 }}
+            whileHover={{ scale: 1.02 }}
           >
             <Image src="/argus-hero1.png" alt="ARGUS — 3D terrain visualization and intelligence overlay" width={1400} height={788} loading="lazy" />
           </motion.div>
@@ -136,7 +139,17 @@ export default function Proof() {
             animate={isInView ? 'visible' : 'hidden'}
           >
             {secondary.map((s) => (
-              <motion.div key={s.name} className="proof__sec-card" variants={fadeInUp}>
+              <motion.div
+                key={s.name}
+                className="proof__sec-card"
+                variants={fadeInUp}
+                whileHover={{
+                  y: -4,
+                  boxShadow: '0 12px 40px rgba(46, 107, 255, 0.12)',
+                  borderColor: 'rgba(46, 107, 255, 0.25)',
+                  transition: { duration: 0.3 },
+                }}
+              >
                 <h4 className="proof__sec-name">{s.name}</h4>
                 <p className="proof__sec-type">{s.type}</p>
                 <p className="proof__sec-desc">{s.desc}</p>

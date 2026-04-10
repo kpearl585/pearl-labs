@@ -38,6 +38,19 @@
   --radius-lg: 16px;
 }
 
+/* ─── Scroll Progress ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, #5B8FFF 100%);
+  transform-origin: 0%;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(46, 107, 255, 0.5);
+}
+
 /* ─── Resets ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -173,6 +186,36 @@ section { padding-block: var(--space-24); position: relative; z-index: 1; }
   width: 100% !important;
   height: 100% !important;
   display: block;
+}
+
+/* Sphere Skeleton Loading */
+.sphere-skeleton {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sphere-skeleton__core {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(46, 107, 255, 0.2) 0%, rgba(46, 107, 255, 0.05) 60%, transparent 100%);
+  box-shadow: 0 0 40px rgba(46, 107, 255, 0.15);
+}
+
+.sphere-skeleton__ring {
+  position: absolute;
+  border: 1.5px solid rgba(46, 107, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ═══════════════════════════════════════

@@ -26,33 +26,72 @@ const services = [
 
 function DashboardViz() {
   return (
-    <div className="viz-dash">
+    <motion.div className="viz-dash">
       <div className="viz-dash__sidebar">
-        <div className="viz-dash__sidebar-item" />
-        <div className="viz-dash__sidebar-item" />
-        <div className="viz-dash__sidebar-item" />
-        <div className="viz-dash__sidebar-item" />
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="viz-dash__sidebar-item"
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.1, duration: 0.4 }}
+            viewport={{ once: true }}
+          />
+        ))}
       </div>
       <div className="viz-dash__main">
-        <div className="viz-dash__header" />
+        <motion.div
+          className="viz-dash__header"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+          viewport={{ once: true }}
+        />
         <div className="viz-dash__bar-row">
-          <div className="viz-dash__bar" /><div className="viz-dash__bar" /><div className="viz-dash__bar" /><div className="viz-dash__bar" /><div className="viz-dash__bar" /><div className="viz-dash__bar" /><div className="viz-dash__bar" />
+          {[...Array(7)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="viz-dash__bar"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
+              viewport={{ once: true }}
+              style={{ transformOrigin: 'bottom' }}
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 function SystemViz() {
+  const nodes = ['a', 'b', 'c', 'd']
+  const lines = ['1', '2', '3']
+
   return (
     <div className="viz-system">
-      <div className="viz-node viz-node--a" />
-      <div className="viz-node viz-node--b" />
-      <div className="viz-node viz-node--c" />
-      <div className="viz-node viz-node--d" />
-      <div className="viz-line viz-line--1" />
-      <div className="viz-line viz-line--2" />
-      <div className="viz-line viz-line--3" />
+      {nodes.map((node, i) => (
+        <motion.div
+          key={node}
+          className={`viz-node viz-node--${node}`}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ delay: i * 0.1, duration: 0.4, type: 'spring', stiffness: 200 }}
+          viewport={{ once: true }}
+        />
+      ))}
+      {lines.map((line, i) => (
+        <motion.div
+          key={line}
+          className={`viz-line viz-line--${line}`}
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{ transformOrigin: 'left' }}
+        />
+      ))}
     </div>
   )
 }
@@ -138,7 +177,17 @@ export default function Services() {
           {services.map((s) => {
             const Viz = vizMap[s.viz]
             return (
-              <motion.div key={s.title} className="svc-card" variants={cardVariants}>
+              <motion.div
+                key={s.title}
+                className="svc-card"
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  boxShadow: '0 20px 60px rgba(46, 107, 255, 0.15)',
+                  borderColor: 'rgba(46, 107, 255, 0.3)',
+                  transition: { duration: 0.3 },
+                }}
+              >
                 <div className="svc-card__visual">
                   <Viz />
                 </div>

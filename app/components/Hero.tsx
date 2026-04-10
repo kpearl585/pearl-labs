@@ -4,6 +4,7 @@ import { useRef, useCallback, useEffect, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useABTest } from '../lib/ab-testing'
 import dynamic from 'next/dynamic'
+import SphereSkeleton from './SphereSkeleton'
 
 const Sphere3D = dynamic(() => import('./Sphere3D'), { ssr: false })
 
@@ -103,25 +104,54 @@ export default function Hero() {
               </span>
             </motion.div>
             <motion.div className="hero__actions" variants={itemVariants}>
-              <button
+              <motion.button
                 onClick={openModal}
                 className="btn-primary btn-with-subtext"
                 aria-label="Get your system scoped - Free 48-hour plan"
                 aria-haspopup="dialog"
+                whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(46, 107, 255, 0.3)' }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
               >
                 <span className="btn-main">GET YOUR SYSTEM SCOPED</span>
                 <span className="btn-sub">Free 48-hour plan</span>
-              </button>
-              <a
+              </motion.button>
+              <motion.a
                 href="#proof"
                 className="btn-secondary"
                 aria-label="View our production systems and case studies"
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
               >
                 VIEW SYSTEMS →
-              </a>
+              </motion.a>
             </motion.div>
-            <motion.div className="hero__urgency" variants={itemVariants}>
-              <span className="urgency-dot">⚡</span>
+            <motion.div
+              className="hero__urgency"
+              variants={itemVariants}
+              animate={{
+                y: [0, -3, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              <motion.span
+                className="urgency-dot"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                ⚡
+              </motion.span>
               <span className="urgency-text">Limited availability — 2 project slots for Q2 2026</span>
             </motion.div>
             <motion.div className="hero__trust" variants={itemVariants}>
@@ -138,7 +168,7 @@ export default function Hero() {
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
             style={{ y }}
           >
-            <Suspense fallback={<div className="sphere-wrap" style={{ background: 'radial-gradient(circle, rgba(46,107,255,0.1) 0%, transparent 60%)' }} />}>
+            <Suspense fallback={<SphereSkeleton />}>
               <Sphere3D />
             </Suspense>
           </motion.div>
