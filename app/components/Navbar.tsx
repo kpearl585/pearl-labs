@@ -56,7 +56,7 @@ export default function Navbar() {
           <a href="#advisory" className="nav__link">Advisory</a>
           <a href="#proof" className="nav__link">Work</a>
           <a href="#process" className="nav__link">Process</a>
-          <button onClick={openModal} className="nav__cta">BOOK A SCOPE CALL</button>
+          <button onClick={openModal} className="nav__cta">REQUEST A BRIEF</button>
         </div>
       </div>
     </nav>

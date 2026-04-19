@@ -32,28 +32,28 @@ export default function CTA() {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        <h2 className="cta__headline">Scope your system.</h2>
-        <p className="cta__sub">One call. Architecture plan and estimate within 48 hours. No sales process, no discovery phase. Just the plan.</p>
+        <h2 className="cta__headline">Request a brief.</h2>
+        <p className="cta__sub">Tell us what you&apos;re building. Scoped plan, architecture, and fixed-price estimate back within 48 hours.</p>
         <div className="cta__actions">
           <motion.button
             onClick={openModal}
             className="btn-primary"
-            aria-label="Book a scope call - Opens contact form"
+            aria-label="Request a brief - Opens contact form"
             aria-haspopup="dialog"
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(46, 107, 255, 0.3)' }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
           >
-            BOOK A SCOPE CALL
+            REQUEST A BRIEF
           </motion.button>
           <motion.a
             href="#proof"
             className="btn-secondary"
-            aria-label="View our work and production systems"
+            aria-label="See our work and production systems"
             whileHover={{ x: 4 }}
             transition={{ duration: 0.2 }}
           >
-            VIEW OUR WORK
+            SEE OUR WORK
           </motion.a>
         </div>
       </motion.div>

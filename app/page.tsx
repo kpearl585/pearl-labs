@@ -9,7 +9,6 @@ import Founder from './components/Founder'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import IntakeModal from './components/IntakeModal'
-import ExitIntentPopup from './components/ExitIntentPopup'
 import ScrollProgress from './components/ScrollProgress'
 
 function Divider() {
@@ -39,7 +38,6 @@ export default function Home() {
       </main>
       <Footer />
       <IntakeModal />
-      <ExitIntentPopup />
     </>
   )
 }
