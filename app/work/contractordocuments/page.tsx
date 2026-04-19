@@ -41,7 +41,7 @@ const stack = [
 
 export default function ContractorDocumentsPage() {
   return (
-    <div className="min-h-screen bg-[#050508] text-white">
+    <div className="min-h-screen bg-[#0A0F1E] text-white">
       <Navbar />
 
       {/* Hero */}
@@ -82,7 +82,7 @@ export default function ContractorDocumentsPage() {
 
           <div className="flex items-center gap-5">
             <a href="https://contractordocuments.com" target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-white text-[#050508] font-semibold px-5 py-2.5 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]">
+              className="group inline-flex items-center gap-2 bg-white text-[#0A0F1E] font-semibold px-5 py-2.5 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]">
               View Live Site
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
@@ -214,7 +214,7 @@ export default function ContractorDocumentsPage() {
             We build commerce platforms, document automation, and business software from scratch. Let&apos;s scope yours in 48 hours.
           </p>
           <a href="/estimate"
-            className="group inline-flex items-center gap-2 bg-white text-[#050508] font-semibold px-5 py-2.5 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]">
+            className="group inline-flex items-center gap-2 bg-white text-[#0A0F1E] font-semibold px-5 py-2.5 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]">
             Start a Conversation
             <ArrowRight className="w-3.5 h-3.5" />
           </a>

@@ -18,7 +18,7 @@ export default function ArticlePage() {
 
         {/* Meta row */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#00D4FF]/60 bg-[#00D4FF]/[0.08] uppercase tracking-[0.08em] font-medium">Strategy</span>
+          <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#2E6BFF]/60 bg-[#2E6BFF]/[0.08] uppercase tracking-[0.08em] font-medium">Strategy</span>
           <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">7 min read</span>
           <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">March 2026</span>
         </div>
@@ -37,8 +37,8 @@ export default function ArticlePage() {
         <div className="text-[15px] leading-[1.8] text-white/50">
 
           {/* Callout */}
-          <div className="border-l-2 border-[#00D4FF]/30 bg-[#00D4FF]/[0.04] rounded-r-lg px-5 py-4 mb-10">
-            <p className="m-0 font-semibold text-[#00D4FF]/80 text-[15px] leading-[1.7]">
+          <div className="border-l-2 border-[#2E6BFF]/30 bg-[#2E6BFF]/[0.04] rounded-r-lg px-5 py-4 mb-10">
+            <p className="m-0 font-semibold text-[#2E6BFF]/80 text-[15px] leading-[1.7]">
               A small business website that converts just 2 additional clients per month — at $1,500 average value — generates $36,000/year in new revenue from a one-time investment.
             </p>
           </div>
@@ -62,8 +62,8 @@ export default function ArticlePage() {
               <p className="text-white/50 my-1">3 closed jobs</p>
               <p className="font-semibold text-red-400/80 my-1">$6,000/month</p>
             </div>
-            <div className="rounded-lg border border-[#00D4FF]/10 bg-[#00D4FF]/[0.03] p-5">
-              <p className="font-semibold text-[#00D4FF]/60 text-[13px] uppercase tracking-wide mb-3">Professional site (7% conversion)</p>
+            <div className="rounded-lg border border-[#2E6BFF]/10 bg-[#2E6BFF]/[0.03] p-5">
+              <p className="font-semibold text-[#2E6BFF]/60 text-[13px] uppercase tracking-wide mb-3">Professional site (7% conversion)</p>
               <p className="text-white/50 my-1">35 leads/month</p>
               <p className="text-white/50 my-1">10-11 closed jobs</p>
               <p className="font-semibold text-emerald-400/80 my-1">$20,000+/month</p>
@@ -118,7 +118,7 @@ export default function ArticlePage() {
         </div>
 
         {/* CTA Card */}
-        <div className="mt-20 rounded-xl border border-[#00D4FF]/15 bg-[#00D4FF]/[0.03] p-10 text-center">
+        <div className="mt-20 rounded-xl border border-[#2E6BFF]/15 bg-[#2E6BFF]/[0.03] p-10 text-center">
           <h2 className="font-display font-semibold text-white text-xl tracking-tight mb-3">
             Let&apos;s Build Something That Converts
           </h2>
@@ -127,7 +127,7 @@ export default function ArticlePage() {
           </p>
           <Link
             href="/estimate"
-            className="inline-block bg-[#00D4FF] text-[#050508] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#00D4FF]/90 transition-colors"
+            className="inline-block bg-[#2E6BFF] text-[#0A0F1E] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#2E6BFF]/90 transition-colors"
           >
             Start the Conversation &rarr;
           </Link>

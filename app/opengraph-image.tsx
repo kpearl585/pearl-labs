@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Pearl Labs — Custom Development Studio'
+export const alt = 'Pearl Labs — Real Software for Real Businesses'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -12,7 +12,7 @@ export default function OGImage() {
         style={{
           width: '1200px',
           height: '630px',
-          background: '#050508',
+          background: '#0A0F1E',
           display: 'flex',
           flexDirection: 'column',
           position: 'relative',
@@ -24,11 +24,11 @@ export default function OGImage() {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-            backgroundSize: '64px 64px',
+            backgroundImage: 'radial-gradient(circle, rgba(46,107,255,0.04) 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
           }}
         />
-        {/* Cyan glow */}
+        {/* Accent glow */}
         <div
           style={{
             position: 'absolute',
@@ -36,7 +36,7 @@ export default function OGImage() {
             left: '30%',
             width: '600px',
             height: '400px',
-            background: 'radial-gradient(ellipse, rgba(0,212,255,0.08) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(46,107,255,0.12) 0%, transparent 70%)',
           }}
         />
 
@@ -44,48 +44,35 @@ export default function OGImage() {
         <div style={{ display: 'flex', flex: 1, padding: '72px 80px', position: 'relative', zIndex: 1, flexDirection: 'column', justifyContent: 'center' }}>
           {/* Eyebrow */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px' }}>
-            <div style={{ width: '24px', height: '1px', background: 'rgba(0,212,255,0.4)' }} />
-            <span style={{ color: 'rgba(0,212,255,0.6)', fontSize: '13px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'monospace' }}>
-              Custom Development Studio
-            </span>
-          </div>
-
-          {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
-            <div style={{
-              width: '28px', height: '28px', borderRadius: '7px',
-              background: 'linear-gradient(135deg, #00D4FF, #0090B0)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: '#fff', fontSize: '14px', fontWeight: 700,
-            }}>P</div>
-            <span style={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600, fontSize: '18px', letterSpacing: '-0.02em' }}>
+            <div style={{ width: '24px', height: '1px', background: 'rgba(46,107,255,0.5)' }} />
+            <span style={{ color: 'rgba(46,107,255,0.85)', fontSize: '13px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'monospace' }}>
               Pearl Labs
             </span>
           </div>
 
           {/* Headline */}
-          <div style={{ color: '#fff', fontWeight: 600, fontSize: '52px', lineHeight: 1.1, letterSpacing: '-0.035em', marginBottom: '20px', maxWidth: '700px' }}>
-            We engineer the software that drives your business forward.
+          <div style={{ color: '#F1F5F9', fontWeight: 700, fontSize: '64px', lineHeight: 1.05, letterSpacing: '-0.035em', marginBottom: '24px', maxWidth: '900px', textTransform: 'uppercase' }}>
+            Real software for real businesses.
           </div>
 
           {/* Sub */}
-          <div style={{ color: 'rgba(255,255,255,0.36)', fontSize: '20px', lineHeight: 1.6, maxWidth: '520px' }}>
-            High-performance websites, SaaS platforms, and intelligent systems. Veteran owned.
+          <div style={{ color: 'rgba(241,245,249,0.6)', fontSize: '22px', lineHeight: 1.5, maxWidth: '720px' }}>
+            Custom websites, business software, and automation. Veteran-owned. Full code ownership.
           </div>
         </div>
 
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.05)',
-            padding: '16px 80px',
+            borderTop: '1px solid rgba(46,107,255,0.1)',
+            padding: '18px 80px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <span style={{ color: 'rgba(0,212,255,0.4)', fontSize: '14px', fontFamily: 'monospace', letterSpacing: '0.05em' }}>pearllab.io</span>
-          <span style={{ color: 'rgba(255,255,255,0.12)', fontSize: '13px' }}>Veteran Owned &middot; Ocala, FL</span>
+          <span style={{ color: 'rgba(46,107,255,0.6)', fontSize: '14px', fontFamily: 'monospace', letterSpacing: '0.05em' }}>pearllab.io</span>
+          <span style={{ color: 'rgba(241,245,249,0.25)', fontSize: '13px' }}>Veteran Owned · Ocala, FL</span>
         </div>
       </div>
     ),

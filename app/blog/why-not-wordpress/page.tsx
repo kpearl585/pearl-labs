@@ -18,7 +18,7 @@ export default function WhyNotWordPress() {
 
         {/* Meta row */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#00D4FF]/60 bg-[#00D4FF]/[0.08] uppercase tracking-[0.08em] font-medium">Web Development</span>
+          <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#2E6BFF]/60 bg-[#2E6BFF]/[0.08] uppercase tracking-[0.08em] font-medium">Web Development</span>
           <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">7 min read</span>
           <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">February 2026</span>
         </div>
@@ -176,7 +176,7 @@ export default function WhyNotWordPress() {
         </div>
 
         {/* CTA Card */}
-        <div className="mt-20 rounded-xl border border-[#00D4FF]/15 bg-[#00D4FF]/[0.03] p-10 text-center">
+        <div className="mt-20 rounded-xl border border-[#2E6BFF]/15 bg-[#2E6BFF]/[0.03] p-10 text-center">
           <h2 className="font-display font-semibold text-white text-xl tracking-tight mb-3">
             Ready for a site you actually own?
           </h2>
@@ -185,7 +185,7 @@ export default function WhyNotWordPress() {
           </p>
           <Link
             href="/estimate"
-            className="inline-block bg-[#00D4FF] text-[#050508] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#00D4FF]/90 transition-colors"
+            className="inline-block bg-[#2E6BFF] text-[#0A0F1E] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#2E6BFF]/90 transition-colors"
           >
             Get in Touch &rarr;
           </Link>

@@ -18,7 +18,7 @@ export default function ArticlePage() {
 
         {/* Meta row */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#00D4FF]/60 bg-[#00D4FF]/[0.08] uppercase tracking-[0.08em] font-medium">Growth</span>
+          <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#2E6BFF]/60 bg-[#2E6BFF]/[0.08] uppercase tracking-[0.08em] font-medium">Growth</span>
           <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">8 min read</span>
           <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">March 2026</span>
         </div>
@@ -37,8 +37,8 @@ export default function ArticlePage() {
         <div className="text-[15px] leading-[1.8] text-white/50">
 
           {/* Callout */}
-          <div className="border-l-2 border-[#00D4FF]/30 bg-[#00D4FF]/[0.04] rounded-r-lg px-5 py-4 mb-10">
-            <p className="m-0 font-semibold text-[#00D4FF]/80 text-[15px] leading-[1.7]">
+          <div className="border-l-2 border-[#2E6BFF]/30 bg-[#2E6BFF]/[0.04] rounded-r-lg px-5 py-4 mb-10">
+            <p className="m-0 font-semibold text-[#2E6BFF]/80 text-[15px] leading-[1.7]">
               Most Florida contractors are spending $500–$2,000/month on ads and getting inconsistent results. The contractors winning the most jobs are spending that money on their website and Google presence instead.
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function ArticlePage() {
         </div>
 
         {/* CTA Card */}
-        <div className="mt-20 rounded-xl border border-[#00D4FF]/15 bg-[#00D4FF]/[0.03] p-10 text-center">
+        <div className="mt-20 rounded-xl border border-[#2E6BFF]/15 bg-[#2E6BFF]/[0.03] p-10 text-center">
           <h2 className="font-display font-semibold text-white text-xl tracking-tight mb-3">
             Ready to Build Your Digital Foundation?
           </h2>
@@ -106,7 +106,7 @@ export default function ArticlePage() {
           </p>
           <Link
             href="/estimate"
-            className="inline-block bg-[#00D4FF] text-[#050508] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#00D4FF]/90 transition-colors"
+            className="inline-block bg-[#2E6BFF] text-[#0A0F1E] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#2E6BFF]/90 transition-colors"
           >
             Get a Free Consultation &rarr;
           </Link>

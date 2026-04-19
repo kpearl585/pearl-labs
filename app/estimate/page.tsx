@@ -89,7 +89,7 @@ export default function EstimatePage() {
   }
 
   return (
-    <div className="bg-[#050508] min-h-screen overflow-x-hidden">
+    <div className="bg-[#0A0F1E] min-h-screen overflow-x-hidden">
       <Navbar />
 
       <main className="pt-28 lg:pt-32 pb-28 lg:pb-36 px-6">
@@ -167,7 +167,7 @@ export default function EstimatePage() {
                     <button key={t} type="button" onClick={() => set('projectType', t)}
                       className={`text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
                         form.projectType === t
-                          ? 'bg-white text-[#050508]'
+                          ? 'bg-white text-[#0A0F1E]'
                           : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
                       }`}
                       style={form.projectType !== t ? { border: '1px solid rgba(255,255,255,0.06)' } : { border: '1px solid transparent' }}>
@@ -184,7 +184,7 @@ export default function EstimatePage() {
                     <button key={t} type="button" onClick={() => set('timeline', t)}
                       className={`text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
                         form.timeline === t
-                          ? 'bg-white text-[#050508]'
+                          ? 'bg-white text-[#0A0F1E]'
                           : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
                       }`}
                       style={form.timeline !== t ? { border: '1px solid rgba(255,255,255,0.06)' } : { border: '1px solid transparent' }}>
@@ -201,7 +201,7 @@ export default function EstimatePage() {
                     <button key={b} type="button" onClick={() => set('budget', b)}
                       className={`text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
                         form.budget === b
-                          ? 'bg-white text-[#050508]'
+                          ? 'bg-white text-[#0A0F1E]'
                           : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
                       }`}
                       style={form.budget !== b ? { border: '1px solid rgba(255,255,255,0.06)' } : { border: '1px solid transparent' }}>
@@ -229,7 +229,7 @@ export default function EstimatePage() {
               {/* Submit */}
               <div className="pt-2">
                 <button type="submit" disabled={state === 'submitting' || !form.name || !form.email || !form.projectType || !form.brief}
-                  className="btn-glow group inline-flex items-center gap-2 bg-white text-[#050508] font-semibold px-6 py-3 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.12)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none">
+                  className="btn-glow group inline-flex items-center gap-2 bg-white text-[#0A0F1E] font-semibold px-6 py-3 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.12)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none">
                   {state === 'submitting' ? (
                     <>
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -271,8 +271,8 @@ export default function EstimatePage() {
           color: rgba(255,255,255,0.18);
         }
         .input-field:focus {
-          border-color: rgba(0,212,255,0.3);
-          box-shadow: 0 0 0 3px rgba(0,212,255,0.06);
+          border-color: rgba(46,107,255,0.4);
+          box-shadow: 0 0 0 3px rgba(46,107,255,0.08);
         }
       `}</style>
     </div>

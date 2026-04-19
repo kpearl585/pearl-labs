@@ -55,8 +55,8 @@ export default function BlogIndex() {
               style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.05)' }}>
 
               <div className="flex items-center justify-between mb-5">
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#00D4FF]/50"
-                  style={{ background: 'rgba(0,212,255,0.06)' }}>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded text-[#2E6BFF]/50"
+                  style={{ background: 'rgba(46,107,255,0.08)' }}>
                   {post.tag}
                 </span>
                 <span className="text-[11px] text-white/18 font-mono">{post.readTime}</span>

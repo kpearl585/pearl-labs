@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 export default function Founder() {
   const ref = useRef<HTMLElement>(null)
@@ -22,7 +23,14 @@ export default function Founder() {
         </div>
         <div className="founder__card reveal">
           <div className="founder__photo">
-            <div className="founder__photo-placeholder">KP</div>
+            <Image
+              src="/founder.png"
+              alt="Keegan Pearl, founder of Pearl Labs"
+              width={88}
+              height={88}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              priority
+            />
           </div>
           <div className="founder__info">
             <h3 className="founder__name">Keegan Pearl</h3>

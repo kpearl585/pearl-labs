@@ -75,6 +75,11 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
 }
 
+/* font-display — mapped to Inter so the subpage Tailwind class resolves predictably */
+.font-display {
+  font-family: var(--font-inter, 'Inter'), -apple-system, sans-serif;
+}
+
 /* ─── Dot grid ─── */
 body::before {
   content: '';

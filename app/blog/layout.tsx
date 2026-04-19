@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-[#050508] min-h-screen overflow-x-hidden">
+    <div className="bg-[#0A0F1E] min-h-screen overflow-x-hidden">
       <Navbar />
       {children}
       <Footer />
