@@ -5,22 +5,22 @@ import { useRef } from 'react'
 
 const services = [
   {
-    title: 'Full-Stack SaaS Build',
-    desc: 'We build production SaaS systems. Auth, billing, admin dashboard, customer-facing UI, infrastructure. You own 100% of the code.',
-    meta: '8 to 16 weeks',
+    title: 'Custom Websites',
+    desc: 'Next.js sites built for speed, SEO, and conversion. No WordPress, no Squarespace, no templates. You own the code. You own the infrastructure.',
+    meta: '3 to 6 weeks',
+    viz: 'website',
+  },
+  {
+    title: 'Business Software',
+    desc: 'Replace the spreadsheets, the duct tape, and the three tools your team keeps forgetting to update. One system, built for how you actually work.',
+    meta: '6 to 12 weeks',
     viz: 'dashboard',
   },
   {
-    title: 'Custom Operations System',
-    desc: 'Replace spreadsheets with purpose-built internal software. Built for how your team actually works.',
+    title: 'Workflow Automation',
+    desc: 'Estimating engines, pricing systems, document generators, internal automations. Stop copy-pasting between tools. Let the software do it.',
     meta: '4 to 8 weeks',
     viz: 'system',
-  },
-  {
-    title: 'Revenue Infrastructure',
-    desc: 'Software that generates revenue. Estimating engines, pricing systems, marketplace platforms, automated sales tools.',
-    meta: '6 to 12 weeks',
-    viz: 'revenue',
   },
 ]
 
@@ -96,16 +96,37 @@ function SystemViz() {
   )
 }
 
-function RevenueViz() {
+function WebsiteViz() {
   return (
-    <div className="viz-revenue">
-      <p className="viz-revenue__label">Revenue</p>
-      <p className="viz-revenue__value">+127%</p>
-      <div className="viz-revenue__line">
-        <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',height:'100%'}}>
-          <path d="M0 55 Q30 50 50 42 T100 28 T150 12 T200 4" stroke="rgba(46,107,255,0.4)" strokeWidth="2" fill="none" />
-          <path d="M0 55 Q30 50 50 42 T100 28 T150 12 T200 4 V60 H0 Z" fill="rgba(46,107,255,0.06)" />
-        </svg>
+    <div className="viz-web">
+      <div className="viz-web__frame">
+        <div className="viz-web__dots">
+          <span /><span /><span />
+        </div>
+        <motion.div
+          className="viz-web__bar viz-web__bar--wide"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{ transformOrigin: 'left' }}
+        />
+        <motion.div
+          className="viz-web__bar"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ delay: 0.35, duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{ transformOrigin: 'left' }}
+        />
+        <motion.div
+          className="viz-web__bar viz-web__bar--short"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          viewport={{ once: true }}
+          style={{ transformOrigin: 'left' }}
+        />
       </div>
     </div>
   )
@@ -114,7 +135,7 @@ function RevenueViz() {
 const vizMap: Record<string, () => React.ReactElement> = {
   dashboard: DashboardViz,
   system: SystemViz,
-  revenue: RevenueViz,
+  website: WebsiteViz,
 }
 
 const containerVariants = {

@@ -6,14 +6,14 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pearllab.io'),
-  title: 'Pearl Labs — Build Systems That Generate Revenue',
+  title: 'Pearl Labs — Real Software for Real Businesses',
   description:
-    'Pearl Labs builds production software systems — SaaS platforms, revenue infrastructure, and defense-grade tools. Full code ownership. One senior engineer.',
+    'Pearl Labs builds custom websites, business software, and automation for small businesses and serious operators. Veteran-owned. Full code ownership. Florida-based.',
   keywords:
-    'production software, SaaS development, revenue systems, defense intelligence, custom software, veteran owned',
+    'custom software, small business software, Next.js development, veteran owned, SaaS development, workflow automation, custom websites, Florida software firm',
   openGraph: {
-    title: 'Pearl Labs — Build Systems That Generate Revenue',
-    description: 'Production software for companies that need systems shipped. Three systems live. Full code ownership.',
+    title: 'Pearl Labs — Real Software for Real Businesses',
+    description: 'Custom websites, business software, and automation — built by one senior engineer. Veteran-owned. Florida-based.',
     url: 'https://pearllab.io',
     siteName: 'Pearl Labs',
     type: 'website',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pearl Labs — Build Systems That Generate Revenue',
-    description: 'Production software for companies that need systems shipped.',
+    title: 'Pearl Labs — Real Software for Real Businesses',
+    description: 'Custom websites, business software, and automation. Veteran-owned. Florida-based.',
   },
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://pearllab.io' },
@@ -36,8 +36,23 @@ const jsonLd = {
   url: 'https://pearllab.io',
   email: 'keegan@pearllab.io',
   address: { '@type': 'PostalAddress', addressLocality: 'Ocala', addressRegion: 'FL', addressCountry: 'US' },
-  serviceType: 'Custom Software Systems',
-  description: 'Production software systems — SaaS platforms, revenue infrastructure, and defense-grade tools.',
+  areaServed: { '@type': 'Country', name: 'United States' },
+  priceRange: '$$$',
+  serviceType: ['Custom Software Development', 'SaaS Development', 'Workflow Automation', 'Strategic Advisory'],
+  description: 'Pearl Labs builds custom websites, business software, and automation for small businesses and serious operators.',
+  founder: {
+    '@type': 'Person',
+    name: 'Keegan Pearl',
+    jobTitle: 'Founder & Engineer',
+  },
+  knowsAbout: [
+    'Next.js development',
+    'Custom SaaS platforms',
+    'Workflow automation',
+    'Business software',
+    'Strategic advisory',
+    'Defense intelligence platforms',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
