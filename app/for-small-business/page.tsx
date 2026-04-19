@@ -272,6 +272,23 @@ export default function SmallBusinessPage() {
                 Most projects are fixed-price after the brief. No hourly games. No surprise invoices.
               </p>
             </div>
+            <div className="smb-pricing-strip">
+              <div className="smb-pricing-strip__cell">
+                <span className="smb-pricing-strip__label">Marketing site</span>
+                <span className="smb-pricing-strip__range">$4.5k<span> – $22k</span></span>
+                <span className="smb-pricing-strip__note">Hand-coded Next.js. 2–6 weeks. You own the code.</span>
+              </div>
+              <div className="smb-pricing-strip__cell">
+                <span className="smb-pricing-strip__label">Business system</span>
+                <span className="smb-pricing-strip__range">$12k<span> – $35k</span></span>
+                <span className="smb-pricing-strip__note">Internal tool. Auth, database, admin. 6–12 weeks.</span>
+              </div>
+              <div className="smb-pricing-strip__cell">
+                <span className="smb-pricing-strip__label">Retainer</span>
+                <span className="smb-pricing-strip__range">$2.5k<span> / mo</span></span>
+                <span className="smb-pricing-strip__note">Ongoing strategic access. 30-day cancellation.</span>
+              </div>
+            </div>
             <div className="smb-ladder">
               <div className="smb-ladder__header">
                 <span>Tier</span>

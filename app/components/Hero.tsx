@@ -2,6 +2,7 @@
 
 import { useRef, useCallback, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import SystemDiagram from './SystemDiagram'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,17 +27,25 @@ const itemVariants = {
   },
 }
 
-const sphereRingVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
+const lineContainerVariants = {
+  hidden: {},
+  visible: {
     transition: {
-      delay: i * 0.08,
-      duration: 1.2,
-      ease: [0.25, 0.1, 0.25, 1] as const,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
     },
-  }),
+  },
+}
+
+const lineRevealVariants = {
+  hidden: { y: '110%' },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  },
 }
 
 export default function Hero() {
@@ -85,8 +94,18 @@ export default function Hero() {
               <span className="hero__overline-dot" />
               Pearl Labs
             </motion.p>
-            <motion.h1 className="hero__headline" variants={itemVariants}>
-              Real software for <span className="gradient-text">real businesses.</span>
+            <motion.h1
+              className="hero__headline"
+              variants={lineContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <span className="hero__line">
+                <motion.span variants={lineRevealVariants}>Real software for</motion.span>
+              </span>
+              <span className="hero__line">
+                <motion.span variants={lineRevealVariants} className="gradient-text">real businesses.</motion.span>
+              </span>
             </motion.h1>
             <motion.p className="hero__sub" variants={itemVariants}>
               We build custom websites, business software, and automation that actually work. For small companies tired of spreadsheets, Squarespace, and agencies that ghost.
@@ -132,36 +151,12 @@ export default function Hero() {
 
           <motion.div
             className="hero__visual"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
             style={{ y }}
           >
-            <div className="sphere-wrap">
-              <motion.div
-                className="sphere-glow"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <div className="sphere-canvas">
-                {[...Array(7)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="sphere-ring"
-                    custom={i}
-                    variants={sphereRingVariants}
-                    initial="hidden"
-                    animate="visible"
-                  />
-                ))}
-                <motion.div
-                  className="sphere-core"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
-                />
-              </div>
-            </div>
+            <SystemDiagram />
           </motion.div>
         </div>
       </motion.div>
