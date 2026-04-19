@@ -125,6 +125,10 @@ export default function SmallBusinessPage() {
                 </span>
                 <span className="hero__metric-item">
                   <span className="hero__metric-dot" />
+                  SCORE Service Partner
+                </span>
+                <span className="hero__metric-item">
+                  <span className="hero__metric-dot" />
                   Ocala, FL
                 </span>
                 <span className="hero__metric-item">
@@ -285,7 +289,7 @@ export default function SmallBusinessPage() {
               ))}
             </div>
             <p className="smb-ladder__note">
-              Referred by SCORE? Your 48-hour brief is free. Just mention your mentor on the form below.
+              Pearl Labs is a SCORE Service Partner. If a SCORE mentor referred you, your 48-hour brief is free — just mention their name on the form below.
             </p>
           </div>
         </section>
@@ -315,6 +319,7 @@ export default function SmallBusinessPage() {
                 </p>
                 <div className="founder__badges">
                   <span className="founder__badge">Veteran Owned</span>
+                  <span className="founder__badge">SCORE Service Partner</span>
                   <span className="founder__badge">Ocala, FL</span>
                   <span className="founder__badge">Available for 2026</span>
                 </div>

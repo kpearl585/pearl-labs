@@ -6,8 +6,8 @@ const badges = [
   'Defense & Intelligence',
   'SaaS Platforms',
   'Construction Tech',
-  'Revenue Systems',
   'Veteran Owned',
+  'SCORE Service Partner',
 ]
 
 export default function TrustBar() {

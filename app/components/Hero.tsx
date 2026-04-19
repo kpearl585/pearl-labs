@@ -98,11 +98,11 @@ export default function Hero() {
               </span>
               <span className="hero__metric-item">
                 <span className="hero__metric-dot" />
-                Florida Based
+                SCORE Service Partner
               </span>
               <span className="hero__metric-item">
                 <span className="hero__metric-dot" />
-                Full Code Ownership
+                Florida Based
               </span>
             </motion.div>
             <motion.div className="hero__actions" variants={itemVariants}>

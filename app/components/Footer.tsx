@@ -8,6 +8,7 @@ export default function Footer() {
           <div className="footer__left">
             <PearlLogo height={24} id="fPG" />
             <span className="footer__copy">&copy; 2026 Pearl Labs. Ocala, FL.</span>
+            <span className="footer__credential">SCORE Service Partner · Veteran Owned</span>
           </div>
           <div className="footer__links">
             <a href="/for-small-business" className="footer__link">Small Business</a>

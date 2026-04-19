@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Pearl Labs builds custom websites, business software, and automation for small businesses and serious operators. Veteran-owned. Full code ownership. Florida-based.',
   keywords:
-    'custom software, small business software, Next.js development, veteran owned, SaaS development, workflow automation, custom websites, Florida software firm',
+    'custom software, small business software, Next.js development, veteran owned, SCORE service partner, SaaS development, workflow automation, custom websites, Florida software firm',
   openGraph: {
     title: 'Pearl Labs — Real Software for Real Businesses',
     description: 'Custom websites, business software, and automation — built by one senior engineer. Veteran-owned. Florida-based.',
@@ -52,6 +52,8 @@ const jsonLd = {
     'Business software',
     'Strategic advisory',
     'Defense intelligence platforms',
+    'SCORE Service Partner',
+    'Small business software development',
   ],
 }
 
