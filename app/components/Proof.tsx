@@ -138,12 +138,9 @@ export default function Proof() {
               Pearl Labs also builds defense decision-support platforms. Details under briefing.
             </p>
           </div>
-          <a
-            href="mailto:keegan@pearllab.io?subject=ARGUS%20Briefing%20Request"
-            className="proof__credential-link"
-          >
+          <Link href="/briefing" className="proof__credential-link">
             Request briefing access →
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

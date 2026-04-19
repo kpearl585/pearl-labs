@@ -17,10 +17,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: 'https://pearllab.io/estimate',
+      url: 'https://pearllab.io/briefing',
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: 'https://pearllab.io/estimate',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: 'https://pearllab.io/work/fenceestimatepro',
