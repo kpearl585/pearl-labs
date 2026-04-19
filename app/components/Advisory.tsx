@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useCallback, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
@@ -7,12 +8,6 @@ const cards = [
   { num: '01', title: 'System Design Review', desc: 'We evaluate your product, architecture, or model and identify gaps, risks, and opportunities before they get expensive.' },
   { num: '02', title: 'Positioning & Narrative', desc: 'We refine how your system is presented so it lands with decision makers, not just builders.' },
   { num: '03', title: 'Execution Strategy', desc: 'We define what to build next, what to ignore, and how to move forward.' },
-]
-
-const smallBizCards = [
-  { title: 'Clearer workflows', desc: 'Map manual processes into structured systems.' },
-  { title: 'Practical priorities', desc: 'Turn bottlenecks into next steps.' },
-  { title: 'Roadmap first', desc: 'Define what to build before committing capital.' },
 ]
 
 const fadeInUp = {
@@ -111,58 +106,17 @@ export default function Advisory() {
           </div>
         </motion.div>
 
-        {/* Business Systems & Clarity Advisory - Redesigned */}
         <motion.div
-          className="advisory__divider"
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.5 }}
-        />
-
-        <motion.div
-          className="advisory__alt"
+          className="advisory__smb-link"
           variants={fadeInUp}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           transition={{ delay: 0.6 }}
         >
-          <div className="advisory__alt-header">
-            <p className="section-label">For Small Businesses</p>
-            <h3 className="advisory__alt-title">Business Systems Advisory</h3>
-            <p className="advisory__alt-desc">
-              Running on spreadsheets and manual processes? We map operational complexity into a clear roadmap.
-            </p>
-          </div>
-
-          <motion.div
-            className="advisory__alt-grid"
-            variants={staggerContainer}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.7 }}
-          >
-            {smallBizCards.map((card) => (
-              <motion.div
-                key={card.title}
-                className="advisory__alt-card"
-                variants={fadeInUp}
-              >
-                <h4 className="advisory__alt-card-title">{card.title}</h4>
-                <p className="advisory__alt-card-desc">{card.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.p
-            className="advisory__alt-note"
-            variants={fadeInUp}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.9 }}
-          >
-            SCORE partners and small business referrals welcome.
-          </motion.p>
+          <p>Running a small business? Custom websites, internal tools, and automation — priced for operators.</p>
+          <Link href="/for-small-business">
+            Small business software →
+          </Link>
         </motion.div>
       </div>
     </section>
