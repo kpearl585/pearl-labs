@@ -1,35 +1,37 @@
 'use client'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const stats = [
-  { value: 'Real-Time', label: 'Multi-source modeling' },
-  { value: '4 INT Sources', label: 'Fused intelligence feeds' },
-  { value: 'Operational', label: 'Simulation and planning' },
-]
-
-const details = [
-  { label: 'Intelligence', value: 'Real-time satellite, signals intelligence, HUMINT, open-source. Fused into a single operational picture.' },
-  { label: 'Stack', value: 'Next.js, Supabase, Mapbox GL, AI/ML pipelines, real-time data processing' },
-  { label: 'Status', value: 'In production, active development' },
-]
-
-const secondary = [
+const work = [
+  {
+    name: 'Ocala Elite Breed',
+    type: 'Youth Sports Organization',
+    desc: 'From expired Squarespace to a site they own — built in seven days. Seven pages, sponsor tiers, zero recurring fees.',
+    href: '/work/ocala-elite-breed',
+    internal: true,
+    image: '/oeb-hero.png',
+    label: 'Read case study →',
+  },
   {
     name: 'FenceEstimatePro',
-    type: 'Revenue System, SaaS',
-    desc: 'Job lifecycle management for fencing contractors. Estimates, scheduling, crew management, invoicing. Replaced spreadsheet workflows with a production system.',
-    url: 'https://fenceestimatepro.com',
-    label: 'View Live System →'
+    type: 'Contractor SaaS Platform',
+    desc: 'Full SaaS platform for fence contractors. Estimates, job tracking, customer portals, digital signatures, Stripe billing. Built from scratch.',
+    href: '/work/fenceestimatepro',
+    internal: true,
+    image: null,
+    label: 'Read case study →',
   },
   {
     name: 'ContractorDocuments',
     type: 'Document Commerce Platform',
-    desc: 'Commerce platform for contractor compliance documents. Purchase, delivery, and management of operational paperwork.',
-    url: null,
-    label: null
+    desc: 'A commerce platform for contractor paperwork. Buy the document. Autofill with your company data. Download a legally drafted PDF in under a minute.',
+    href: '/work/contractordocuments',
+    internal: true,
+    image: null,
+    label: 'Read case study →',
   },
 ]
 
@@ -63,147 +65,85 @@ export default function Proof() {
     <section id="proof" ref={ref}>
       <div className="container">
         <motion.div
-          style={{ marginBottom: 'var(--space-16)' }}
+          style={{ marginBottom: 'var(--space-10)' }}
           variants={fadeInUp}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
           <p className="section-label">Proof</p>
-          <h2 className="section-title">Systems in production</h2>
+          <h2 className="section-title">Systems in production.</h2>
         </motion.div>
 
-        <div className="proof__flagship">
-          <motion.div
-            className="proof__visual"
-            variants={fadeInUp}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Image src="/argus-hero.png" alt="ARGUS Defense Intelligence Platform — command center interface" width={1400} height={788} priority />
-          </motion.div>
-
-          <motion.div
-            className="proof__stats"
-            variants={staggerContainer}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-          >
-            {stats.map((s) => (
-              <motion.div key={s.label} className="proof__stat" variants={fadeInUp}>
-                <p className="proof__stat-value">{s.value}</p>
-                <p className="proof__stat-label">{s.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <div className="proof__content">
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-            >
-              <h3 className="proof__name">ARGUS</h3>
-              <p className="proof__type">Defense Intelligence Platform</p>
-              <p className="proof__desc">Intelligence platform fusing satellite imagery, signals intelligence, HUMINT, and open source data into a single operational picture. Built for defense and national security operators.</p>
-              <p className="proof__outcome">Replaces fragmented intelligence workflows with a unified command interface. Operational with geospatial visualization and AI analysis pipelines.</p>
-            </motion.div>
-            <motion.div
-              className="proof__details"
-              variants={staggerContainer}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-            >
-              {details.map((d) => (
-                <motion.div key={d.label} className="proof__detail" variants={fadeInUp}>
-                  <p className="proof__detail-label">{d.label}</p>
-                  <p className="proof__detail-value">{d.value}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="proof__visual"
-            style={{ marginTop: 'var(--space-8)' }}
-            variants={fadeInUp}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.3 }}
-            whileHover={{ scale: 1.02 }}
-          >
-            <Image src="/argus-hero1.png" alt="ARGUS — 3D terrain visualization and intelligence overlay" width={1400} height={788} loading="lazy" />
-          </motion.div>
-        </div>
-
         <motion.div
-          style={{ marginTop: 'var(--space-16)' }}
+          className="proof__intro"
           variants={fadeInUp}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
+          transition={{ delay: 0.1 }}
         >
-          <p className="proof__additional-label">Additional Systems</p>
-          <motion.div
-            className="proof__secondary"
-            variants={staggerContainer}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-          >
-            {secondary.map((s) => {
-              const cardContent = (
-                <>
-                  <h4 className="proof__sec-name">{s.name}</h4>
-                  <p className="proof__sec-type">{s.type}</p>
-                  <p className="proof__sec-desc">{s.desc}</p>
-                  {s.url && s.label && (
-                    <div className="proof__sec-cta">
-                      <span className="proof__sec-link">
-                        {s.label}
-                      </span>
+          <p>
+            Pearl Labs is the engineering arm of Pearl Ventures. We build production systems for clients, and for our own portfolio of software products. Every one of these is live, shipping, and owned by the operator running it.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="proof__work-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          {work.map((w) => (
+            <motion.div key={w.name} variants={fadeInUp}>
+              <Link
+                href={w.href}
+                className="proof__work-card"
+              >
+                <div className="proof__work-card__visual">
+                  {w.image ? (
+                    <Image
+                      src={w.image}
+                      alt={`${w.name} — live product`}
+                      width={800}
+                      height={500}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div className="proof__work-card__placeholder">
+                      <span className="proof__work-card__placeholder-label">{w.type}</span>
+                      <span className="proof__work-card__placeholder-name">{w.name}</span>
                     </div>
                   )}
-                </>
-              )
+                </div>
+                <div className="proof__work-card__body">
+                  <p className="proof__work-card__type">{w.type}</p>
+                  <h3 className="proof__work-card__name">{w.name}</h3>
+                  <p className="proof__work-card__desc">{w.desc}</p>
+                  <span className="proof__work-card__link">{w.label}</span>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
 
-              if (s.url) {
-                return (
-                  <motion.a
-                    key={s.name}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="proof__sec-card proof__sec-card--link"
-                    variants={fadeInUp}
-                    whileHover={{
-                      y: -6,
-                      boxShadow: '0 16px 48px rgba(46, 107, 255, 0.15)',
-                      borderColor: 'rgba(46, 107, 255, 0.3)',
-                      transition: { duration: 0.3 },
-                    }}
-                  >
-                    {cardContent}
-                  </motion.a>
-                )
-              }
-
-              return (
-                <motion.div
-                  key={s.name}
-                  className="proof__sec-card"
-                  variants={fadeInUp}
-                  whileHover={{
-                    y: -4,
-                    boxShadow: '0 12px 40px rgba(46, 107, 255, 0.12)',
-                    borderColor: 'rgba(46, 107, 255, 0.25)',
-                    transition: { duration: 0.3 },
-                  }}
-                >
-                  {cardContent}
-                </motion.div>
-              )
-            })}
-          </motion.div>
+        <motion.div
+          className="proof__credential"
+          variants={fadeInUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="proof__credential-inner">
+            <p className="proof__credential-label">Defense & Intelligence</p>
+            <p className="proof__credential-text">
+              Pearl Labs also builds defense decision-support platforms. Details under briefing.
+            </p>
+          </div>
+          <a
+            href="mailto:keegan@pearllab.io?subject=ARGUS%20Briefing%20Request"
+            className="proof__credential-link"
+          >
+            Request briefing access →
+          </a>
         </motion.div>
       </div>
     </section>

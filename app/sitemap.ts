@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: 'https://pearllab.io/work/contractordocuments',
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: 'https://pearllab.io/work/ocala-elite-breed',
       lastModified: now,
       changeFrequency: 'monthly',
