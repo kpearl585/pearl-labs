@@ -1,14 +1,39 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+const title = "Why We Don't Do WordPress (And Why That's a Feature, Not a Bug)"
+const description = "Pearl Labs builds custom Next.js sites — not WordPress. Here's exactly why, and what you get instead."
+const datePublished = '2026-02-15T00:00:00.000Z'
+const dateModified = '2026-02-15T00:00:00.000Z'
+const url = 'https://pearllab.io/blog/why-not-wordpress'
+
 export const metadata: Metadata = {
-  title: 'Why We Don\'t Do WordPress (And Why That\'s a Feature, Not a Bug) — Pearl Labs',
-  description: 'Pearl Labs builds custom Next.js sites — not WordPress. Here\'s exactly why, and what you get instead.',
+  title: `${title} — Pearl Labs`,
+  description,
+  alternates: { canonical: url },
+  openGraph: { title, description, url, type: 'article', publishedTime: datePublished },
+}
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished,
+  dateModified,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  author: { '@type': 'Person', name: 'Keegan Pearl', url: 'https://pearllab.io' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Pearl Labs',
+    url: 'https://pearllab.io',
+  },
 }
 
 export default function WhyNotWordPress() {
   return (
     <article className="pt-20 pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <div className="max-w-[720px] mx-auto px-6">
 
         {/* Back link */}

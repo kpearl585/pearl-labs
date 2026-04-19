@@ -1,14 +1,35 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+const title = "What's the ROI of a Professional Website for a Small Business?"
+const description = "A professional website pays for itself many times over. Here's the real ROI math for small businesses investing in their online presence."
+const datePublished = '2026-02-20T00:00:00.000Z'
+const dateModified = '2026-02-20T00:00:00.000Z'
+const url = 'https://pearllab.io/blog/website-roi-for-small-business'
+
 export const metadata: Metadata = {
-  title: "What's the ROI of a Professional Website for a Small Business? — Pearl Labs",
-  description: 'A professional website pays for itself many times over. Here\'s the real ROI math for small businesses investing in their online presence.',
+  title: `${title} — Pearl Labs`,
+  description,
+  alternates: { canonical: url },
+  openGraph: { title, description, url, type: 'article', publishedTime: datePublished },
+}
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished,
+  dateModified,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  author: { '@type': 'Person', name: 'Keegan Pearl', url: 'https://pearllab.io' },
+  publisher: { '@type': 'Organization', name: 'Pearl Labs', url: 'https://pearllab.io' },
 }
 
 export default function ArticlePage() {
   return (
     <article className="pt-20 pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <div className="max-w-[720px] mx-auto px-6">
 
         {/* Back link */}

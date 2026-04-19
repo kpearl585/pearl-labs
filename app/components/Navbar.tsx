@@ -52,10 +52,10 @@ export default function Navbar() {
           <PearlLogo />
         </a>
         <div className="nav__links">
-          <a href="#services" className="nav__link">Services</a>
-          <a href="#advisory" className="nav__link">Advisory</a>
-          <a href="#proof" className="nav__link">Work</a>
-          <a href="#process" className="nav__link">Process</a>
+          <a href="/#services" className="nav__link">Services</a>
+          <a href="/#proof" className="nav__link">Work</a>
+          <a href="/blog" className="nav__link">Notes</a>
+          <a href="/for-small-business" className="nav__link">Small Business</a>
           <button onClick={openModal} className="nav__cta">REQUEST A BRIEF</button>
         </div>
       </div>

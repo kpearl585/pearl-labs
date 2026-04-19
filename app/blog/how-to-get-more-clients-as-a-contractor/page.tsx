@@ -1,14 +1,35 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+const title = 'How Florida Contractors Get More Clients Without Paying for Ads'
+const description = "Florida contractors are winning more jobs without ad spend by optimizing Google Business Profile, building referral systems, and creating credible websites. Here's exactly how."
+const datePublished = '2026-02-25T00:00:00.000Z'
+const dateModified = '2026-02-25T00:00:00.000Z'
+const url = 'https://pearllab.io/blog/how-to-get-more-clients-as-a-contractor'
+
 export const metadata: Metadata = {
-  title: 'How Florida Contractors Get More Clients Without Paying for Ads — Pearl Labs',
-  description: 'Florida contractors are winning more jobs without ad spend by optimizing Google Business Profile, building referral systems, and creating credible websites. Here\'s exactly how.',
+  title: `${title} — Pearl Labs`,
+  description,
+  alternates: { canonical: url },
+  openGraph: { title, description, url, type: 'article', publishedTime: datePublished },
+}
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished,
+  dateModified,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  author: { '@type': 'Person', name: 'Keegan Pearl', url: 'https://pearllab.io' },
+  publisher: { '@type': 'Organization', name: 'Pearl Labs', url: 'https://pearllab.io' },
 }
 
 export default function ArticlePage() {
   return (
     <article className="pt-20 pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <div className="max-w-[720px] mx-auto px-6">
 
         {/* Back link */}
