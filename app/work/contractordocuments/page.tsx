@@ -71,7 +71,7 @@ export default function ContractorDocumentsPage() {
               { label: 'Client', value: 'Pearl Ventures' },
               { label: 'Industry', value: 'Construction' },
               { label: 'Stack', value: 'Next.js / Stripe / jsPDF' },
-              { label: 'Status', value: 'Live, active development' },
+              { label: 'Status', value: 'Live SaaS · contractordocuments.com' },
             ].map(item => (
               <div key={item.label} className="p-5" style={{ background: 'rgba(255,255,255,0.015)' }}>
                 <div className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/20 mb-1.5">{item.label}</div>

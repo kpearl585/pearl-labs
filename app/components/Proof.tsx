@@ -7,30 +7,39 @@ import { useRef } from 'react'
 
 const work = [
   {
-    name: 'Ocala Elite Breed',
-    type: 'Youth Sports Organization',
-    desc: 'From expired Squarespace to a site they own — built in seven days. Seven pages, sponsor tiers, zero recurring fees.',
-    href: '/work/ocala-elite-breed',
-    internal: true,
-    image: '/oeb-hero.png',
-    label: 'Read case study →',
-  },
-  {
     name: 'FenceEstimatePro',
-    type: 'Contractor SaaS Platform',
-    desc: 'Full SaaS platform for fence contractors. Estimates, job tracking, customer portals, digital signatures, Stripe billing. Built from scratch.',
+    type: 'SaaS Platform',
+    liveDomain: 'fenceestimatepro.com',
+    desc: 'Full SaaS platform for fence contractors. Estimates, job tracking, customer portals, digital signatures, Stripe billing. Shipping weekly.',
     href: '/work/fenceestimatepro',
     internal: true,
     image: null,
+    isLive: true,
+    isSaas: true,
     label: 'Read case study →',
   },
   {
     name: 'ContractorDocuments',
-    type: 'Document Commerce Platform',
-    desc: 'A commerce platform for contractor paperwork. Buy the document. Autofill with your company data. Download a legally drafted PDF in under a minute.',
+    type: 'Document Commerce SaaS',
+    liveDomain: 'contractordocuments.com',
+    desc: 'Commerce platform for contractor paperwork. Buy the document. Autofill with your company data. Download a legally drafted PDF in under a minute.',
     href: '/work/contractordocuments',
     internal: true,
     image: null,
+    isLive: true,
+    isSaas: true,
+    label: 'Read case study →',
+  },
+  {
+    name: 'Ocala Elite Breed',
+    type: 'Youth Sports Organization',
+    liveDomain: 'ocalaelitebreed.com',
+    desc: 'From expired Squarespace to a site they own — built in days. Seven pages, sponsor tiers, zero recurring fees. Recently relaunched.',
+    href: '/work/ocala-elite-breed',
+    internal: true,
+    image: '/oeb-hero.png',
+    isLive: true,
+    isSaas: false,
     label: 'Read case study →',
   },
 ]
@@ -82,7 +91,7 @@ export default function Proof() {
           transition={{ delay: 0.1 }}
         >
           <p>
-            Pearl Labs is the engineering arm of Pearl Ventures. We build production systems for clients, and for our own portfolio of software products. Every one of these is live, shipping, and owned by the operator running it.
+            Pearl Labs is the engineering arm of Pearl Ventures. We build custom software for clients and ship our own SaaS products. FenceEstimatePro and ContractorDocuments are live SaaS in our portfolio, not case-study concepts. Every system below is in production today.
           </p>
         </motion.div>
 
@@ -112,6 +121,12 @@ export default function Proof() {
                       <span className="proof__work-card__placeholder-label">{w.type}</span>
                       <span className="proof__work-card__placeholder-name">{w.name}</span>
                     </div>
+                  )}
+                  {w.isLive && (
+                    <span className="proof__live-badge">
+                      <span className="proof__live-badge__dot" />
+                      Live · {w.liveDomain}
+                    </span>
                   )}
                 </div>
                 <div className="proof__work-card__body">

@@ -866,7 +866,13 @@ section { padding-block: var(--space-24); position: relative; z-index: 1; }
 .proof__work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-bottom: var(--space-16); }
 .proof__work-card { display: flex; flex-direction: column; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; transition: all 400ms; height: 100%; }
 .proof__work-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
-.proof__work-card__visual { background: var(--bg); aspect-ratio: 16 / 10; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.proof__work-card__visual { background: var(--bg); aspect-ratio: 16 / 10; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; }
+.proof__live-badge { position: absolute; top: var(--space-3); right: var(--space-3); display: inline-flex; align-items: center; gap: var(--space-2); padding: 6px 10px; background: rgba(10, 15, 30, 0.8); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 100px; font-family: var(--font-mono), ui-monospace, monospace; font-size: 10px; color: var(--text-primary); letter-spacing: 0.04em; text-transform: lowercase; font-variant-numeric: tabular-nums; z-index: 2; }
+.proof__live-badge__dot { width: 6px; height: 6px; border-radius: 50%; background: #5BE39A; box-shadow: 0 0 0 2px rgba(91, 227, 154, 0.25); animation: proof-live-pulse 2.4s ease-in-out infinite; flex-shrink: 0; }
+@keyframes proof-live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
 .proof__work-card__placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, rgba(46,107,255,0.12), rgba(46,107,255,0.02)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-6); text-align: center; }
 .proof__work-card__placeholder-label { font-size: var(--text-xs); color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
 .proof__work-card__placeholder-name { font-size: var(--text-h2); font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em; }
