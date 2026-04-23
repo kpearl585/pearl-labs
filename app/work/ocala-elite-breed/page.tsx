@@ -42,7 +42,7 @@ export default function OcalaEliteBreed() {
               { label: 'Client', value: 'Ocala Elite Breed' },
               { label: 'Industry', value: 'Youth Sports' },
               { label: 'Stack', value: 'Next.js / Tailwind / Vercel' },
-              { label: 'Status', value: 'Live' },
+              { label: 'Status', value: 'Live · ocalaelitebreed.com' },
             ].map(item => (
               <div key={item.label} className="p-5" style={{ background: 'rgba(255,255,255,0.015)' }}>
                 <div className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/20 mb-1.5">{item.label}</div>
@@ -52,7 +52,7 @@ export default function OcalaEliteBreed() {
           </div>
 
           <div className="flex items-center gap-5">
-            <a href="https://oeb-website.vercel.app" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.ocalaelitebreed.com" target="_blank" rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 bg-white text-[#0A0F1E] font-semibold px-5 py-2.5 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]">
               View Live Site
               <ArrowRight className="w-3.5 h-3.5" />
