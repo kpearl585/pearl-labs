@@ -1,22 +1,24 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
 
-function PearlLogo({ height = 32, id = 'nPG' }: { height?: number; id?: string }) {
+function PearlLogo({ height = 28 }: { height?: number }) {
   return (
-    <svg height={height} viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <radialGradient id={id} cx="40%" cy="35%" r="50%">
-          <stop offset="0%" stopColor="#FFF" stopOpacity="0.95" />
-          <stop offset="30%" stopColor="#E8EDF5" stopOpacity="0.6" />
-          <stop offset="60%" stopColor="#C4D4F0" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#2E6BFF" stopOpacity="0.05" />
-        </radialGradient>
-      </defs>
-      <circle cx="32" cy="32" r="18" stroke="#2E6BFF" strokeWidth="2.5" fill="none" />
-      <circle cx="32" cy="32" r="11" fill={`url(#${id})`} opacity="0.85" />
-      <text x="64" y="40" fontSize="24" fill="#F1F5F9" fontFamily="Inter,Arial,sans-serif" fontWeight="600">PEARL LABS</text>
-    </svg>
+    <span className="pl-logo" style={{ height }}>
+      <Image
+        src="/logo-eclipse-icon.png"
+        alt=""
+        width={height}
+        height={height}
+        className="pl-logo__mark"
+        style={{ width: height, height: height }}
+      />
+      <span className="pl-logo__wordmark">
+        <span className="pl-logo__pearl">PEARL</span>
+        <span className="pl-logo__labs">LABS</span>
+      </span>
+    </span>
   )
 }
 

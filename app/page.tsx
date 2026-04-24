@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import TrustBar from './components/TrustBar'
+import Capabilities from './components/Capabilities'
 import Services from './components/Services'
 import Advisory from './components/Advisory'
 import Proof from './components/Proof'
@@ -22,7 +22,7 @@ export default function Home() {
       <Navbar />
       <main id="main">
         <Hero />
-        <TrustBar />
+        <Capabilities />
         <Divider />
         <Services />
         <Divider />

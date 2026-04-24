@@ -1,5 +1,331 @@
 @import 'tailwindcss';
 
+/* ═══════════════════════════════════════
+   NIGHT OPS — cinematic hero + bento capabilities
+   Layered on top of the existing system. Uses its own tokens
+   (--teal, --graphite) alongside the existing palette.
+   ═══════════════════════════════════════ */
+:root {
+  --teal: #1FA2A9;
+  --teal-dim: rgba(31, 162, 169, 0.14);
+  --teal-bright: #5CC9D0;
+  --graphite: #0B1117;
+  --graphite-deep: #050a12;
+  --panel: #131E2A;
+  --arctic: #E6EDF3;
+  --arctic-dim: rgba(230, 237, 243, 0.62);
+  --arctic-soft: rgba(230, 237, 243, 0.78);
+  --steel-2: #8A97A8;
+  --line-strong: rgba(230, 237, 243, 0.16);
+}
+
+/* ───── Cinematic hero ───── */
+.cine-hero {
+  position: relative;
+  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--graphite-deep);
+  padding: 112px 0 96px;
+}
+.cine-hero-photo { position: absolute; inset: 0; z-index: 0; }
+.cine-hero-img {
+  object-fit: cover;
+  object-position: center 40%;
+  filter: saturate(0.9) contrast(1.05);
+}
+.cine-hero-vignette {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse at 30% 50%, transparent 20%, rgba(5, 10, 18, 0.85) 90%),
+    linear-gradient(180deg, rgba(5,10,18,0.2) 0%, transparent 30%, transparent 60%, rgba(5, 10, 18, 0.95) 100%),
+    linear-gradient(90deg, rgba(5,10,18,0.85) 0%, rgba(5,10,18,0.3) 40%, transparent 70%);
+}
+.cine-hero-gradient {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(14,24,34,0.8) 0%, transparent 15%);
+}
+.cine-hero-scan {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(31, 162, 169, 0.025) 50%);
+  background-size: 100% 4px;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+.cine-hero-hud { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.cine-corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border: 1px solid var(--line-strong);
+}
+.cine-corner--tl { top: 32px; left: 32px; border-right: 0; border-bottom: 0; }
+.cine-corner--tr { top: 32px; right: 32px; border-left: 0; border-bottom: 0; }
+.cine-corner--bl { bottom: 32px; left: 32px; border-right: 0; border-top: 0; }
+.cine-corner--br { bottom: 32px; right: 32px; border-left: 0; border-top: 0; }
+.cine-hud-tick {
+  position: absolute;
+  font-size: 10px;
+  color: var(--arctic-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.8;
+  font-variant-numeric: tabular-nums;
+}
+.cine-hud-tick--l { top: 40px; left: 64px; }
+.cine-hud-tick--r { top: 40px; right: 64px; text-align: right; }
+@media (max-width: 767px) { .cine-hud-tick { display: none; } }
+
+.cine-hero-inner {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 1100px;
+  padding-top: 48px;
+}
+.cine-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arctic-dim);
+  background: rgba(11, 17, 23, 0.55);
+  backdrop-filter: blur(6px);
+  margin-bottom: 40px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.cine-kicker-mark { filter: brightness(1.15); }
+.cine-h1 {
+  font-family: var(--font-display), 'Space Grotesk', -apple-system, sans-serif;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--arctic);
+  margin-bottom: 28px;
+  text-transform: none;
+}
+.cine-accent {
+  font-style: italic;
+  background: linear-gradient(135deg, #7BB7F5 0%, #3B82F6 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+}
+.cine-lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--arctic-soft);
+  max-width: 700px;
+  margin: 0 auto 44px;
+}
+.cine-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.cine-btn-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 28px;
+  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  transition: all 180ms;
+  box-shadow: 0 0 36px rgba(59, 130, 246, 0.3);
+}
+.cine-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 48px rgba(59, 130, 246, 0.45); }
+.cine-btn-primary .l1 { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2; text-transform: uppercase; }
+.cine-btn-primary .l2 { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; opacity: 0.82; margin-top: 2px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.cine-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: rgba(11, 17, 23, 0.4);
+  backdrop-filter: blur(6px);
+  color: var(--arctic);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: border-color 180ms, background 180ms;
+}
+.cine-btn-ghost:hover { border-color: var(--teal); background: rgba(31, 162, 169, 0.08); }
+
+.cine-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line-strong);
+  flex-wrap: wrap;
+}
+.cine-badges img {
+  height: 40px;
+  width: auto;
+  opacity: 0.85;
+  filter: brightness(1.05);
+  transition: opacity 200ms;
+}
+.cine-badges img:hover { opacity: 1; }
+
+.cine-scroll {
+  position: absolute;
+  right: 40px;
+  bottom: 56px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--arctic-dim);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.cine-scroll .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--line-strong), transparent); }
+@media (max-width: 767px) {
+  .cine-scroll { display: none; }
+  .cine-corner { width: 14px; height: 14px; }
+  .cine-corner--tl, .cine-corner--tr { top: 16px; }
+  .cine-corner--bl, .cine-corner--br { bottom: 16px; }
+  .cine-corner--tl, .cine-corner--bl { left: 16px; }
+  .cine-corner--tr, .cine-corner--br { right: 16px; }
+  .cine-badges { gap: 20px; padding-top: 28px; }
+  .cine-badges img { height: 30px; }
+  .cine-hero { min-height: 620px; }
+  .cine-hero-inner { padding-top: 16px; }
+}
+
+/* ───── Capabilities bento (4-card photo grid) ───── */
+.cap { padding: 120px 0 96px; }
+.cap-head { margin-bottom: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+.cap-head .eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--teal);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.cap-head .eyebrow::before { content: ''; }
+.cap-title {
+  font-family: var(--font-display), 'Space Grotesk', -apple-system, sans-serif;
+  font-size: clamp(32px, 4.2vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--arctic);
+  margin-top: 20px;
+}
+.cap-sub {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--arctic-soft);
+  max-width: 440px;
+  justify-self: end;
+}
+@media (max-width: 1023px) {
+  .cap-head { grid-template-columns: 1fr; gap: 24px; }
+  .cap-sub { justify-self: start; }
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 1023px) { .cap-grid { grid-template-columns: 1fr; } }
+.cap-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+  background: var(--graphite);
+  transition: border-color 300ms, transform 300ms;
+}
+.cap-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+.cap-card-img { position: absolute; inset: 0; z-index: 0; }
+.cap-card-img img { object-fit: cover; filter: saturate(0.85) contrast(1.05) brightness(0.85); }
+.cap-card-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(5,10,18,0.2) 0%, rgba(5,10,18,0.6) 50%, rgba(5,10,18,0.95) 100%);
+}
+.cap-card-body {
+  position: relative;
+  z-index: 2;
+  padding: 28px;
+}
+.cap-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(11, 17, 23, 0.72);
+  border: 1px solid var(--line-strong);
+  margin-bottom: 24px;
+  backdrop-filter: blur(6px);
+}
+.cap-card-icon img { filter: brightness(1.15); }
+.cap-card-kicker {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+.cap-card-title {
+  font-family: var(--font-display), 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--arctic);
+  margin-bottom: 12px;
+}
+.cap-card-copy {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--arctic-soft);
+  margin: 0;
+}
+
+/* Make sure global eyebrow // prefix doesn't double up on .cap eyebrows */
+.cap .eyebrow::before,
+.cine-kicker::before { content: ''; }
+
+/* Eclipse logo in nav/footer */
+.pl-logo { display: inline-flex; align-items: center; gap: 10px; line-height: 1; }
+.pl-logo__mark { flex-shrink: 0; }
+.pl-logo__wordmark { display: inline-flex; align-items: baseline; gap: 6px; font-size: 15px; font-weight: 600; letter-spacing: 0.08em; }
+.pl-logo__pearl { color: var(--arctic); }
+.pl-logo__labs { color: var(--steel-2); font-weight: 400; }
+
 /* ══════════════════════════════════════════════════════════
    PEARL LABS — Production CSS
    Source of truth: pearllab-tier1.html (verified template)
