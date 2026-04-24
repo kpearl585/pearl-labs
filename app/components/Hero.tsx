@@ -24,7 +24,7 @@ export default function Hero() {
     <section className="cine-hero" id="hero">
       <div className="cine-hero-photo">
         <Image
-          src="/photo-command-center.png"
+          src="/photo-ops-command.jpg"
           alt=""
           fill
           priority
@@ -109,18 +109,37 @@ export default function Hero() {
           </a>
         </motion.div>
 
+        {/* Credential badges — SCORE, U.S. Veteran, Florida. Restrained,
+            not a billboard. Real credentials earned, displayed quietly. */}
         <motion.div
-          className="cine-hero-proof"
+          className="cine-badges"
           custom={4}
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          aria-label="Pearl Labs operating model"
+          aria-label="Pearl Labs credentials"
         >
-          <span className="mono">Veteran Owned</span>
-          <span className="mono">Florida Based</span>
-          <span className="mono">Direct Builder Access</span>
-          <span className="mono">Full System Ownership</span>
+          <Image
+            src="/badge-score.png"
+            alt="SCORE Service Partner"
+            width={1307}
+            height={300}
+            className="cine-badge cine-badge--score"
+          />
+          <Image
+            src="/badge-veteran.png"
+            alt="U.S. Veteran Owned Business"
+            width={1800}
+            height={300}
+            className="cine-badge cine-badge--veteran"
+          />
+          <Image
+            src="/badge-florida.png"
+            alt="Florida Based Company"
+            width={955}
+            height={300}
+            className="cine-badge cine-badge--florida"
+          />
         </motion.div>
       </div>
 

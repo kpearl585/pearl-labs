@@ -42,20 +42,23 @@
 .cine-hero-photo { position: absolute; inset: 0; z-index: 0; }
 .cine-hero-img {
   object-fit: cover;
-  object-position: center 52%;
-  filter: saturate(0.82) contrast(1.1) brightness(0.86);
+  object-position: center 45%;
+  filter: saturate(0.92) contrast(1.06);
 }
-/* Vignette tuned for photo-command-center.png:
-   - Heavy left-column darkening anchors the left-aligned text block
-   - Soft central radial pulls the photo center back a half-stop so the
-     world-map light-bleed doesn't compete with the headline
-   - Bottom floor lands the CTAs + proof row on solid graphite */
+/* Vignette tuned for photo-ops-command.jpg:
+   - Blackhawk silhouette upper-left, horizon light-bleed mid,
+     operator monitors lower-center, data-mesh overlay upper-right
+   - Soft radial at 35/52 darkens the text-sit zone against the
+     horizon glow without killing the atmosphere
+   - Left-column linear clears by 70% so the data-mesh overlay on
+     the right stays legible
+   - Bottom floor lands CTAs + badges on solid graphite */
 .cine-hero-vignette {
   position: absolute; inset: 0; z-index: 1;
   background:
-    radial-gradient(ellipse at 30% 55%, rgba(5, 10, 18, 0.55) 0%, rgba(5, 10, 18, 0) 58%),
-    linear-gradient(90deg, rgba(5, 10, 18, 0.92) 0%, rgba(5, 10, 18, 0.7) 40%, rgba(5, 10, 18, 0.22) 72%, rgba(5, 10, 18, 0.55) 100%),
-    linear-gradient(180deg, rgba(5, 10, 18, 0.55) 0%, rgba(5, 10, 18, 0.12) 32%, rgba(5, 10, 18, 0.5) 68%, rgba(5, 10, 18, 0.9) 100%);
+    radial-gradient(ellipse at 35% 52%, rgba(5, 10, 18, 0.5) 0%, rgba(5, 10, 18, 0) 55%),
+    linear-gradient(90deg, rgba(5, 10, 18, 0.8) 0%, rgba(5, 10, 18, 0.48) 38%, rgba(5, 10, 18, 0.18) 70%, rgba(5, 10, 18, 0.44) 100%),
+    linear-gradient(180deg, rgba(5, 10, 18, 0.42) 0%, rgba(5, 10, 18, 0.06) 32%, rgba(5, 10, 18, 0.42) 68%, rgba(5, 10, 18, 0.9) 100%);
 }
 .cine-hero-gradient {
   position: absolute; inset: 0; z-index: 1;
@@ -179,9 +182,11 @@
   transition: border-color 180ms, background 180ms;
 }
 .cine-btn-ghost:hover { border-color: rgba(31, 162, 169, 0.5); background: rgba(31, 162, 169, 0.08); }
-/* Credentials row — dot-separated defense typography. No pill borders,
-   no marketing chrome. Teal dot marker whispers the brand accent. */
-.cine-hero-proof {
+/* Credentials row — SCORE, U.S. Veteran, Florida image badges.
+   Restrained size (38px) + subtle opacity so they read as earned
+   credentials, not billboards. Hairline top separator anchors the
+   strip as a distinct block below the CTAs. */
+.cine-badges {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -189,29 +194,20 @@
   padding-top: 28px;
   border-top: 1px solid var(--line-strong);
   max-width: 880px;
-  column-gap: 26px;
-  row-gap: 12px;
+  column-gap: 48px;
+  row-gap: 16px;
 }
-.cine-hero-proof span {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--arctic-dim);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  line-height: 1;
+.cine-badges img {
+  height: 38px;
+  width: auto;
+  opacity: 0.78;
+  transition: opacity 200ms, filter 200ms;
 }
-.cine-hero-proof span::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  background: var(--teal);
-  border-radius: 50%;
-  opacity: 0.9;
-  flex-shrink: 0;
-  box-shadow: 0 0 8px rgba(31, 162, 169, 0.55);
-}
+.cine-badges img:hover { opacity: 1; }
+/* Veteran logo ships in navy — lift it on dark graphite so it reads
+   at the same visual weight as the SCORE + Florida steel-blue marks,
+   without blowing out to pure white (earlier 1.6 was too hot). */
+.cine-badge--veteran { filter: brightness(1.35) saturate(0.95); }
 .cine-scroll {
   position: absolute;
   right: 40px;
@@ -245,8 +241,8 @@
   .cine-ctas > * { width: 100%; justify-content: center; align-items: center; text-align: center; }
   .cine-btn-primary { align-items: center; }
   .cine-btn-primary .l2 { justify-content: center; }
-  .cine-hero-proof { column-gap: 18px; row-gap: 10px; margin-top: 32px; padding-top: 22px; justify-content: flex-start; }
-  .cine-hero-proof span { font-size: 10px; letter-spacing: 0.16em; }
+  .cine-badges { column-gap: 28px; row-gap: 14px; margin-top: 32px; padding-top: 22px; justify-content: flex-start; }
+  .cine-badges img { height: 28px; }
 }
 
 /* ───── Capabilities bento (4-card photo grid) ───── */
@@ -1699,13 +1695,21 @@ html:has(.homepage-nightops) { background: var(--graphite); }
 /* FOUNDER */
 .homepage-nightops .founder-grid {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 56px;
+  grid-template-columns: auto 1fr;
+  gap: 64px;
   align-items: center;
 }
-@media (max-width: 1000px) { .homepage-nightops .founder-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) {
+  .homepage-nightops .founder-grid { grid-template-columns: 1fr; gap: 40px; }
+  .homepage-nightops .founder-visual { max-width: 360px; justify-self: start; }
+}
+/* Panel aspect matches the source (2:3) so no objectFit crop-zoom,
+   and max-width caps the display close to the source's native 2x
+   retina so we're never stretching the bitmap beyond what it supports. */
 .homepage-nightops .founder-visual {
-  aspect-ratio: 4/5;
+  aspect-ratio: 213 / 320;
+  max-width: 400px;
+  width: 100%;
   border: 1px solid var(--line-strong);
   background: linear-gradient(180deg, #0E1822 0%, #070B11 100%);
   position: relative;

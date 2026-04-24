@@ -39,8 +39,9 @@ export default function Founder() {
             <Image
               src="/founder.png"
               alt="Keegan Pearl, founder of Pearl Labs"
-              width={480}
-              height={600}
+              width={426}
+              height={640}
+              sizes="(max-width: 1000px) 360px, 400px"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               priority
             />
