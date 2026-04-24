@@ -1,11 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Check, Loader2 } from 'lucide-react'
+import { useState, useCallback } from 'react'
 import Link from 'next/link'
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
+import NightOpsIcon from '@/app/components/NightOpsIcon'
 
 const PROJECT_TYPES = [
   'Custom Website',
@@ -33,12 +32,14 @@ const BUDGETS = [
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
-export default function EstimatePage() {
-  const reduce = useReducedMotion()
-  const ease = [0.22, 1, 0.36, 1] as const
+function generateRef(): string {
+  return 'PL-' + Date.now().toString(36).toUpperCase().slice(-6)
+}
 
+export default function EstimatePage() {
   const [state, setState] = useState<FormState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [refCode, setRefCode] = useState('')
   const [form, setForm] = useState({
     name: '',
     company: '',
@@ -51,7 +52,7 @@ export default function EstimatePage() {
 
   const set = (key: string, val: string) => setForm(prev => ({ ...prev, [key]: val }))
 
-  async function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setState('submitting')
     setErrorMsg('')
@@ -68,8 +69,8 @@ export default function EstimatePage() {
           message: [
             form.company && `Company: ${form.company}`,
             `Project type: ${form.projectType}`,
-            `Timeline: ${form.timeline}`,
-            `Budget: ${form.budget}`,
+            `Timeline: ${form.timeline || 'Not specified'}`,
+            `Budget: ${form.budget || 'Not specified'}`,
             '',
             form.brief,
           ].filter(Boolean).join('\n'),
@@ -77,215 +78,170 @@ export default function EstimatePage() {
       })
 
       if (!res.ok) {
-        const data = await res.json()
+        const data = await res.json().catch(() => ({}))
         throw new Error(data.error || 'Something went wrong.')
       }
 
+      setRefCode(generateRef())
       setState('success')
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : 'Failed to send. Please email hello@pearllab.io directly.')
+      setErrorMsg(err instanceof Error ? err.message : 'Failed to send. Please email keegan@pearllab.io directly.')
       setState('error')
     }
-  }
+  }, [form])
+
+  const disabled = state === 'submitting' || !form.name || !form.email || !form.projectType || !form.brief
 
   return (
-    <div className="bg-[#0A0F1E] min-h-screen overflow-x-hidden">
+    <div className="case-page">
       <Navbar />
 
-      <main className="pt-28 lg:pt-32 pb-28 lg:pb-36 px-6">
-        <div className="max-w-[720px] mx-auto">
-
-          {/* Header */}
-          <motion.div className="mb-12"
-            initial={{ opacity: 0, y: reduce ? 0 : 16 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease }}>
-            <Link href="/" className="text-[13px] text-white/25 hover:text-white/45 transition-colors duration-200 inline-flex items-center gap-1.5 mb-10">
-              &larr; Back
-            </Link>
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-white/25" />
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.15em] text-white/40">
-                Project Inquiry
-              </span>
-            </div>
-            <h1 className="font-display font-semibold text-white tracking-[-0.035em] leading-[1.05] mb-4"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
-              Get an estimate.
-            </h1>
-            <p className="text-[15px] leading-[1.7] text-white/38 max-w-[480px]">
-              Tell us about your project. We&apos;ll respond within 48 hours with a scope assessment and estimate.
-            </p>
-          </motion.div>
-
-          {/* Success state */}
-          {state === 'success' ? (
-            <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease }}
-              className="rounded-xl p-10 text-center"
-              style={{ background: 'rgba(52,211,153,0.04)', border: '1px solid rgba(52,211,153,0.12)' }}>
-              <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-5">
-                <Check className="w-5 h-5 text-emerald-400" />
-              </div>
-              <h2 className="font-display font-semibold text-white text-xl tracking-tight mb-2">Inquiry sent.</h2>
-              <p className="text-[14px] text-white/40 mb-6">
-                We&apos;ll review your project and respond within 48 hours.
-              </p>
-              <Link href="/" className="text-[13px] font-medium text-white/30 hover:text-white/55 transition-colors">
-                &larr; Back to Pearl Labs
-              </Link>
-            </motion.div>
-          ) : (
-            /* Form */
-            <motion.form onSubmit={handleSubmit}
-              initial={{ opacity: 0, y: reduce ? 0 : 12 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease }}
-              className="space-y-6">
-
-              {/* Name + Company — side by side */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Name" required>
-                  <input type="text" required value={form.name} onChange={e => set('name', e.target.value)}
-                    placeholder="Your name" className="input-field" />
-                </Field>
-                <Field label="Company">
-                  <input type="text" value={form.company} onChange={e => set('company', e.target.value)}
-                    placeholder="Optional" className="input-field" />
-                </Field>
-              </div>
-
-              {/* Email */}
-              <Field label="Email" required>
-                <input type="email" required value={form.email} onChange={e => set('email', e.target.value)}
-                  placeholder="you@company.com" className="input-field" />
-              </Field>
-
-              {/* Project type — chip select */}
-              <Field label="Project type" required>
-                <div className="flex flex-wrap gap-2">
-                  {PROJECT_TYPES.map(t => (
-                    <button key={t} type="button" onClick={() => set('projectType', t)}
-                      className={`text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                        form.projectType === t
-                          ? 'bg-white text-[#0A0F1E]'
-                          : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
-                      }`}
-                      style={form.projectType !== t ? { border: '1px solid rgba(255,255,255,0.06)' } : { border: '1px solid transparent' }}>
-                      {t}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-
-              {/* Timeline — chip select */}
-              <Field label="Timeline">
-                <div className="flex flex-wrap gap-2">
-                  {TIMELINES.map(t => (
-                    <button key={t} type="button" onClick={() => set('timeline', t)}
-                      className={`text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                        form.timeline === t
-                          ? 'bg-white text-[#0A0F1E]'
-                          : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
-                      }`}
-                      style={form.timeline !== t ? { border: '1px solid rgba(255,255,255,0.06)' } : { border: '1px solid transparent' }}>
-                      {t}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-
-              {/* Budget — chip select */}
-              <Field label="Budget range">
-                <div className="flex flex-wrap gap-2">
-                  {BUDGETS.map(b => (
-                    <button key={b} type="button" onClick={() => set('budget', b)}
-                      className={`text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
-                        form.budget === b
-                          ? 'bg-white text-[#0A0F1E]'
-                          : 'text-white/40 hover:text-white/60 hover:bg-white/[0.04]'
-                      }`}
-                      style={form.budget !== b ? { border: '1px solid rgba(255,255,255,0.06)' } : { border: '1px solid transparent' }}>
-                      {b}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-
-              {/* Brief */}
-              <Field label="Project brief" required>
-                <textarea required value={form.brief} onChange={e => set('brief', e.target.value)}
-                  placeholder="What are you building? What problem does it solve? Any specific requirements?"
-                  rows={4} className="input-field resize-none" />
-              </Field>
-
-              {/* Error */}
-              {state === 'error' && (
-                <div className="text-[13px] text-red-400/80 p-3 rounded-lg"
-                  style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.12)' }}>
-                  {errorMsg}
-                </div>
-              )}
-
-              {/* Submit */}
-              <div className="pt-2">
-                <button type="submit" disabled={state === 'submitting' || !form.name || !form.email || !form.projectType || !form.brief}
-                  className="btn-glow group inline-flex items-center gap-2 bg-white text-[#0A0F1E] font-semibold px-6 py-3 rounded-lg text-[14px] transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.12)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none">
-                  {state === 'submitting' ? (
-                    <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Submit Inquiry
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                    </>
-                  )}
-                </button>
-              </div>
-
-              <p className="text-[11px] text-white/16 pt-2">
-                We respond to every inquiry within 48 hours. No spam, no sales sequences.
-              </p>
-            </motion.form>
-          )}
+      <section className="case-hero">
+        <div className="container">
+          <Link href="/" className="case-back">← Back to Pearl Labs</Link>
+          <div className="case-hero-cat">Project Inquiry · 48-Hour Brief</div>
+          <h1>Get an estimate.</h1>
+          <p className="case-hero-lead" style={{ maxWidth: 620 }}>
+            Tell us about your project. We&apos;ll respond within two business days with a scoped plan and fixed-fee estimate. No sales sequences, no ghosting.
+          </p>
         </div>
-      </main>
+      </section>
+
+      <section id="form" className="section-narrow">
+        <div className="container">
+          <div className="smb-form-wrap">
+            {state === 'success' ? (
+              <div className="smb-form-success">
+                <span className="eyebrow-teal">// Received</span>
+                <h3 style={{ marginTop: 12 }}>Inquiry received.</h3>
+                <p>We&apos;ll review your project and respond within two business days with a scoped plan.</p>
+                <div style={{ marginTop: 28, paddingTop: 20, borderTop: '1px solid var(--line-strong)', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--steel-2)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                  Ref // {refCode}
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="smb-form">
+                <div className="brief-form-header">
+                  <span>// Intake Form · Estimate</span>
+                  <span className="brief-form-channel">
+                    <span className="brief-form-channel-dot" />
+                    48-Hour Response
+                  </span>
+                </div>
+
+                <div className="smb-form-row">
+                  <div className="smb-field">
+                    <label>Name *</label>
+                    <input
+                      type="text"
+                      value={form.name}
+                      onChange={e => set('name', e.target.value)}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div className="smb-field">
+                    <label>Company</label>
+                    <input
+                      type="text"
+                      value={form.company}
+                      onChange={e => set('company', e.target.value)}
+                      placeholder="Optional"
+                    />
+                  </div>
+                </div>
+
+                <div className="smb-field">
+                  <label>Email *</label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={e => set('email', e.target.value)}
+                    placeholder="you@company.com"
+                    required
+                  />
+                </div>
+
+                <div className="smb-field">
+                  <label>Project type *</label>
+                  <div className="chip-row">
+                    {PROJECT_TYPES.map(t => (
+                      <button
+                        key={t}
+                        type="button"
+                        onClick={() => set('projectType', t)}
+                        className={`chip${form.projectType === t ? ' chip--active' : ''}`}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="smb-field">
+                  <label>Timeline</label>
+                  <div className="chip-row">
+                    {TIMELINES.map(t => (
+                      <button
+                        key={t}
+                        type="button"
+                        onClick={() => set('timeline', t)}
+                        className={`chip${form.timeline === t ? ' chip--active' : ''}`}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="smb-field">
+                  <label>Budget range</label>
+                  <div className="chip-row">
+                    {BUDGETS.map(b => (
+                      <button
+                        key={b}
+                        type="button"
+                        onClick={() => set('budget', b)}
+                        className={`chip${form.budget === b ? ' chip--active' : ''}`}
+                      >
+                        {b}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="smb-field">
+                  <label>Project brief *</label>
+                  <textarea
+                    value={form.brief}
+                    onChange={e => set('brief', e.target.value)}
+                    placeholder="What are you building? What problem does it solve? Any specific requirements?"
+                    rows={6}
+                    required
+                  />
+                </div>
+
+                {state === 'error' && <p className="smb-form-error">{errorMsg}</p>}
+
+                <button
+                  type="submit"
+                  disabled={disabled}
+                  className="case-btn case-btn-primary"
+                  style={{ width: '100%', justifyContent: 'center' }}
+                >
+                  {state === 'submitting' ? 'Sending...' : 'Submit Inquiry'}
+                  {state !== 'submitting' && <NightOpsIcon name="arrow-right" size={14} />}
+                </button>
+                <p className="smb-form-disclaimer">
+                  Two-business-day response. No spam, no sales sequences.
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
 
       <Footer />
-
-      <style jsx>{`
-        .input-field {
-          width: 100%;
-          background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(255,255,255,0.06);
-          border-radius: 0.5rem;
-          padding: 0.625rem 0.875rem;
-          color: rgba(255,255,255,0.85);
-          font-size: 14px;
-          font-family: inherit;
-          outline: none;
-          transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .input-field::placeholder {
-          color: rgba(255,255,255,0.18);
-        }
-        .input-field:focus {
-          border-color: rgba(46,107,255,0.4);
-          box-shadow: 0 0 0 3px rgba(46,107,255,0.08);
-        }
-      `}</style>
-    </div>
-  )
-}
-
-function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
-  return (
-    <div>
-      <label className="block text-[12px] font-medium text-white/35 mb-2">
-        {label}{required && <span className="text-white/20 ml-0.5">*</span>}
-      </label>
-      {children}
     </div>
   )
 }

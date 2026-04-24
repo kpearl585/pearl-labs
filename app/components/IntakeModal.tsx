@@ -160,7 +160,7 @@ export default function IntakeModal() {
                   {errorMsg}
                 </p>
               )}
-              <button type="submit" disabled={state === 'submitting'} className="btn-primary modal__submit">
+              <button type="submit" disabled={state === 'submitting'} className="modal__submit-btn">
                 {state === 'submitting' ? 'SENDING...' : 'REQUEST A BRIEF'}
               </button>
             </form>

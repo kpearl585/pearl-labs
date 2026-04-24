@@ -52,20 +52,20 @@ export async function POST(req: NextRequest) {
       replyTo: email,
       subject: `${service ? `[${service}]` : '[Inquiry]'} ${name} — Pearl Labs`,
       html: `
-        <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; background: #0A0F1E; color: #F1F5F9; padding: 2rem; border-radius: 12px;">
-          <div style="font-size: 11px; color: #2E6BFF; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 1.5rem;">New Inquiry</div>
+        <div style="font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; background: #0B1117; color: #E6EDF3; padding: 2rem; border-radius: 4px; border: 1px solid rgba(230,237,243,0.16);">
+          <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #1FA2A9; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 1.5rem;">// New Inquiry</div>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem;">
-            <tr><td style="padding: 6px 0; color: #94A3B8; font-size: 12px; width: 100px;">Name</td><td style="padding: 6px 0; color: #F1F5F9; font-size: 14px;">${name}</td></tr>
-            <tr><td style="padding: 6px 0; color: #94A3B8; font-size: 12px;">Email</td><td style="padding: 6px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #2E6BFF; text-decoration: none;">${email}</a></td></tr>
-            ${phone ? `<tr><td style="padding: 6px 0; color: #94A3B8; font-size: 12px;">Phone</td><td style="padding: 6px 0; font-size: 14px;"><a href="tel:${phone}" style="color: #2E6BFF; text-decoration: none;">${phone}</a></td></tr>` : ''}
-            ${service ? `<tr><td style="padding: 6px 0; color: #94A3B8; font-size: 12px;">Type</td><td style="padding: 6px 0; color: #F1F5F9; font-size: 14px;">${service}</td></tr>` : ''}
-            ${budget ? `<tr><td style="padding: 6px 0; color: #94A3B8; font-size: 12px;">Budget</td><td style="padding: 6px 0; color: #F1F5F9; font-size: 14px;">${budget}</td></tr>` : ''}
+            <tr><td style="padding: 6px 0; color: #8A97A8; font-size: 12px; width: 100px;">Name</td><td style="padding: 6px 0; color: #E6EDF3; font-size: 14px;">${name}</td></tr>
+            <tr><td style="padding: 6px 0; color: #8A97A8; font-size: 12px;">Email</td><td style="padding: 6px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #1FA2A9; text-decoration: none;">${email}</a></td></tr>
+            ${phone ? `<tr><td style="padding: 6px 0; color: #8A97A8; font-size: 12px;">Phone</td><td style="padding: 6px 0; font-size: 14px;"><a href="tel:${phone}" style="color: #1FA2A9; text-decoration: none;">${phone}</a></td></tr>` : ''}
+            ${service ? `<tr><td style="padding: 6px 0; color: #8A97A8; font-size: 12px;">Type</td><td style="padding: 6px 0; color: #E6EDF3; font-size: 14px;">${service}</td></tr>` : ''}
+            ${budget ? `<tr><td style="padding: 6px 0; color: #8A97A8; font-size: 12px;">Budget</td><td style="padding: 6px 0; color: #E6EDF3; font-size: 14px;">${budget}</td></tr>` : ''}
           </table>
-          <div style="border-top: 1px solid rgba(46,107,255,0.15); padding-top: 1rem;">
-            <div style="color: #94A3B8; font-size: 12px; margin-bottom: 0.5rem;">Brief</div>
-            <div style="color: #F1F5F9; font-size: 14px; line-height: 1.7; white-space: pre-wrap; background: rgba(46,107,255,0.05); border-left: 2px solid #2E6BFF; padding: 12px 16px; border-radius: 4px;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')}</div>
+          <div style="border-top: 1px solid rgba(230,237,243,0.16); padding-top: 1rem;">
+            <div style="color: #8A97A8; font-size: 12px; margin-bottom: 0.5rem;">Brief</div>
+            <div style="color: #E6EDF3; font-size: 14px; line-height: 1.7; white-space: pre-wrap; background: rgba(31,162,169,0.06); border-left: 2px solid #1FA2A9; padding: 12px 16px; border-radius: 0 4px 4px 0;">${message.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')}</div>
           </div>
-          <div style="margin-top: 1.5rem; color: #64748B; font-size: 11px;">via pearllab.io</div>
+          <div style="margin-top: 1.5rem; font-family: 'JetBrains Mono', ui-monospace, monospace; color: #5B6676; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">// via pearllab.io</div>
         </div>
       `,
     })
