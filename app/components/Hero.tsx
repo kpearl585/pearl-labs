@@ -24,7 +24,7 @@ export default function Hero() {
       {/* Cinematic full-bleed photo */}
       <div className="cine-hero-photo">
         <Image
-          src="/photo-chinook.png"
+          src="/photo-ops-command.jpg"
           alt=""
           fill
           priority
