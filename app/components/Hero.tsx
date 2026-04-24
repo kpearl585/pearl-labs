@@ -123,9 +123,27 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <Image src="/badge-score.png" alt="SCORE Service Partner" width={196} height={165} />
-          <Image src="/badge-veteran.png" alt="U.S. Veteran Owned Business" width={287} height={105} />
-          <Image src="/badge-florida.png" alt="Florida Based Company" width={258} height={113} />
+          <Image
+            src="/badge-score.png"
+            alt="SCORE Service Partner"
+            width={1307}
+            height={300}
+            className="cine-badge cine-badge--score"
+          />
+          <Image
+            src="/badge-veteran.png"
+            alt="U.S. Veteran Owned Business"
+            width={1800}
+            height={300}
+            className="cine-badge cine-badge--veteran"
+          />
+          <Image
+            src="/badge-florida.png"
+            alt="Florida Based Company"
+            width={955}
+            height={300}
+            className="cine-badge cine-badge--florida"
+          />
         </motion.div>
       </div>
 

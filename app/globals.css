@@ -171,19 +171,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  padding-top: 40px;
+  gap: 56px;
+  padding-top: 48px;
   border-top: 1px solid var(--line-strong);
   flex-wrap: wrap;
 }
 .cine-badges img {
-  height: 40px;
+  height: 72px;
   width: auto;
-  opacity: 0.85;
-  filter: brightness(1.05);
+  opacity: 0.95;
   transition: opacity 200ms;
 }
 .cine-badges img:hover { opacity: 1; }
+/* Veteran logo ships in navy — lift it on dark graphite so it reads
+   at the same visual weight as the SCORE + Florida steel-blue marks. */
+.cine-badge--veteran { filter: brightness(1.6) saturate(0.85); }
 
 .cine-scroll {
   position: absolute;
@@ -208,8 +210,8 @@
   .cine-corner--bl, .cine-corner--br { bottom: 16px; }
   .cine-corner--tl, .cine-corner--bl { left: 16px; }
   .cine-corner--tr, .cine-corner--br { right: 16px; }
-  .cine-badges { gap: 20px; padding-top: 28px; }
-  .cine-badges img { height: 30px; }
+  .cine-badges { gap: 32px; padding-top: 32px; }
+  .cine-badges img { height: 52px; }
   .cine-hero { min-height: 620px; }
   .cine-hero-inner { padding-top: 16px; }
 }
