@@ -40,9 +40,8 @@
 .cine-hero-vignette {
   position: absolute; inset: 0; z-index: 1;
   background:
-    radial-gradient(ellipse at 30% 50%, transparent 20%, rgba(5, 10, 18, 0.85) 90%),
-    linear-gradient(180deg, rgba(5,10,18,0.2) 0%, transparent 30%, transparent 60%, rgba(5, 10, 18, 0.95) 100%),
-    linear-gradient(90deg, rgba(5,10,18,0.85) 0%, rgba(5,10,18,0.3) 40%, transparent 70%);
+    radial-gradient(ellipse at 50% 40%, transparent 35%, rgba(5, 10, 18, 0.55) 100%),
+    linear-gradient(180deg, rgba(5,10,18,0.35) 0%, rgba(5,10,18,0.08) 25%, rgba(5,10,18,0.2) 60%, rgba(5, 10, 18, 0.88) 100%);
 }
 .cine-hero-gradient {
   position: absolute; inset: 0; z-index: 1;
@@ -319,12 +318,135 @@
 .cap .eyebrow::before,
 .cine-kicker::before { content: ''; }
 
+/* ───── Eclipse Quote section (full-bleed earth photo) ───── */
+.eclipse-quote {
+  position: relative;
+  min-height: 560px;
+  padding: 120px 0;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+}
+.eclipse-bg {
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+.eclipse-vignette {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse at 70% 80%, transparent 20%, rgba(5,10,18,0.7) 90%),
+    linear-gradient(180deg, rgba(5,10,18,0.5) 0%, transparent 30%, transparent 70%, rgba(5,10,18,0.92) 100%);
+}
+.eclipse-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+}
+.eclipse-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(92, 201, 208, 0.85);
+  margin-bottom: 32px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+.eclipse-eyebrow::before { content: ''; }
+.eclipse-quote blockquote {
+  font-family: var(--font-display), 'Space Grotesk', -apple-system, sans-serif;
+  font-size: clamp(32px, 4.5vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--arctic);
+  margin: 0 0 36px;
+  position: relative;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  text-wrap: balance;
+}
+.eclipse-quote .q-mark {
+  font-family: Georgia, serif;
+  color: #7dd8de;
+  font-size: 1.3em;
+  line-height: 0;
+  vertical-align: -0.2em;
+  margin-right: 0.1em;
+  text-shadow: 0 0 30px rgba(125, 216, 222, 0.5);
+}
+.eclipse-attrib {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(230, 237, 243, 0.7);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.eclipse-attrib .line {
+  width: 40px;
+  height: 1px;
+  background: rgba(92, 201, 208, 0.6);
+}
+
 /* Eclipse logo in nav/footer */
 .pl-logo { display: inline-flex; align-items: center; gap: 10px; line-height: 1; }
 .pl-logo__mark { flex-shrink: 0; }
 .pl-logo__wordmark { display: inline-flex; align-items: baseline; gap: 6px; font-size: 15px; font-weight: 600; letter-spacing: 0.08em; }
 .pl-logo__pearl { color: var(--arctic); }
 .pl-logo__labs { color: var(--steel-2); font-weight: 400; }
+
+/* ═══════════════════════════════════════
+   NIGHT OPS HOMEPAGE RESKIN
+   Scoped to `.homepage-nightops` so it only affects the
+   homepage. Subpages (/for-small-business, /briefing,
+   /work/*, /blog) keep the original Inter treatment.
+   ═══════════════════════════════════════ */
+.homepage-nightops .section-title,
+.homepage-nightops .cta__headline,
+.homepage-nightops .proof__name,
+.homepage-nightops .proof__sec-name,
+.homepage-nightops .proof__work-card__name,
+.homepage-nightops .svc-card__title,
+.homepage-nightops .commit-card__title,
+.homepage-nightops .founder__name,
+.homepage-nightops .adv-card__title {
+  font-family: var(--font-display), 'Space Grotesk', -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.homepage-nightops .section-label,
+.homepage-nightops .proof__additional-label,
+.homepage-nightops .proof__credential-label {
+  color: var(--teal);
+  letter-spacing: 0.22em;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 500;
+}
+
+.homepage-nightops .proof__credential-link,
+.homepage-nightops .btn-text,
+.homepage-nightops .advisory__smb-link a {
+  color: var(--teal);
+}
+
+.homepage-nightops .adv-card__num {
+  color: var(--teal);
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Teal accent line on top of service/advisory cards on hover */
+.homepage-nightops .svc-card::after,
+.homepage-nightops .adv-card::after {
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+}
+
+/* Sections stitch tighter on the Night Ops homepage */
+.homepage-nightops section { padding-block: var(--space-24); }
+.homepage-nightops .divider { margin-inline: auto; max-width: 1320px; }
 
 /* ══════════════════════════════════════════════════════════
    PEARL LABS — Production CSS
