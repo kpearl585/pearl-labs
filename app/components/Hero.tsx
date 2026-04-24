@@ -82,6 +82,23 @@ export default function Hero() {
   return (
     <section ref={heroRef} onMouseMove={onMouseMove} className="hero" id="hero">
       <div ref={glowRef} className="hero__glow" />
+
+      {/* HUD frame — operator-grade accents */}
+      <div className="hero__hud" aria-hidden="true">
+        <span className="hero__hud-corner hero__hud-corner--tl" />
+        <span className="hero__hud-corner hero__hud-corner--tr" />
+        <span className="hero__hud-corner hero__hud-corner--bl" />
+        <span className="hero__hud-corner hero__hud-corner--br" />
+        <div className="hero__hud-tick hero__hud-tick--l">
+          <div>LAT 29.1872° N</div>
+          <div>LON -82.1401° W</div>
+        </div>
+        <div className="hero__hud-tick hero__hud-tick--r">
+          <div>REF // PL-001</div>
+          <div>STATUS ACTIVE</div>
+        </div>
+      </div>
+
       <motion.div className="container" style={{ opacity }}>
         <div className="hero__grid">
           <motion.div

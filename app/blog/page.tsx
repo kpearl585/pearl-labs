@@ -36,11 +36,11 @@ export default function BlogIndex() {
         <div className="mb-14 lg:mb-16">
           <div className="flex items-center gap-3 mb-5">
             <span className="w-6 h-px bg-white/20" />
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">Blog</span>
+            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.12em] text-white/30">// Field Notes</span>
           </div>
           <h1 className="font-display font-semibold text-white tracking-[-0.03em] leading-[1.1] mb-4"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}>
-            Insights &amp; perspective
+            Field notes
           </h1>
           <p className="text-[15px] leading-[1.7] text-white/34 max-w-[480px]">
             Real talk on web development, performance, and building technology that businesses actually own.

@@ -7,6 +7,10 @@ import Footer from '../components/Footer'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
+function generateRef(): string {
+  return 'PL-' + Date.now().toString(36).toUpperCase().slice(-6)
+}
+
 const capabilities = [
   {
     title: 'Intelligence fusion platforms',
@@ -32,6 +36,7 @@ const principles = [
 export default function BriefingPage() {
   const [state, setState] = useState<FormState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const [refCode, setRefCode] = useState('')
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -69,6 +74,7 @@ export default function BriefingPage() {
         throw new Error(body.error || 'Something went wrong.')
       }
 
+      setRefCode(generateRef())
       setState('success')
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : 'Failed to send.')
@@ -195,9 +201,17 @@ export default function BriefingPage() {
                   <p className="brief-form__success-desc">
                     We will review and respond within two business days. If your request involves sensitive material, we will propose a secured channel before further discussion.
                   </p>
+                  <div className="brief-form__ref">Ref // {refCode}</div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="brief-form__form">
+                  <div className="brief-form__header">
+                    <span>// Intake Form · v3.0</span>
+                    <span className="brief-form__channel">
+                      <span className="brief-form__channel-dot" />
+                      SECURE CHANNEL
+                    </span>
+                  </div>
                   <div className="brief-form__row">
                     <div className="modal__field">
                       <label className="modal__label" htmlFor="brief-name">Name</label>
