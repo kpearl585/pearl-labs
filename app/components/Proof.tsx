@@ -41,15 +41,15 @@ const cases = [
     visualTint: null,
   },
   {
-    id: 'advisory',
-    cat: 'Strategic Advisory',
-    proof: 'Briefs · Synthesis',
-    name: 'Report Work',
-    copy: 'White-paper condensation, executive synthesis, architecture reviews, and decision-ready briefs for teams evaluating complex systems.',
-    href: '/#advisory',
+    id: 'ocala-elite-breed',
+    cat: 'Youth Sports Organization',
+    proof: 'Shipped · Live',
+    name: 'Ocala Elite Breed',
+    copy: 'Seven-page web presence for an elite youth basketball program. Brand system, tryout flow, sponsor tiers. From expired Squarespace to a site they own.',
+    href: '/work/ocala-elite-breed',
     external: false,
-    image: null as string | null,
-    visualTint: 'advisory',
+    image: '/oeb-hero.jpg',
+    visualTint: null,
   },
 ]
 
@@ -150,7 +150,7 @@ export default function Proof() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            Decision-support prototypes, construction tech SaaS, contractor document workflows, and advisory briefs built by the same hands.
+            Decision-support prototypes, construction tech SaaS, contractor document workflows, and client web presence — built by the same hands.
           </motion.div>
         </div>
 
@@ -188,7 +188,7 @@ export default function Proof() {
                   <h3 className="case-card-title">{c.name}</h3>
                   <p className="case-card-copy">{c.copy}</p>
                   <div className="case-card-cta">
-                    <span>{c.id === 'argus' ? 'Request briefing' : c.id === 'advisory' ? 'Request advisory brief' : 'View case study'}</span>
+                    <span>{c.id === 'argus' ? 'Request briefing' : 'View case study'}</span>
                     <span className="arrow"><NightOpsIcon name="arrow-right" size={14} /></span>
                   </div>
                 </div>
