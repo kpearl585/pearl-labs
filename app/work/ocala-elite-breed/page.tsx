@@ -66,7 +66,7 @@ export default function OcalaEliteBreed() {
           <div className="mt-12 rounded-xl overflow-hidden"
             style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
             <Image
-              src="/oeb-hero.png"
+              src="/oeb-hero.jpg"
               alt="Ocala Elite Breed website — live product screenshot"
               width={1200}
               height={800}

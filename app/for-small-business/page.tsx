@@ -206,7 +206,7 @@ export default function SmallBusinessPage() {
               <Link href="/work/ocala-elite-breed" className="smb-proof-card">
                 <div className="smb-proof-card__visual">
                   <Image
-                    src="/oeb-hero.png"
+                    src="/oeb-hero.jpg"
                     alt="Ocala Elite Breed website"
                     width={800}
                     height={500}
