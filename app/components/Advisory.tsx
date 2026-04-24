@@ -1,35 +1,57 @@
 'use client'
 
-import Link from 'next/link'
 import { useCallback, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import NightOpsIcon from './NightOpsIcon'
 
-const cards = [
-  { num: '01', title: 'System Design Review', desc: 'We evaluate your product, architecture, or model and identify gaps, risks, and opportunities before they get expensive.' },
-  { num: '02', title: 'Positioning & Narrative', desc: 'We refine how your system is presented so it lands with decision makers, not just builders.' },
-  { num: '03', title: 'Execution Strategy', desc: 'We define what to build next, what to ignore, and how to move forward.' },
+const points: { icon: 'target' | 'layers' | 'database' | 'shield' | 'doc' | 'seal'; label: string }[] = [
+  { icon: 'target', label: 'Technical product strategy' },
+  { icon: 'layers', label: 'Architecture reviews' },
+  { icon: 'database', label: 'AI / RAG feasibility' },
+  { icon: 'shield', label: 'Defense & dual-use planning' },
+  { icon: 'doc', label: 'White paper condensation' },
+  { icon: 'seal', label: 'Implementation roadmaps' },
 ]
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
+function AdvisoryGlyph() {
+  return (
+    <svg viewBox="0 0 320 400" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+      <defs>
+        <linearGradient id="adv-glow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1FA2A9" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#1FA2A9" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {/* Document stack */}
+      <rect x="60" y="60" width="200" height="260" rx="4" fill="rgba(19,30,42,0.6)" stroke="rgba(230,237,243,0.12)" />
+      <rect x="68" y="52" width="200" height="260" rx="4" fill="rgba(19,30,42,0.4)" stroke="rgba(230,237,243,0.08)" />
+      <rect x="76" y="44" width="200" height="260" rx="4" fill="url(#adv-glow)" stroke="rgba(31,162,169,0.35)" />
+
+      {/* Doc top */}
+      <rect x="76" y="44" width="200" height="40" fill="rgba(31,162,169,0.08)" stroke="rgba(31,162,169,0.2)" />
+      <rect x="92" y="58" width="80" height="12" rx="2" fill="rgba(31,162,169,0.8)" />
+
+      {/* Lines of content */}
+      {[110, 130, 150, 180, 200, 220, 250, 270].map((y, i) => (
+        <rect key={i} x="92" y={y} width={160 - (i % 3) * 30} height="3" rx="1" fill="rgba(230,237,243,0.12)" />
+      ))}
+
+      {/* Highlighted conclusion */}
+      <rect x="92" y="290" width="168" height="20" rx="2" fill="rgba(31,162,169,0.12)" stroke="rgba(31,162,169,0.4)" />
+
+      {/* Seal mark */}
+      <circle cx="240" cy="360" r="18" fill="none" stroke="rgba(31,162,169,0.6)" strokeWidth="1" />
+      <path d="M232 360l6 6l12-12" stroke="rgba(31,162,169,0.9)" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
 }
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+  }),
 }
 
 export default function Advisory() {
@@ -42,81 +64,39 @@ export default function Advisory() {
   }, [])
 
   return (
-    <section id="advisory" ref={ref}>
-      <div className="container">
+    <section ref={ref} className="section" id="advisory">
+      <div className="container advisory-grid">
         <motion.div
-          style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }}
-          variants={fadeInUp}
+          variants={fadeUp}
+          custom={0}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <p className="section-label">Strategic Advisory</p>
-          <h2 className="section-title">Strategic advisory for high-stakes systems</h2>
-          <p className="section-subtitle" style={{ marginInline: 'auto' }}>For defense and SaaS companies where wrong decisions cost months.</p>
+          <span className="eyebrow eyebrow-teal">// 03 / Advisory</span>
+          <h2 style={{ marginTop: 18 }}>Strategic advisory<br />for high-stakes systems.</h2>
+          <p>
+            For defense, SaaS, and operational teams where wrong decisions cost months. Pearl Labs turns complex ideas, technical risk, and messy requirements into scoped plans, build paths, and decision-ready documents.
+          </p>
+          <ul className="advisory-points">
+            {points.map((p) => (
+              <li key={p.label}>
+                <NightOpsIcon name={p.icon} size={18} />
+                <span>{p.label}</span>
+              </li>
+            ))}
+          </ul>
+          <button type="button" onClick={openModal} className="btn btn-primary">
+            Request Advisory Brief <NightOpsIcon name="arrow-right" size={14} />
+          </button>
         </motion.div>
-
         <motion.div
-          className="advisory__grid"
-          variants={staggerContainer}
+          className="advisory-visual panel-corners"
+          variants={fadeUp}
+          custom={1}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          {cards.map((c) => (
-            <motion.div
-              key={c.num}
-              className="adv-card"
-              variants={fadeInUp}
-              whileHover={{
-                y: -6,
-                boxShadow: '0 16px 48px rgba(46, 107, 255, 0.12)',
-                borderColor: 'rgba(46, 107, 255, 0.25)',
-                transition: { duration: 0.3 },
-              }}
-            >
-              <p className="adv-card__num">{c.num}</p>
-              <h3 className="adv-card__title">{c.title}</h3>
-              <p className="adv-card__desc">{c.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="advisory__footer"
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.4 }}
-        >
-          <p>Applied to real systems, not theory. Used to refine defense modeling platforms and technical documentation.</p>
-          <p className="closing">Available for projects where clarity and execution matter.</p>
-          <div className="advisory__cta">
-            <motion.button
-              onClick={openModal}
-              className="btn-text"
-              aria-label="Inquire about advisory services - Opens contact form"
-              aria-haspopup="dialog"
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.2 }}
-            >
-              INQUIRE ABOUT ADVISORY
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </motion.button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="advisory__smb-link"
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.6 }}
-        >
-          <p>Running a small business? Custom websites, internal tools, and automation — priced for operators.</p>
-          <Link href="/for-small-business">
-            Small business software →
-          </Link>
+          <AdvisoryGlyph />
         </motion.div>
       </div>
     </section>

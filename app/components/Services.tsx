@@ -2,175 +2,94 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import NightOpsIcon from './NightOpsIcon'
 
-const services = [
+const cards = [
   {
+    num: '01',
     title: 'Custom Websites',
-    desc: 'Next.js sites built for speed, SEO, and conversion. No WordPress, no Squarespace, no templates. You own the code. You own the infrastructure.',
-    meta: '3 to 6 weeks',
-    viz: 'website',
+    copy: 'Fast, serious websites built for credibility, speed, SEO, and conversion. No WordPress bloat, no template handoff, no agency maze.',
+    timeline: '2–6 weeks',
+    glyph: 'website',
   },
   {
+    num: '02',
     title: 'Business Software',
-    desc: 'Replace the spreadsheets, the duct tape, and the three tools your team keeps forgetting to update. One system, built for how you actually work.',
-    meta: '6 to 12 weeks',
-    viz: 'dashboard',
+    copy: 'Replace spreadsheets, duct tape, and disconnected tools with one system built around how your team actually works.',
+    timeline: '6–12 weeks',
+    glyph: 'dashboard',
   },
   {
+    num: '03',
     title: 'Workflow Automation',
-    desc: 'Estimating engines, pricing systems, document generators, internal automations. Stop copy-pasting between tools. Let the software do it.',
-    meta: '4 to 8 weeks',
-    viz: 'system',
+    copy: 'Automate the repetitive handoffs between intake, documents, approvals, notifications, reporting, and exports.',
+    timeline: '4–8 weeks',
+    glyph: 'workflow',
   },
 ]
 
-function DashboardViz() {
+function WebsiteGlyph() {
   return (
-    <motion.div className="viz-dash">
-      <div className="viz-dash__sidebar">
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="viz-dash__sidebar-item"
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.4 }}
-            viewport={{ once: true }}
-          />
-        ))}
-      </div>
-      <div className="viz-dash__main">
-        <motion.div
-          className="viz-dash__header"
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-          viewport={{ once: true }}
-        />
-        <div className="viz-dash__bar-row">
-          {[...Array(7)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="viz-dash__bar"
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
-              viewport={{ once: true }}
-              style={{ transformOrigin: 'bottom' }}
-            />
-          ))}
-        </div>
-      </div>
-    </motion.div>
+    <svg viewBox="0 0 240 220" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+      <rect x="20" y="30" width="200" height="160" rx="4" fill="rgba(19,30,42,0.6)" stroke="rgba(230,237,243,0.12)" />
+      <rect x="20" y="30" width="200" height="20" fill="rgba(31,162,169,0.06)" stroke="rgba(230,237,243,0.08)" />
+      <circle cx="32" cy="40" r="2.5" fill="rgba(31,162,169,0.4)" />
+      <circle cx="42" cy="40" r="2.5" fill="rgba(230,237,243,0.15)" />
+      <circle cx="52" cy="40" r="2.5" fill="rgba(230,237,243,0.15)" />
+      <rect x="34" y="68" width="140" height="14" rx="2" fill="rgba(31,162,169,0.35)" />
+      <rect x="34" y="90" width="180" height="3" rx="1" fill="rgba(230,237,243,0.1)" />
+      <rect x="34" y="99" width="140" height="3" rx="1" fill="rgba(230,237,243,0.08)" />
+      <rect x="34" y="108" width="160" height="3" rx="1" fill="rgba(230,237,243,0.08)" />
+      <rect x="34" y="135" width="60" height="20" rx="3" fill="rgba(230,237,243,0.95)" />
+      <rect x="100" y="135" width="60" height="20" rx="3" fill="none" stroke="rgba(230,237,243,0.25)" />
+    </svg>
   )
 }
 
-function SystemViz() {
-  const nodes = ['a', 'b', 'c', 'd']
-  const lines = ['1', '2', '3']
-
+function DashboardGlyph() {
+  const bars = [40, 60, 48, 72, 55, 80, 62, 50]
   return (
-    <div className="viz-system">
-      {nodes.map((node, i) => (
-        <motion.div
-          key={node}
-          className={`viz-node viz-node--${node}`}
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ delay: i * 0.1, duration: 0.4, type: 'spring', stiffness: 200 }}
-          viewport={{ once: true }}
-        />
+    <svg viewBox="0 0 240 220" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+      <rect x="20" y="20" width="200" height="180" rx="4" fill="rgba(19,30,42,0.55)" stroke="rgba(230,237,243,0.1)" />
+      <rect x="32" y="36" width="60" height="8" rx="2" fill="rgba(31,162,169,0.5)" />
+      <rect x="32" y="54" width="40" height="4" rx="1" fill="rgba(230,237,243,0.12)" />
+      {bars.map((h, i) => (
+        <rect key={i} x={34 + i * 22} y={180 - h} width="12" height={h} fill="rgba(31,162,169,0.3)" opacity={0.4 + i * 0.07} />
       ))}
-      {lines.map((line, i) => (
-        <motion.div
-          key={line}
-          className={`viz-line viz-line--${line}`}
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-          viewport={{ once: true }}
-          style={{ transformOrigin: 'left' }}
-        />
-      ))}
-    </div>
+      <path d="M32 140 Q60 128 94 120 T170 100 T210 90" stroke="rgba(31,162,169,0.7)" strokeWidth="1.5" fill="none" />
+    </svg>
   )
 }
 
-function WebsiteViz() {
+function WorkflowGlyph() {
   return (
-    <div className="viz-web">
-      <div className="viz-web__frame">
-        <div className="viz-web__dots">
-          <span /><span /><span />
-        </div>
-        <motion.div
-          className="viz-web__bar viz-web__bar--wide"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          viewport={{ once: true }}
-          style={{ transformOrigin: 'left' }}
-        />
-        <motion.div
-          className="viz-web__bar"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ delay: 0.35, duration: 0.5 }}
-          viewport={{ once: true }}
-          style={{ transformOrigin: 'left' }}
-        />
-        <motion.div
-          className="viz-web__bar viz-web__bar--short"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          viewport={{ once: true }}
-          style={{ transformOrigin: 'left' }}
-        />
-      </div>
-    </div>
+    <svg viewBox="0 0 240 220" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+      <circle cx="50" cy="60" r="14" fill="rgba(19,30,42,0.8)" stroke="rgba(31,162,169,0.5)" />
+      <circle cx="190" cy="60" r="14" fill="rgba(19,30,42,0.8)" stroke="rgba(230,237,243,0.2)" />
+      <circle cx="120" cy="130" r="18" fill="rgba(31,162,169,0.15)" stroke="rgba(31,162,169,0.7)" strokeWidth="1.5" />
+      <circle cx="60" cy="180" r="12" fill="rgba(19,30,42,0.8)" stroke="rgba(230,237,243,0.2)" />
+      <circle cx="180" cy="180" r="12" fill="rgba(19,30,42,0.8)" stroke="rgba(230,237,243,0.2)" />
+      <path d="M60 70 L110 120" stroke="rgba(230,237,243,0.15)" />
+      <path d="M180 70 L130 120" stroke="rgba(230,237,243,0.15)" />
+      <path d="M112 140 L68 170" stroke="rgba(31,162,169,0.5)" />
+      <path d="M128 140 L172 170" stroke="rgba(31,162,169,0.5)" />
+      <circle cx="120" cy="130" r="3" fill="rgba(31,162,169,0.9)" />
+    </svg>
   )
 }
 
-const vizMap: Record<string, () => React.ReactElement> = {
-  dashboard: DashboardViz,
-  system: SystemViz,
-  website: WebsiteViz,
+const glyphs: Record<string, () => React.ReactElement> = {
+  website: WebsiteGlyph,
+  dashboard: DashboardGlyph,
+  workflow: WorkflowGlyph,
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-}
-
-const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+  }),
 }
 
 export default function Services() {
@@ -178,47 +97,58 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="services" ref={ref}>
+    <section ref={ref} className="section" id="services">
       <div className="container">
-        <motion.div
-          style={{ textAlign: 'center', marginBottom: 'var(--space-16)' }}
-          variants={headerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <p className="section-label">What We Build</p>
-          <h2 className="section-title">Three ways we build</h2>
-        </motion.div>
-        <motion.div
-          className="services__grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {services.map((s) => {
-            const Viz = vizMap[s.viz]
+        <div className="section-head">
+          <motion.div
+            variants={fadeUp}
+            custom={0}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            <span className="eyebrow eyebrow-teal">// 02 / Capabilities</span>
+            <h2>Three ways we build<br />working systems.</h2>
+          </motion.div>
+          <motion.div
+            className="sub"
+            variants={fadeUp}
+            custom={1}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            Every engagement starts with a scoped plan and ends with working code, deployment configs, and full ownership transferred to you.
+          </motion.div>
+        </div>
+        <div className="cards-3">
+          {cards.map((c, i) => {
+            const Glyph = glyphs[c.glyph]
             return (
-              <motion.div
-                key={s.title}
-                className="svc-card"
-                variants={cardVariants}
-                whileHover={{
-                  y: -8,
-                  boxShadow: '0 20px 60px rgba(46, 107, 255, 0.15)',
-                  borderColor: 'rgba(46, 107, 255, 0.3)',
-                  transition: { duration: 0.3 },
-                }}
+              <motion.article
+                key={c.num}
+                className="service-card"
+                variants={fadeUp}
+                custom={i + 2}
+                initial="hidden"
+                animate={isInView ? 'visible' : 'hidden'}
               >
-                <div className="svc-card__visual">
-                  <Viz />
+                <div className="card-visual">
+                  <Glyph />
                 </div>
-                <h3 className="svc-card__title">{s.title}</h3>
-                <p className="svc-card__desc">{s.desc}</p>
-                <p className="svc-card__meta">{s.meta}</p>
-              </motion.div>
+                <div className="card-body">
+                  <div className="card-title">
+                    <span>{c.title}</span>
+                    <span className="num">{c.num}</span>
+                  </div>
+                  <p className="card-copy">{c.copy}</p>
+                  <div className="card-meta">
+                    <span>Timeline <span className="timeline">{c.timeline}</span></span>
+                    <span className="arrow"><NightOpsIcon name="arrow-right" size={12} /></span>
+                  </div>
+                </div>
+              </motion.article>
             )
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

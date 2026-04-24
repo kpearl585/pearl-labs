@@ -1,69 +1,100 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import NightOpsIcon from './NightOpsIcon'
 
-const work = [
+const cases = [
   {
+    id: 'defense',
+    cat: 'Defense Decision-Support',
+    proof: 'Under Briefing',
+    name: 'Mission Intelligence Platform',
+    copy: 'Decision-support concept combining geospatial visualization, transparent forecasting logic, operational workflows, and briefing-ready outputs. Details shared on secured channels after NDA exchange.',
+    href: '/briefing',
+    external: false,
+    image: null as string | null,
+    visualTint: 'defense',
+  },
+  {
+    id: 'fenceestimatepro',
+    cat: 'Construction Tech SaaS',
+    proof: 'Shipped · Live',
     name: 'FenceEstimatePro',
-    type: 'Run-Based Estimation SaaS',
-    liveDomain: 'fenceestimatepro.com',
-    desc: 'Stop guessing quantities. Start winning jobs. The only run-based fence estimation engine — models fence run by run, auto-derives post types, calculates exact concrete volume, and locks margin before you touch the quote. 47+ active contractors.',
+    copy: 'Run-based fence estimating SaaS. FenceGraph engine auto-derives posts, panels, and concrete from fence geometry. 47+ active contractors.',
     href: '/work/fenceestimatepro',
-    internal: true,
+    external: false,
     image: '/fenceestimatepro-hero.jpg',
-    isLive: true,
-    isSaas: true,
-    label: 'Read case study →',
+    visualTint: null,
   },
   {
+    id: 'contractordocs',
+    cat: 'HOA Packet SaaS',
+    proof: 'Shipped · Live',
     name: 'ContractorDocs',
-    type: 'HOA Packet SaaS',
-    liveDomain: 'contractordocuments.com',
-    desc: 'Stop losing fence jobs to HOA rejections. Elevation, setback, COI, license, cover letter — merged into one professional PDF, auto-filled from your business, sent in under two minutes.',
+    copy: 'HOA packet builder for fence contractors. Elevation, setback, COI, license, cover letter — one professional PDF in under two minutes.',
     href: '/work/contractordocuments',
-    internal: true,
+    external: false,
     image: '/contractordocs-hero.jpg',
-    isLive: true,
-    isSaas: true,
-    label: 'Read case study →',
+    visualTint: null,
   },
   {
+    id: 'oeb',
+    cat: 'Youth Sports Organization',
+    proof: 'Shipped · Live',
     name: 'Ocala Elite Breed',
-    type: 'Youth Sports Organization',
-    liveDomain: 'ocalaelitebreed.com',
-    desc: 'From expired Squarespace to a site they own — built in days. Seven pages, sponsor tiers, zero recurring fees. Recently relaunched.',
+    copy: 'From expired Squarespace to a site they own. Seven pages, sponsor tiers, zero recurring fees. Recently relaunched.',
     href: '/work/ocala-elite-breed',
-    internal: true,
+    external: false,
     image: '/oeb-hero.jpg',
-    isLive: true,
-    isSaas: false,
-    label: 'Read case study →',
+    visualTint: null,
   },
 ]
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
+function DefenseVisual() {
+  return (
+    <svg viewBox="0 0 640 320" fill="none" style={{ width: '100%', height: '100%', objectFit: 'cover' }} aria-hidden="true">
+      <defs>
+        <radialGradient id="def-glow" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="#1FA2A9" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#1FA2A9" stopOpacity="0" />
+        </radialGradient>
+        <pattern id="def-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <path d="M32 0H0v32" stroke="rgba(31,162,169,0.1)" fill="none" />
+        </pattern>
+      </defs>
+      <rect width="640" height="320" fill="#0B1117" />
+      <rect width="640" height="320" fill="url(#def-grid)" />
+      <circle cx="320" cy="160" r="140" fill="url(#def-glow)" />
+      {/* Stylized map paths */}
+      <path d="M80 140q80-40 160 0t160-20 160 10" stroke="rgba(31,162,169,0.55)" strokeWidth="1.2" fill="none" />
+      <path d="M60 200q100-30 200 10t220-30 100 20" stroke="rgba(31,162,169,0.35)" strokeWidth="1" fill="none" />
+      {/* Target markers */}
+      <g>
+        {[[220, 140], [320, 160], [420, 130], [500, 180], [160, 180]].map(([x, y], i) => (
+          <g key={i}>
+            <circle cx={x} cy={y} r="5" fill="none" stroke="rgba(92,201,208,0.9)" strokeWidth="1" />
+            <circle cx={x} cy={y} r="1.5" fill="#5CC9D0" />
+          </g>
+        ))}
+      </g>
+      {/* Data readouts */}
+      <text x="32" y="32" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="rgba(230,237,243,0.55)" letterSpacing="1.5">STATUS // ACTIVE</text>
+      <text x="608" y="32" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="rgba(230,237,243,0.55)" letterSpacing="1.5" textAnchor="end">REF // DSP-01</text>
+      <text x="32" y="296" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="rgba(230,237,243,0.4)" letterSpacing="1.5">LAYERS // 4 INT</text>
+      <text x="608" y="296" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="rgba(230,237,243,0.4)" letterSpacing="1.5" textAnchor="end">NDA REQUIRED</text>
+    </svg>
+  )
 }
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+  }),
 }
 
 export default function Proof() {
@@ -71,92 +102,69 @@ export default function Proof() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="proof" ref={ref}>
+    <section ref={ref} className="section" id="proof">
       <div className="container">
-        <motion.div
-          style={{ marginBottom: 'var(--space-10)' }}
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <p className="section-label">Proof</p>
-          <h2 className="section-title">Systems in production.</h2>
-        </motion.div>
+        <div className="section-head">
+          <motion.div
+            variants={fadeUp}
+            custom={0}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            <span className="eyebrow eyebrow-teal">// 04 / Built Work</span>
+            <h2>Systems in service.</h2>
+          </motion.div>
+          <motion.div
+            className="sub"
+            variants={fadeUp}
+            custom={1}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            Decision-support concepts, construction tech SaaS, contractor document workflows, and custom websites — built and shipped by the same hands.
+          </motion.div>
+        </div>
 
-        <motion.div
-          className="proof__intro"
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.1 }}
-        >
-          <p>
-            Pearl Labs is the engineering arm of Pearl Ventures. We build custom software for clients and ship our own SaaS products. FenceEstimatePro and ContractorDocuments are live SaaS in our portfolio, not case-study concepts. Every system below is in production today.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="proof__work-grid"
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {work.map((w) => (
-            <motion.div key={w.name} variants={fadeInUp}>
-              <Link
-                href={w.href}
-                className="proof__work-card"
-              >
-                <div className="proof__work-card__visual">
-                  {w.image ? (
+        <div className="case-grid">
+          {cases.map((c, i) => (
+            <motion.article
+              key={c.id}
+              className="case-card"
+              variants={fadeUp}
+              custom={i + 2}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+            >
+              <Link href={c.href} className="case-card-link">
+                <div className="case-card-visual">
+                  {c.image ? (
                     <Image
-                      src={w.image}
-                      alt={`${w.name} — live product`}
-                      width={800}
-                      height={500}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      src={c.image}
+                      alt={c.name}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 50vw"
+                      style={{ objectFit: 'cover', filter: 'saturate(0.85) contrast(1.05)' }}
                     />
                   ) : (
-                    <div className="proof__work-card__placeholder">
-                      <span className="proof__work-card__placeholder-label">{w.type}</span>
-                      <span className="proof__work-card__placeholder-name">{w.name}</span>
-                    </div>
-                  )}
-                  {w.isLive && (
-                    <span className="proof__live-badge">
-                      <span className="proof__live-badge__dot" />
-                      Live · {w.liveDomain}
-                    </span>
+                    <DefenseVisual />
                   )}
                 </div>
-                <div className="proof__work-card__body">
-                  <p className="proof__work-card__type">{w.type}</p>
-                  <h3 className="proof__work-card__name">{w.name}</h3>
-                  <p className="proof__work-card__desc">{w.desc}</p>
-                  <span className="proof__work-card__link">{w.label}</span>
+                <div className="case-card-body">
+                  <div className="case-card-meta">
+                    <span>{c.cat}</span>
+                    <span className="status">● {c.proof}</span>
+                  </div>
+                  <h3 className="case-card-title">{c.name}</h3>
+                  <p className="case-card-copy">{c.copy}</p>
+                  <div className="case-card-cta">
+                    <span>{c.id === 'defense' ? 'Request briefing' : 'View case study'}</span>
+                    <span className="arrow"><NightOpsIcon name="arrow-right" size={14} /></span>
+                  </div>
                 </div>
               </Link>
-            </motion.div>
+            </motion.article>
           ))}
-        </motion.div>
-
-        <motion.div
-          className="proof__credential"
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.5 }}
-        >
-          <div className="proof__credential-inner">
-            <p className="proof__credential-label">Defense & Intelligence</p>
-            <p className="proof__credential-text">
-              Pearl Labs also builds defense decision-support platforms. Details under briefing.
-            </p>
-          </div>
-          <Link href="/briefing" className="proof__credential-link">
-            Request briefing access →
-          </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -6,15 +6,12 @@ import Services from './components/Services'
 import Advisory from './components/Advisory'
 import Proof from './components/Proof'
 import Commitments from './components/Commitments'
+import HighStakes from './components/HighStakes'
 import Founder from './components/Founder'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import IntakeModal from './components/IntakeModal'
 import ScrollProgress from './components/ScrollProgress'
-
-function Divider() {
-  return <div className="divider" />
-}
 
 export default function Home() {
   return (
@@ -26,15 +23,16 @@ export default function Home() {
         <Capabilities />
         <EclipseQuote />
         <Services />
-        <Divider />
+        <div className="divider-line" />
         <Advisory />
-        <Divider />
+        <div className="divider-line" />
         <Proof />
-        <Divider />
+        <div className="divider-line" />
         <Commitments />
-        <Divider />
+        <div className="divider-line" />
+        <HighStakes />
+        <div className="divider-line" />
         <Founder />
-        <Divider />
         <CTA />
       </main>
       <Footer />
