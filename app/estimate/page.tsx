@@ -112,7 +112,7 @@ export default function EstimatePage() {
           <div className="smb-form-wrap">
             {state === 'success' ? (
               <div className="smb-form-success">
-                <span className="eyebrow-teal">// Received</span>
+                <span className="eyebrow-teal">{'// Received'}</span>
                 <h3 style={{ marginTop: 12 }}>Inquiry received.</h3>
                 <p>We&apos;ll review your project and respond within two business days with a scoped plan.</p>
                 <div style={{ marginTop: 28, paddingTop: 20, borderTop: '1px solid var(--line-strong)', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--steel-2)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
@@ -122,7 +122,7 @@ export default function EstimatePage() {
             ) : (
               <form onSubmit={handleSubmit} className="smb-form">
                 <div className="brief-form-header">
-                  <span>// Intake Form · Estimate</span>
+                  <span>{'// Intake Form · Estimate'}</span>
                   <span className="brief-form-channel">
                     <span className="brief-form-channel-dot" />
                     48-Hour Response

@@ -33,8 +33,8 @@ export default function Commitments() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            <span className="eyebrow eyebrow-teal">// 05 / Commitments</span>
-            <h2>Four commitments,<br />every engagement.</h2>
+            <span className="eyebrow eyebrow-teal">{'// 05 / How We Work'}</span>
+            <h2>Clear architecture.<br />Weekly progress. Full handoff.</h2>
           </motion.div>
           <motion.div
             className="sub"
@@ -43,7 +43,7 @@ export default function Commitments() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            No discovery theater, no account-manager handoff, no vendor lock-in. Clear terms of engagement, signed in the first 48 hours.
+            No discovery theater, no account-manager handoff, no vendor lock-in. Clear terms of engagement, scoped in the first 48 business hours.
           </motion.div>
         </div>
         <div className="cards-4">

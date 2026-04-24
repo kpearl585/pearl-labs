@@ -72,10 +72,10 @@ export default function Advisory() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className="eyebrow eyebrow-teal">// 03 / Advisory</span>
+          <span className="eyebrow eyebrow-teal">{'// 03 / Advisory'}</span>
           <h2 style={{ marginTop: 18 }}>Strategic advisory<br />for high-stakes systems.</h2>
           <p>
-            For defense, SaaS, and operational teams where wrong decisions cost months. Pearl Labs turns complex ideas, technical risk, and messy requirements into scoped plans, build paths, and decision-ready documents.
+            For defense, SaaS, legal, and operational teams where wrong decisions cost months. Pearl Labs turns complex ideas, technical risk, and messy requirements into scoped plans, build paths, and decision-ready documents.
           </p>
           <ul className="advisory-points">
             {points.map((p) => (

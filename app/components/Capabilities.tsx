@@ -58,7 +58,7 @@ export default function Capabilities() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            <span className="eyebrow">// 01 / What We Build</span>
+            <span className="eyebrow">{'// 01 / What We Build'}</span>
             <h2 className="cap-title">
               Systems built for teams<br />
               that can&apos;t afford to fail.
@@ -93,7 +93,7 @@ export default function Capabilities() {
                 <div className="cap-card-icon">
                   <Image src={c.icon} alt="" width={20} height={20} />
                 </div>
-                <div className="cap-card-kicker mono">// {c.kicker}</div>
+                <div className="cap-card-kicker mono">{`// ${c.kicker}`}</div>
                 <h3 className="cap-card-title">{c.title}</h3>
                 <p className="cap-card-copy">{c.copy}</p>
               </div>

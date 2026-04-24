@@ -23,7 +23,7 @@ const items = [
     visual: 'construction',
   },
   {
-    title: 'Small Business Ops',
+    title: 'Business Automation',
     cat: 'SCORE Service Partner',
     copy: 'Custom software for owners who are tired of spreadsheets, manual handoffs, and disconnected tools.',
     visual: 'smb',
@@ -108,7 +108,7 @@ export default function HighStakes() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            <span className="eyebrow eyebrow-teal">// 06 / Verticals</span>
+            <span className="eyebrow eyebrow-teal">{'// 06 / High-Stakes Systems'}</span>
             <h2>Built for teams<br />where trust matters.</h2>
           </motion.div>
           <motion.div
@@ -118,7 +118,7 @@ export default function HighStakes() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            Defense, legal, construction, and serious small businesses — four domains where Pearl Labs has built working systems that teams actually use.
+            Four domains where Pearl Labs applies the same operating standard: clear workflows, defensible outputs, and software clients can own.
           </motion.div>
         </div>
         <div className="cards-4">
@@ -133,7 +133,7 @@ export default function HighStakes() {
             >
               <div className="visual"><VerticalVisual kind={c.visual} /></div>
               <div className="body">
-                <div className="cat">// {c.cat}</div>
+                <div className="cat">{`// ${c.cat}`}</div>
                 <h3><span className="dot" />{c.title}</h3>
                 <p>{c.copy}</p>
               </div>

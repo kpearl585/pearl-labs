@@ -91,7 +91,7 @@ export default function BriefingPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// What We Brief On</span>
+            <span className="eyebrow-teal">{'// What We Brief On'}</span>
             <h2>Capability areas.</h2>
           </div>
           <div className="brief-caps">
@@ -112,7 +112,7 @@ export default function BriefingPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Engineering Principles</span>
+            <span className="eyebrow-teal">{'// Engineering Principles'}</span>
             <h2>How we build<br />for high-stakes work.</h2>
           </div>
           <ul className="brief-principles">
@@ -129,7 +129,7 @@ export default function BriefingPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Qualification</span>
+            <span className="eyebrow-teal">{'// Qualification'}</span>
             <h2>Who we brief.</h2>
           </div>
           <div className="brief-qual">
@@ -151,14 +151,14 @@ export default function BriefingPage() {
         <div className="container">
           <div className="brief-form-wrap">
             <div className="section-head-light" style={{ textAlign: 'center', marginBottom: 32 }}>
-              <span className="eyebrow-teal">// Request</span>
+              <span className="eyebrow-teal">{'// Request'}</span>
               <h2>Submit a briefing request.</h2>
               <p className="section-sub">Two business day response. Your information is held in confidence and used only to evaluate the request.</p>
             </div>
 
             {state === 'success' ? (
               <div className="smb-form-success">
-                <span className="eyebrow-teal">// Received</span>
+                <span className="eyebrow-teal">{'// Received'}</span>
                 <h3 style={{ marginTop: 12 }}>Request submitted.</h3>
                 <p>We will review and respond within two business days. If your request involves sensitive material, we will propose a secured channel before further discussion.</p>
                 <div style={{ marginTop: 28, paddingTop: 20, borderTop: '1px solid var(--line-strong)', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--steel-2)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
@@ -168,7 +168,7 @@ export default function BriefingPage() {
             ) : (
               <form onSubmit={handleSubmit} className="smb-form" style={{ marginTop: 0 }}>
                 <div className="brief-form-header">
-                  <span>// Intake Form · v3.0</span>
+                  <span>{'// Intake Form · v3.0'}</span>
                   <span className="brief-form-channel">
                     <span className="brief-form-channel-dot" />
                     Secure Channel

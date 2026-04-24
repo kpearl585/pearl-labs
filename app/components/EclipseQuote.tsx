@@ -26,7 +26,7 @@ export default function EclipseQuote() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          // Operating Doctrine
+          {'// Operating Doctrine'}
         </motion.div>
 
         <motion.blockquote
@@ -46,7 +46,7 @@ export default function EclipseQuote() {
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="line" />
-          <span>Pearl Labs // Est. 2024</span>
+          <span>{'Pearl Labs // Est. 2024'}</span>
         </motion.div>
       </div>
     </section>

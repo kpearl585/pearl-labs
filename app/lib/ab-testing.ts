@@ -10,11 +10,17 @@
  * - Analytics tracking ready
  */
 
-'use client'
-
-import { useEffect, useState } from 'react'
-
 export type ABTestVariant = string
+
+type GtagEventName = 'ab_test_view' | 'ab_test_conversion'
+type GtagParams = {
+  test_id: string
+  variant: string
+}
+
+type AnalyticsWindow = Window & {
+  gtag?: (command: 'event', eventName: GtagEventName, params: GtagParams) => void
+}
 
 export interface ABTestConfig {
   testId: string
@@ -53,14 +59,7 @@ export function getVariant(testId: string, variants: string[]): string {
  * React hook for A/B testing
  */
 export function useABTest(testId: string, variants: string[]): string {
-  const [variant, setVariant] = useState<string>(variants[0]) // Default to control
-
-  useEffect(() => {
-    const assignedVariant = getVariant(testId, variants)
-    setVariant(assignedVariant)
-  }, [testId, variants])
-
-  return variant
+  return getVariant(testId, variants)
 }
 
 /**
@@ -70,8 +69,9 @@ function trackABTestView(testId: string, variant: string) {
   // Track with your analytics service
   // Example: analytics.track('AB Test View', { testId, variant })
 
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', 'ab_test_view', {
+  if (typeof window !== 'undefined') {
+    const analyticsWindow = window as AnalyticsWindow
+    analyticsWindow.gtag?.('event', 'ab_test_view', {
       test_id: testId,
       variant: variant,
     })
@@ -95,12 +95,11 @@ export function trackABTestConversion(testId: string) {
   if (!variant) return
 
   // Track conversion with your analytics service
-  if ((window as any).gtag) {
-    (window as any).gtag('event', 'ab_test_conversion', {
-      test_id: testId,
-      variant: variant,
-    })
-  }
+  const analyticsWindow = window as AnalyticsWindow
+  analyticsWindow.gtag?.('event', 'ab_test_conversion', {
+    test_id: testId,
+    variant: variant,
+  })
 
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {

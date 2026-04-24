@@ -74,14 +74,14 @@ export default function OcalaEliteBreed() {
 
       <div className="container">
         <div className="case-body-grid">
-          <h3>// Problem</h3>
+          <h3>{'// Problem'}</h3>
           <div className="block">
             <p>
               The program was running on an expired Squarespace trial. They needed a real website to attract sponsors, recruit players, and give the organization the credibility it deserved. Budget was tight. Timeline was tighter. No sponsor acquisition tools or tiered sponsor system. No centralized place for schedules, tryouts, and program info.
             </p>
           </div>
 
-          <h3>// System Built</h3>
+          <h3>{'// System Built'}</h3>
           <div className="block">
             <p>
               Seven pages in under a week, zero compromises. Complete web presence from a single project — deep navy and gold brand system, Oswald + Inter typography, &ldquo;Built Different. Bred Elite.&rdquo; brand voice. Recently relaunched with a dramatic refresh featuring the &ldquo;Elite is bred. Not given.&rdquo; tagline.
@@ -94,14 +94,14 @@ export default function OcalaEliteBreed() {
             </p>
           </div>
 
-          <h3>// Outcome</h3>
+          <h3>{'// Outcome'}</h3>
           <div className="block">
             <p>
               Shipped to production in under seven days. Four sponsor tiers generating recurring program income. Recently relaunched with a full brand refresh. In active use.
             </p>
           </div>
 
-          <h3>// Stack</h3>
+          <h3>{'// Stack'}</h3>
           <div className="block">
             <div className="case-stack-row">
               {stack.map((s) => <span key={s} className="case-stack-tag">{s}</span>)}

@@ -8,21 +8,21 @@ const cards = [
   {
     num: '01',
     title: 'Custom Websites',
-    copy: 'Fast, serious websites built for credibility, speed, SEO, and conversion. No WordPress bloat, no template handoff, no agency maze.',
+    copy: 'Fast, credible Next.js sites for serious businesses that need clarity, speed, and ownership without WordPress bloat.',
     timeline: '2–6 weeks',
     glyph: 'website',
   },
   {
     num: '02',
     title: 'Business Software',
-    copy: 'Replace spreadsheets, duct tape, and disconnected tools with one system built around how your team actually works.',
+    copy: 'Internal tools, portals, dashboards, and SaaS platforms built around the workflow your team actually runs.',
     timeline: '6–12 weeks',
     glyph: 'dashboard',
   },
   {
     num: '03',
     title: 'Workflow Automation',
-    copy: 'Automate the repetitive handoffs between intake, documents, approvals, notifications, reporting, and exports.',
+    copy: 'Document pipelines, intake flows, approvals, reporting, and integrations that remove manual handoffs.',
     timeline: '4–8 weeks',
     glyph: 'workflow',
   },
@@ -106,8 +106,8 @@ export default function Services() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            <span className="eyebrow eyebrow-teal">// 02 / Capabilities</span>
-            <h2>Three ways we build<br />working systems.</h2>
+            <span className="eyebrow eyebrow-teal">{'// 02 / What We Build'}</span>
+            <h2>Custom software that ships<br />into real operations.</h2>
           </motion.div>
           <motion.div
             className="sub"
@@ -116,7 +116,7 @@ export default function Services() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            Every engagement starts with a scoped plan and ends with working code, deployment configs, and full ownership transferred to you.
+            Websites, SaaS platforms, and workflow systems scoped in 48 business hours and built with ownership from day one.
           </motion.div>
         </div>
         <div className="cards-3">

@@ -8,14 +8,14 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-displ
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pearllab.io'),
-  title: 'Pearl Labs — Real software. Real missions.',
+  title: 'Pearl Labs - Serious software for serious operators.',
   description:
-    'Pearl Labs builds serious software for teams who operate when it matters most. Defense, intelligence, and mission-driven organizations trust us to deliver systems that work in the field. Veteran-owned, Florida-based.',
+    'Pearl Labs builds custom websites, SaaS platforms, workflow automation, and advisory systems for defense, legal, construction, and mission-driven teams. Veteran-owned, Florida-based.',
   keywords:
     'custom software, small business software, Next.js development, veteran owned, SCORE service partner, SaaS development, workflow automation, custom websites, Florida software firm',
   openGraph: {
-    title: 'Pearl Labs — Real software. Real missions.',
-    description: 'Custom websites, business software, and automation — built by one senior engineer. Veteran-owned. Florida-based.',
+    title: 'Pearl Labs - Serious software for serious operators.',
+    description: 'Custom websites, SaaS platforms, workflow automation, and advisory systems. Veteran-owned. Builder-led. Florida-based.',
     url: 'https://pearllab.io',
     siteName: 'Pearl Labs',
     type: 'website',
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pearl Labs — Real software. Real missions.',
-    description: 'Custom websites, business software, and automation. Veteran-owned. Florida-based.',
+    title: 'Pearl Labs - Serious software for serious operators.',
+    description: 'Custom websites, SaaS platforms, workflow automation, and advisory systems. Veteran-owned. Builder-led.',
   },
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://pearllab.io' },
@@ -41,7 +41,7 @@ const jsonLd = {
   areaServed: { '@type': 'Country', name: 'United States' },
   priceRange: '$$$',
   serviceType: ['Custom Software Development', 'SaaS Development', 'Workflow Automation', 'Strategic Advisory'],
-  description: 'Pearl Labs builds custom websites, business software, and automation for small businesses and serious operators.',
+  description: 'Pearl Labs builds custom websites, SaaS platforms, workflow automation, and advisory systems for serious operators.',
   founder: {
     '@type': 'Person',
     name: 'Keegan Pearl',

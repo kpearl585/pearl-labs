@@ -22,7 +22,7 @@ export default function CTA() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          // Next step
+          {'// Next step'}
         </motion.span>
         <motion.h2
           style={{ marginTop: 18 }}

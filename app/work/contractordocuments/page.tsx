@@ -6,9 +6,9 @@ import Footer from '@/app/components/Footer'
 import NightOpsIcon from '@/app/components/NightOpsIcon'
 
 export const metadata: Metadata = {
-  title: 'ContractorDocs — Pearl Labs',
+  title: 'ContractorDocs - Pearl Labs',
   description:
-    'An HOA packet builder for fence contractors. Elevation, setback, COI, license, cover letter — merged into one professional PDF, auto-filled from your business, sent to your homeowner in under two minutes.',
+    'An HOA packet builder for fence contractors. Elevation, setback, COI, license, and cover letter merged into one professional PDF and auto-filled from your business profile.',
 }
 
 const stats = [
@@ -41,7 +41,7 @@ export default function ContractorDocumentsPage() {
           <h1>ContractorDocs</h1>
           <p className="case-hero-tag">Stop losing fence jobs to HOA rejections.</p>
           <p className="case-hero-lead">
-            The HOA packet builder for fence contractors. Elevation, setback, COI, license, cover letter — merged into one professional PDF, auto-filled from your business, sent to your homeowner in under two minutes.
+            The HOA packet builder for fence contractors. Elevation, setback, COI, license, and cover letter merged into one professional PDF and auto-filled from your business profile.
           </p>
 
           <div className="case-stat-row">
@@ -74,7 +74,7 @@ export default function ContractorDocumentsPage() {
 
       <div className="container">
         <div className="case-body-grid">
-          <h3>// Problem</h3>
+          <h3>{'// Problem'}</h3>
           <div className="block">
             <p>
               In a real estate market full of HOAs, a fence contractor who can&apos;t turn around a board-ready packet in under a day watches the customer hire someone who can. The packet is always the same documents — elevation drawing, setback diagram, COI, license, cover letter — but assembling it manually takes hours per job, and half the time the board rejects it for missing a stamp or using last year&apos;s form.
@@ -84,7 +84,7 @@ export default function ContractorDocumentsPage() {
             </p>
           </div>
 
-          <h3>// System Built</h3>
+          <h3>{'// System Built'}</h3>
           <div className="block">
             <p>
               ContractorDocs is a commerce platform for contractor paperwork. Enter your company profile once. Every future document autofills your name, address, license number, and contact data automatically. Buy documents individually or subscribe for the full packet builder. Generated server-side the moment you click build.
@@ -93,18 +93,18 @@ export default function ContractorDocumentsPage() {
               {features.map((f) => <li key={f}>{f}</li>)}
             </ul>
             <p style={{ marginTop: 24 }}>
-              Every template is legally drafted. Every autofill path runs through an automated verification harness on every deploy — a broken PDF is an unshippable PDF.
+              Every autofill path runs through an automated verification harness on every deploy. A broken PDF is an unshippable PDF.
             </p>
           </div>
 
-          <h3>// Outcome</h3>
+          <h3>{'// Outcome'}</h3>
           <div className="block">
             <p>
-              Shipped April 2026. 13 documents in the library. Solo plan with 14-day free trial, no credit card required. In active contractor use — ships weekly.
+              Shipped April 2026. 13 documents in the library. Solo plan with 14-day free trial, no credit card required. Built for weekly improvements as contractor workflows change.
             </p>
           </div>
 
-          <h3>// Stack</h3>
+          <h3>{'// Stack'}</h3>
           <div className="block">
             <div className="case-stack-row">
               {stack.map((s) => <span key={s} className="case-stack-tag">{s}</span>)}

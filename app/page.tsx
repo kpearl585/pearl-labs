@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Capabilities from './components/Capabilities'
-import EclipseQuote from './components/EclipseQuote'
+import TrustStrip from './components/TrustStrip'
 import Services from './components/Services'
 import Advisory from './components/Advisory'
 import Proof from './components/Proof'
@@ -20,8 +19,7 @@ export default function Home() {
       <Navbar />
       <main id="main" className="homepage-nightops">
         <Hero />
-        <Capabilities />
-        <EclipseQuote />
+        <TrustStrip />
         <Services />
         <div className="divider-line" />
         <Advisory />

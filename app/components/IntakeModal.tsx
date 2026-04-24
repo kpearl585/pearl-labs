@@ -68,6 +68,11 @@ export default function IntakeModal() {
     const name = String(data.get('name') || '')
     const email = String(data.get('email') || '')
     const company = String(data.get('company') || '')
+    const projectType = String(data.get('projectType') || '')
+    const timeline = String(data.get('timeline') || '')
+    const budget = String(data.get('budget') || '')
+    const existing = String(data.get('existing') || '')
+    const reference = String(data.get('reference') || '')
     const message = String(data.get('message') || '')
 
     try {
@@ -77,11 +82,16 @@ export default function IntakeModal() {
         body: JSON.stringify({
           name,
           email,
-          service: 'Brief Request',
+          service: projectType ? `Brief Request - ${projectType}` : 'Brief Request',
           message: [
             company && `Company: ${company}`,
+            projectType && `Project type: ${projectType}`,
+            timeline && `Timeline: ${timeline}`,
+            budget && `Budget range: ${budget}`,
+            reference && `Reference link: ${reference}`,
+            existing && `Anything already built: ${existing}`,
             '',
-            'What they are building:',
+            'What they need built:',
             message,
           ].filter(Boolean).join('\n'),
         }),
@@ -129,32 +139,81 @@ export default function IntakeModal() {
           <div style={{ textAlign: 'center', padding: 'var(--space-6) 0' }}>
             <h2 id="modal-title" className="modal__title">Got it.</h2>
             <p id="modal-description" className="modal__subtitle" style={{ marginBottom: 0 }}>
-              We&apos;ll be in touch within two business days.
+              Pearl Labs will review the details and reply within 48 business hours.
             </p>
           </div>
         ) : (
           <>
             <h2 id="modal-title" className="modal__title">Request a brief</h2>
             <p id="modal-description" className="modal__subtitle">
-              Tell us what you&apos;re building. Scoped plan back within 48 hours.
+              Tell Pearl Labs what you need built. Within 48 business hours, you&apos;ll receive a scoped plan with architecture, timeline, estimated cost, and recommended next steps.
             </p>
             <form onSubmit={handleSubmit}>
-              <div className="modal__field">
-                <label className="modal__label" htmlFor="intake-name">Name</label>
-                <input ref={nameRef} className="modal__input" type="text" id="intake-name" name="name" placeholder="Your name" required />
-              </div>
-              <div className="modal__field">
-                <label className="modal__label" htmlFor="intake-email">Email</label>
-                <input className="modal__input" type="email" id="intake-email" name="email" placeholder="you@company.com" required />
+              <div className="modal__row">
+                <div className="modal__field">
+                  <label className="modal__label" htmlFor="intake-name">Name</label>
+                  <input ref={nameRef} className="modal__input" type="text" id="intake-name" name="name" placeholder="Your name" required />
+                </div>
+                <div className="modal__field">
+                  <label className="modal__label" htmlFor="intake-email">Email</label>
+                  <input className="modal__input" type="email" id="intake-email" name="email" placeholder="you@company.com" required />
+                </div>
               </div>
               <div className="modal__field">
                 <label className="modal__label" htmlFor="intake-company">Company</label>
-                <input className="modal__input" type="text" id="intake-company" name="company" placeholder="Optional" />
+                <input className="modal__input" type="text" id="intake-company" name="company" placeholder="Company or organization" />
+              </div>
+              <div className="modal__row">
+                <div className="modal__field">
+                  <label className="modal__label" htmlFor="intake-project-type">Project type</label>
+                  <select className="modal__input" id="intake-project-type" name="projectType" defaultValue="" required>
+                    <option value="" disabled>Select one</option>
+                    <option>Website</option>
+                    <option>Business Software</option>
+                    <option>Workflow Automation</option>
+                    <option>Strategic Advisory</option>
+                    <option>Defense / Intelligence</option>
+                    <option>Legal / Law Enforcement</option>
+                    <option>Construction Tech</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="modal__field">
+                  <label className="modal__label" htmlFor="intake-timeline">Timeline</label>
+                  <select className="modal__input" id="intake-timeline" name="timeline" defaultValue="">
+                    <option value="">Not sure yet</option>
+                    <option>ASAP</option>
+                    <option>2-4 weeks</option>
+                    <option>1-3 months</option>
+                    <option>3+ months</option>
+                  </select>
+                </div>
+              </div>
+              <div className="modal__row">
+                <div className="modal__field">
+                  <label className="modal__label" htmlFor="intake-budget">Budget range</label>
+                  <select className="modal__input" id="intake-budget" name="budget" defaultValue="">
+                    <option value="">Prefer to discuss</option>
+                    <option>Under $5k</option>
+                    <option>$5k-$15k</option>
+                    <option>$15k-$40k</option>
+                    <option>$40k+</option>
+                  </select>
+                </div>
+                <div className="modal__field">
+                  <label className="modal__label" htmlFor="intake-reference">Optional link</label>
+                  <input className="modal__input" type="url" id="intake-reference" name="reference" placeholder="Existing site, doc, or reference" />
+                </div>
               </div>
               <div className="modal__field">
-                <label className="modal__label" htmlFor="intake-build">What are you trying to build?</label>
-                <textarea className="modal__input modal__textarea" id="intake-build" name="message" placeholder="Brief description of your project or need..." required />
+                <label className="modal__label" htmlFor="intake-build">What do you need built?</label>
+                <textarea className="modal__input modal__textarea" id="intake-build" name="message" placeholder="Describe the workflow, system, website, advisory need, or operational problem." required />
               </div>
+              <div className="modal__field">
+                <label className="modal__label" htmlFor="intake-existing">Anything already built?</label>
+                <textarea className="modal__input modal__textarea modal__textarea--short" id="intake-existing" name="existing" placeholder="Current stack, docs, prototype, spreadsheet, or team process." />
+              </div>
+              <p className="modal__note">No fake discovery maze. The goal is a clear scoped plan, not a sales call loop.</p>
               {state === 'error' && (
                 <p style={{ color: '#ff6b6b', fontSize: 'var(--text-small)', marginBottom: 'var(--space-3)' }}>
                   {errorMsg}

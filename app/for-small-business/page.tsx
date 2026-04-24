@@ -125,7 +125,7 @@ export default function SmallBusinessPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// What We Build</span>
+            <span className="eyebrow-teal">{'// What We Build'}</span>
             <h2>Made for operators<br />who need it to work.</h2>
           </div>
           <div className="smb-services-grid">
@@ -145,7 +145,7 @@ export default function SmallBusinessPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Small Business Proof</span>
+            <span className="eyebrow-teal">{'// Small Business Proof'}</span>
             <h2>Real work. Real operators.</h2>
           </div>
           <div className="smb-proof-grid">
@@ -179,7 +179,7 @@ export default function SmallBusinessPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// What&apos;s Different</span>
+            <span className="eyebrow-teal">{'// What\'s Different'}</span>
             <h2>Why small businesses<br />hire us.</h2>
           </div>
           <ul className="smb-why-list">
@@ -197,7 +197,7 @@ export default function SmallBusinessPage() {
       <section id="pricing" className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Pricing</span>
+            <span className="eyebrow-teal">{'// Pricing'}</span>
             <h2>Honest ranges. Visible upfront.</h2>
             <p className="section-sub">Most projects are fixed-price after the brief. No hourly games. No surprise invoices.</p>
           </div>
@@ -228,7 +228,7 @@ export default function SmallBusinessPage() {
         <div className="container">
           <div className="smb-form-wrap">
             <div className="section-head-light" style={{ textAlign: 'center' }}>
-              <span className="eyebrow-teal">// Get a Brief</span>
+              <span className="eyebrow-teal">{'// Get a Brief'}</span>
               <h2>Tell us what you&apos;re building.</h2>
               <p className="section-sub">We respond within two business days. No sales calls, no upsell sequences.</p>
             </div>

@@ -47,7 +47,7 @@ export default function Founder() {
           </div>
           <div className="founder-plate">
             <span className="mono">KEEGAN PEARL</span>
-            <span className="mono">// FOUNDER</span>
+            <span className="mono">{'// FOUNDER'}</span>
           </div>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function Founder() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className="eyebrow eyebrow-teal">// 07 / Who builds this</span>
+          <span className="eyebrow eyebrow-teal">{'// 07 / Founder Operator'}</span>
           <h2 style={{ marginTop: 18 }}>Builder-led.<br />Veteran-owned.<br />No agency maze.</h2>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--arctic-soft)', maxWidth: 540 }}>
             Pearl Labs is built for clients who want direct access to the person designing and shipping the system. You get clear plans, working software, and ownership of the result.

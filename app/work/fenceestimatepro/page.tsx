@@ -76,7 +76,7 @@ export default function FenceEstimateProPage() {
 
       <div className="container">
         <div className="case-body-grid">
-          <h3>// Problem</h3>
+          <h3>{'// Problem'}</h3>
           <div className="block">
             <p>
               Most fence contractors price jobs from a spreadsheet, a calculator, and memory. The result: under-ordered concrete, wrong post counts, panels that don&apos;t fit the run, and a margin that looked good on paper but vanished at install. They win the bid and lose money — or they pad the quote and lose the bid to someone faster. Either way, the owner eats the cost.
@@ -86,7 +86,7 @@ export default function FenceEstimateProPage() {
             </p>
           </div>
 
-          <h3>// System Built</h3>
+          <h3>{'// System Built'}</h3>
           <div className="block">
             <p>
               FenceEstimatePro replaces that entire workflow with a run-based estimator. The FenceGraph engine walks each run and derives the right post type at every junction. Posts, concrete bags, panels, pickets, rails — all calculated from the run geometry the moment you draw it. Set your target margin; the engine prices materials and labor, then shows your locked margin percentage before the customer ever sees a number.
@@ -99,14 +99,14 @@ export default function FenceEstimateProPage() {
             </p>
           </div>
 
-          <h3>// Outcome</h3>
+          <h3>{'// Outcome'}</h3>
           <div className="block">
             <p>
-              Shipped to production. 47+ active contractors. Average estimate time reduced from 30 minutes to 5. Average margin locked at 38% — contractors seeing their profit before sending the quote for the first time.
+              Shipped to production as a working construction-tech SaaS. The system turns run geometry into quote-ready material, labor, contract, and payment flows while keeping margin visible before the customer receives the quote.
             </p>
           </div>
 
-          <h3>// Stack</h3>
+          <h3>{'// Stack'}</h3>
           <div className="block">
             <div className="case-stack-row">
               {stack.map((s) => <span key={s} className="case-stack-tag">{s}</span>)}

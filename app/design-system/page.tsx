@@ -56,7 +56,7 @@ export default function DesignSystemPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Palette</span>
+            <span className="eyebrow-teal">{'// Palette'}</span>
             <h2>Graphite, arctic, teal.</h2>
           </div>
           <div className="ds-tokens">
@@ -77,7 +77,7 @@ export default function DesignSystemPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Typography</span>
+            <span className="eyebrow-teal">{'// Typography'}</span>
             <h2>Display + mono.</h2>
           </div>
           <div className="ds-type-stack">
@@ -97,7 +97,7 @@ export default function DesignSystemPage() {
       <section className="section-narrow">
         <div className="container">
           <div className="section-head-light">
-            <span className="eyebrow-teal">// Principles</span>
+            <span className="eyebrow-teal">{'// Principles'}</span>
             <h2>Operating doctrine.</h2>
           </div>
           <ul className="brief-principles">

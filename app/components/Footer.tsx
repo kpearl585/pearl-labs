@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Pearl Labs // Ocala, Florida</span>
+          <span>{'© 2026 Pearl Labs // Ocala, Florida'}</span>
           <span>Veteran Owned · SCORE Service Partner</span>
           <span><a href="https://www.linkedin.com/in/keegan-pearl-280492248/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:keegan@pearllab.io">Email</a></span>
         </div>
