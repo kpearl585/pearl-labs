@@ -8,12 +8,12 @@ import { useRef } from 'react'
 const work = [
   {
     name: 'FenceEstimatePro',
-    type: 'SaaS Platform',
+    type: 'Run-Based Estimation SaaS',
     liveDomain: 'fenceestimatepro.com',
-    desc: 'Full SaaS platform for fence contractors. Estimates, job tracking, customer portals, digital signatures, Stripe billing. Shipping weekly.',
+    desc: 'Stop guessing quantities. Start winning jobs. The only run-based fence estimation engine — models fence run by run, auto-derives post types, calculates exact concrete volume, and locks margin before you touch the quote. 47+ active contractors.',
     href: '/work/fenceestimatepro',
     internal: true,
-    image: null,
+    image: '/fenceestimatepro-hero.jpg',
     isLive: true,
     isSaas: true,
     label: 'Read case study →',
